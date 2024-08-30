@@ -49,6 +49,19 @@
       "videoList": "./data/video-list/soul-land-2/soul-land-2.html",
       "recommendList": "../soul-land-2/soul-land-2.html"
     }
+    ,
+    {
+      "id": "6",
+      "image": "https://i.pinimg.com/564x/c1/a9/da/c1a9da68ed34a9476205f8a589910e94.jpg",
+      "title": "Apotheosis [Become a God] 2",
+      "season": "02",
+      "episode": "40[90]",
+      "lastUpdated": "2024-08-30T02:30:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/apotheosis-become-a-god-2/apotheosis-become-a-god-2.html",
+      "videoList": "./data/video-list/apotheosis-become-a-god-2/apotheosis-become-a-god-2.html",
+      "recommendList": "../apotheosis-become-a-god-2/apotheosis-become-a-god-2.html"
+    }
     
     
     
