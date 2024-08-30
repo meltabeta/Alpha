@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KH-DONGHUA - Contact Page</title>
+    <link class="favicon" style="width: 16px;
+    height: 16px;
+    border-radius: 50%;" rel="icon" href="../../img/profile.jpg">
+    <link rel="stylesheet" href="../../css/donghua.css" />
+    <link rel="stylesheet" href="../../css/asset/profile-cover.css" />
+    <link rel="stylesheet" href="../../css/asset/nav-bar.css" />
+    <style>
+      .menu {
+        background: rgb(0, 0, 0);
+        width: 300px;
+        opacity: 0.3;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .menu .fas{
+          transition: transform .2s;
+          margin-top: 20px;
+      }
+
+      .menu p {
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .social-lists {
+        background: rgb(0, 0, 0);
+        width: 300px;
+        padding: 10px;
+        opacity: 0.3;
+        list-style-type: none;
+        border-radius: 5px;
+      }
+
+      .social-lists li {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: padding 0.2s linear;
+      }
+
+      .social-lists li:hover {
+        background: rgb(0, 0, 0);
+        border-radius: 5px;
+        padding-left: 10px;
+      }
+
+      .social-lists li .fab {
+        margin: 0 10px;
+      }
+
+      .rotate .fas {
+        transform: rotate(180deg);
+      }
+
+      .hide {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cover-img">
+        <img src="../../img/background-cover.jpg" alt="cover" />
+      </div>
+      <!-- profile section -->
+      <section class="profile-section">
+        <!-- profile info -->
+        <div class="profile-info">
+          <!-- profile image -->
+          <div style="text-align: start" class="profile">
+            <a href="../home.html">
+              <img
+                style="width: 90px; height: 90px; border-radius: 50%"
+                src="../../img/profile.jpg"
+                alt="profile-image"
+              />
+            </a>
+          </div>
+          <!-- profile name -->
+          <div class="profile-name">
+            <h1
+              class="website-name"
+              style="font-family: monospace; text-transform: uppercase"
+            >
+            &#128157;KH-DONGHUA
+            </h1>
+            <p class="username">@KH-DONGHUA</p>
+          </div>
+        </div>
+        <!-- profile description -->
+        <div class="profile-description">
+          <p class="profile-description-text">
+            Welcome to our wesbite!<br>If you enjoy the website, please consider
+            sharing it with your friends. Thank you!
+          </p>
+        </div>
+      </section>
+      <!-- search and nav bar section -->
+      <section class="search-and-nav-bar-section">
+        <div class="topnav" id="myTopnav">
+          <a href="../contact/contact.html" class="active">Contact Us</a>
+          <a href="../home.html">Home</a>
+          <a href="../donghua/donghua.html">Donghua</a>
+          <a href="../anime/anime.html">Anime</a>
+          <a
+            href="javascript:void(0);"
+            style="font-size: 15px"
+            class="icon"
+            onclick="myFunction()"
+            >&#9776;</a
+          >
+        </div>
+      </section>
+      <hr />
+      <!-- home section -->
+      <section class="home-page">
+        <h1 style="text-transform: uppercase">KH-DONGHUA is online website&#x1F60D</h1>
+        <h4 style="color: gray">Thank you for visiting our website!</h4>
+        <section class="social-section">
+          <div class="menu">
+            <p>Social Media</p>
+            <i class="fas fa-angle-down"></i>
+          </div>
+          <ul class="social-lists hide">
+            <li>
+              <i class="fab fa-facebook" style="color: blue"></i>
+              <p>Facebook</p>
+            </li>
+            <li>
+              <i class="fab fa-youtube" style="color: red"></i>
+              <p>YouTube</p>
+            </li>
+            <li>
+              <i class="fab fa-twitter" style="color: blue"></i>
+              <p>Twitter</p>
+            </li>
+            <li>
+              <i class="fab fa-linkedin" style="color: blue"></i>
+              <p>Linkedin</p>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <script src="../../js/asset/nav-bar.js"></script>
+    <script src="../../js/asset/social.js"></script>
+  </body>
+</html>

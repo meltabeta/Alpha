@@ -1,0 +1,82 @@
+{
+  "cards": [
+    {
+      "id": "1",
+      "image": "https://i.pinimg.com/736x/e6/38/c8/e638c8754ce4846513aaccd633400f04.jpg",
+      "title": "Perfect World [Wanmei Shijie]",
+      "season": "01",
+      "episode": "178",
+      "lastUpdated": "2024-08-29T18:00:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/perfect-world/perfect-world.html",
+      "videoList": "./data/video-list/perfect-world/perfect-world.html",
+      "recommendList": "../perfect-world/perfect-world.html"
+
+    },
+    {
+      "id": "2",
+      "image": "https://i.pinimg.com/736x/9f/55/dc/9f55dca02ade224d18aea4db0e1de6b3.jpg",
+      "title": "Throne of Seal",
+      "season": "01",
+      "episode": "122",
+      "lastUpdated": "2024-08-29T17:00:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/throne-of-seal/throne-of-seal.html",
+      "videoList": "./data/video-list/throne-of-seal/throne-of-seal.html",
+      "recommendList": "../throne-of-seal/throne-of-seal.html"
+    },
+    {
+      "id": "3",
+      "image": "https://i.pinimg.com/736x/b8/3d/c8/b83dc8baff8196b728aec33a959a9ec1.jpg",
+      "title": "One Hundred Thousand Years of Qi Refining",
+      "season": "01",
+      "episode": "20",
+      "lastUpdated": "2024-08-30T05:30:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/one-hundred-thousand-years-of-qi-refining/one-hundred-thousand-years-of-qi-refining.html",
+      "videoList": "./data/video-list/one-hundred-thousand-years-of-qi-refining/one-hundred-thousand-years-of-qi-refining.html",
+      "recommendList": "../one-hundred-thousand-years-of-qi-refining/one-hundred-thousand-years-of-qi-refining.html"
+    },
+    {
+      "id": "4",
+      "image": "https://puui.wetvinfo.com/vcover_hz_pic/0/wu7vz4vgfi8ugan1687491647591/0",
+      "title": "Soul Land 2 : The Unrivaled Tang Sect",
+      "season": "02",
+      "episode": "64",
+      "lastUpdated": "2024-08-30T06:30:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/soul-land-2/soul-land-2.html",
+      "videoList": "./data/video-list/soul-land-2/soul-land-2.html",
+      "recommendList": "../soul-land-2/soul-land-2.html"
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+  ]
+}

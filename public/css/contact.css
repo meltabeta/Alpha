@@ -1,0 +1,25 @@
+.profile-info {  
+    display: flex;  
+    align-items: center;  
+    margin-bottom: 10px;  
+}  
+
+.profile {  
+    flex-shrink: 0;  
+    margin-right: 10px;  
+}  
+
+.website-name {  
+    font-family: monospace;  
+    text-transform: uppercase;  
+    margin: 0;  
+}  
+
+.username {  
+    margin: 0;  
+    color: gray; /* Change color as needed */  
+}  
+
+.profile-description {  
+    margin-top: 10px;  
+}

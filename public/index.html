@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KH-DONGHUA - Watch Donghua online for free</title>
+    <link class="favicon" style="width: 16px;
+    height: 16px;
+    border-radius: 50%;" rel="icon" href="./img/profile.jpg">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/asset/profile-cover.css" />
+    <link rel="stylesheet" href="./css/asset/home-contact.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="cover-img">
+        <img src="./img/background-cover.jpg" alt="cover" />
+      </div>
+      <!-- profile section -->
+      <section class="profile-section">
+        <!-- profile info -->
+        <div class="profile-info">
+          <!-- profile image -->
+          <div style="text-align: start" class="profile">
+            <a href="./index.html">
+              <img
+                style="width: 90px; height: 90px; border-radius: 50%"
+                src="./img/profile.jpg"
+                alt="profile-image"
+              />
+            </a>
+          </div>
+          <!-- profile name -->
+          <div class="profile-name">
+            <h1
+              class="website-name"
+              style="font-family: monospace; text-transform: uppercase"
+            >
+              KH-DONGHUA
+            </h1>
+            <p class="username">@KH-DONGHUA</p>
+          </div>
+        </div>
+
+        <!-- profile description -->
+        <div class="profile-description">
+          <p class="profile-description-text">Welcome to our wesbite!<br>If you enjoy the website, please consider
+            sharing it with your friends. Thank you!</p>
+        </div>
+      </section>
+      <!-- home section -->
+      <section class="home-page">
+        <button
+          class="home-button"
+          onclick="window.location.href = './menu/home.html'"
+        >
+          Go to Home Page
+        </button>
+
+        <h1 style="text-transform: uppercase">KH-DONGHUA watch online free</h1> <br>
+        <p>
+           is a free streaming anime website that allows you to watch
+          anime online in English subbed. Join us and watch anime
+          online for free with ease. Easy access and no registration is
+          required. Our content is updated daily with fast streaming servers and
+          great features that help you easily track and watch your favorite
+          anime. We are confident KH-DONGHUA is the best free anime streaming
+          site in the space that you can't simply miss!
+        </p>
+      </section>
+      <!-- COntact form -->
+      <div class="contact-info">  
+        <div class="card" data-contact="email">  
+            <i class="&#9993"></i>  
+            <div class="card-content">  
+                <h3>Email</h3>  <br>
+                <span>seangsengly@proton.me</span>  
+            </div>  
+        </div>  
+    
+        <div class="card" data-contact="phone">  
+            <i class=""></i>  
+            <div class="card-content">  
+                <h3>Tel Channel</h3>  <br>
+                <span>@METABETAchinessdonghua</span>  
+            </div>  
+        </div>  
+    
+        <div class="card" data-contact="location">  
+            <i class=""></i>  
+            <div class="card-content">  
+                <h3>Location</h3>  <br>
+                <span>Phnom Penh, Cambodia</span>  
+            </div>  
+        </div>  
+    </div>
+    <!-- comment form -->
+      <form class="my-form">
+        <div class="container">
+          <h1>Get in touch!</h1>
+          <ul>
+            <li>
+              <select>
+                <option selected disabled>-- Please choose an option --</option>
+                <option>Request New Donghua</option>
+                <option>Report Issue</option>
+                <option>Other</option>
+              </select>
+            </li>
+            <li>
+              <div class="grid grid-2">
+                <input type="text" placeholder="Name" required />
+                <input type="text" placeholder="Surname" required />
+              </div>
+            </li>
+            <li>
+              <div class="grid grid-2">
+                <input type="email" placeholder="Email" required />
+                <input type="tel" placeholder="Phone" />
+              </div>
+            </li>
+            <li>
+              <textarea placeholder="Message" maxlength="100"></textarea>
+            </li>
+            <li>
+              <input type="checkbox" id="terms" />
+              <label for="terms"
+                >I have read and agreed with
+                <a href="">the terms and conditions.</a></label
+              >
+            </li>
+            <li>
+              <div class="grid grid-3">
+                <div class="required-msg">REQUIRED FIELDS</div>
+                <button class="btn-grid" type="submit" disabled>
+                  <span class="back">
+                    <img
+                      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg"
+                      alt=""
+                    />
+                  </span>
+                  <span class="front">. . SUBMIT</span>
+                </button>
+                <button class="btn-grid" type="reset" disabled>
+                  <span class="back">
+                    <img
+                      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg"
+                      alt=""
+                    />
+                  </span>
+                  <span class="front">. . RESET</span>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <br />
+    <br />
+    <br />
+    <script src="./js/asset/home-contact.js"></script>
+  </body>
+  <script>
+          // Lock Screen Mode dev
+
+      
+      (function() {
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get() {
+                window.location.replace("about:blank"); // Redirects if DevTools is detected
+            }
+        });
+
+        setInterval(function() {
+            console.log(element);
+            console.clear();  // Keeps the console clear
+        }, 1000);
+    })();
+
+
+    (function() {
+        const start = () => { 
+            const handleDevTools = () => {
+                if (console.clear) console.clear();
+                debugger;
+                setTimeout(handleDevTools, 100); 
+            };
+            handleDevTools();
+        };
+        start();
+    })();
+
+    // Disable right-click
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+
+    // Disable specific keyboard shortcuts
+    document.addEventListener('keydown', function(event) {
+        // Prevent common actions like F5 (reload), Ctrl+R (reload), Ctrl+Shift+I (DevTools), F12, etc.
+        if (
+            (event.ctrlKey && (event.key === 'r' || event.key === 'u' || event.key === 's')) ||
+            event.key === 'F5' ||
+            event.key === 'F12' ||
+            (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C'))
+        ) {
+            event.preventDefault();
+        }
+    });
+
+    // Block DevTools by detecting if it's open
+    let devtoolsOpen = false;
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function () {
+            devtoolsOpen = true;
+            throw new Error('DevTools Detected');
+        }
+    });
+
+    setInterval(function () {
+        devtoolsOpen = false;
+        console.log(element);
+        if (devtoolsOpen) {
+            alert("DevTools are opened, and the page will now redirect.");
+            window.location.replace("about:blank");  // redirect to a blank page
+        }
+    }, 1000);
+  </script>
+  <footer style="display: flex; justify-content: center">
+    <p>&copy; 2023 KH-DONGHUA. All rights reserved.</p>
+    <br />
+    <p>Designed and developed by SEANGSENGLY</p>
+  </footer>
+</html>

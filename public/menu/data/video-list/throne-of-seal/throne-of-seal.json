@@ -1,0 +1,27 @@
+{
+  "throne-of-seal": [
+    {
+      "id": "2",
+      "image": "https://4kwallpapers.com/images/walls/thumbs_3t/17948.jpeg",
+      "title": "Throne of Seal",
+      "season": "01",
+      "episode": "122",
+      "lastUpdated": "2024-08-27T15:30:00Z",
+      "type": "Donghua",
+      "video": [
+        {
+          "videoId": "122",
+          "src": "https://geo.dailymotion.com/player/x9fvi.html?video=k2D3Tt1y3DJJkqBmOwe",
+          "episode": "122",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "120",
+          "src": "https://rumble.com/embed/v5ajx9o/?pub=3qiuc7",
+          "episode": "111 - 120",
+          "postingVideoDate": "2024-08-28T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
