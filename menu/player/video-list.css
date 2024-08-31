@@ -179,9 +179,9 @@ span.episode-listing:hover {
   font-weight: bold;
 }
 
-.episode:hover {
+/* .episode:hover {
   background-color: #e0e0e0;
-}
+} */
 
 .all-video-episode {
   max-height: 400px; /* Adjust based on your design */
