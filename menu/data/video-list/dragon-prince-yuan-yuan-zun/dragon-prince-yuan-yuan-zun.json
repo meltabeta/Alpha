@@ -1,0 +1,21 @@
+{
+  "dragon-prince-yuan-yuan-zun": [
+    {
+      "id": "8",
+      "image": "https://i.pinimg.com/736x/05/ee/5b/05ee5bcf5e365eb7544dac717ca3b745.jpg",
+      "title": "Dragon Prince Yuan [Yuan Zun]",
+      "season": "01",
+      "episode": "26",
+      "lastUpdated": "2024-08-27T15:30:00Z",
+      "type": "Donghua",
+      "video": [
+        {
+          "videoId": "26",
+          "src": "https://geo.dailymotion.com/player.html?video=x94w9jy",
+          "episode": "26",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}

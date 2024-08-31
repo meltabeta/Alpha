@@ -189,6 +189,9 @@ span.episode-listing:hover {
   position: relative;
 }
 
+.website-name {
+  cursor: pointer;
+}
 
 /* Responsive Design */
 @media (max-width: 484px) {

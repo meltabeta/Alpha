@@ -72,6 +72,30 @@
       "donghuaToVideoList": "../data/video-list/apotheosis-become-a-god-2/apotheosis-become-a-god-2.html",
       "videoList": "./data/video-list/apotheosis-become-a-god-2/apotheosis-become-a-god-2.html",
       "recommendList": "../apotheosis-become-a-god-2/apotheosis-become-a-god-2.html"
+    },
+    {
+      "id": "7",
+      "image": "https://i.pinimg.com/736x/f5/c8/5e/f5c85eb2b4886bf6279877fb7cdf5de2.jpg",
+      "title": "Peerless Battle Spirit [Jueshi Zhan Hun]",
+      "season": "01",
+      "episode": "40",
+      "lastUpdated": "2024-08-30T06:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/peerless-battle-spirt-jueshi-zhan-hun/peerless-battle-spirt-jueshi-zhan-hun.html",
+      "videoList": "./data/video-list/peerless-battle-spirt-jueshi-zhan-hun/peerless-battle-spirt-jueshi-zhan-hun.html",
+      "recommendList": "../peerless-battle-spirt-jueshi-zhan-hun/peerless-battle-spirt-jueshi-zhan-hun.html"
+    },
+    {
+      "id": "8",
+      "image": "https://i.pinimg.com/736x/ea/08/01/ea0801500eb6875c54c6efddcd85f9f2.jpg",
+      "title": "Dragon Prince Yuan [Yuan Zun]",
+      "season": "01",
+      "episode": "26",
+      "lastUpdated": "2024-08-30T06:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/dragon-prince-yuan-yuan-zun/dragon-prince-yuan-yuan-zun.html",
+      "videoList": "./data/video-list/dragon-prince-yuan-yuan-zun/dragon-prince-yuan-yuan-zun.html",
+      "recommendList": "../dragon-prince-yuan-yuan-zun/dragon-prince-yuan-yuan-zun.html"
     }
     
     
