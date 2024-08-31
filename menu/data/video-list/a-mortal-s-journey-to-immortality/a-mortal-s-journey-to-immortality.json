@@ -1,0 +1,24 @@
+{
+  "a-mortal-s-journey-to-immortality": [
+    {
+      "id": "9",
+      "image": "https://i.pinimg.com/736x/69/22/8a/69228a922fa5d2f42ea3e1ead4bf20d9.jpg",
+      "title": "A Mortal's Journey to Immortality",
+      "season": "03",
+      "episode": "117",
+      "lastUpdated": "2024-08-29T06:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/a-mortal-s-journey-to-immortality/a-mortal-s-journey-to-immortality.html",
+      "videoList": "./data/video-list/a-mortal-s-journey-to-immortality/a-mortal-s-journey-to-immortality.html",
+      "recommendList": "../a-mortal-s-journey-to-immortality/a-mortal-s-journey-to-immortality.html",
+      "video": [
+        {
+          "videoId": "117",
+          "src": "https://geo.dailymotion.com/player.html?video=x94w9jy",
+          "episode": "117",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "the-alchemy-supreme": [
+    {
+      "id": "10",
+      "image": "https://i.pinimg.com/736x/69/22/8a/69228a922fa5d2f42ea3e1ead4bf20d9.jpg",
+      "title": "The Alchemy Supreme",
+      "season": "01",
+      "episode": "73",
+      "lastUpdated": "2024-08-30T01:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
+      "videoList": "./data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
+      "recommendList": "../the-alchemy-supreme/the-alchemy-supreme.html",
+      "video": [
+        {
+          "videoId": "26",
+          "src": "https://geo.dailymotion.com/player.html?video=x94w9jy",
+          "episode": "26",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
