@@ -97,8 +97,6 @@
       "videoList": "./data/video-list/dragon-prince-yuan-yuan-zun/dragon-prince-yuan-yuan-zun.html",
       "recommendList": "../dragon-prince-yuan-yuan-zun/dragon-prince-yuan-yuan-zun.html"
     },
-    
-    
     {
       "id": "11",
       "image": "https://i.pinimg.com/564x/8a/96/3c/8a963c23d9d3189c84600f49db520b8b.jpg",
@@ -110,7 +108,7 @@
       "donghuaToVideoList": "../data/video-list/renegade-immortal/renegade-immortal.html",
       "videoList": "./data/video-list/renegade-immortal/renegade-immortal.html",
       "recommendList": "../renegade-immortal/renegade-immortal.html"
-    }
+    },
     
     
     
@@ -132,9 +130,20 @@
     
 
 
-
-
-
+  {
+    "id": "12",
+    "image": "https://i.pinimg.com/736x/c9/58/55/c958550f4192a4da0e3a02a5608be503.jpg",
+    "title": "My Hero Academia",
+    "season": "07",
+    "episode": "02",
+    "lastUpdated": "2024-08-08T16:41:00Z",
+    "type": "Anime",
+    "donghuaToVideoList": "../data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
+    "videoList": "../data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
+    "recommendList": "../anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html"
+  }
+  
+  
 
 
 

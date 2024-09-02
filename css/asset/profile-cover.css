@@ -8,7 +8,19 @@ body {
   /* background-color: rgb(44, 44, 44); */
   background-color: black;
 }
-
+.music-button {
+  font-family: "Fira Sans", sans-serif;
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #4e4e4e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+}
 .container {
   margin: 0 auto;
   padding: 0 10px;
