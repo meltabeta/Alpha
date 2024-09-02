@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const jsonDataPath = '../swallowed-star-season-3/swallowed-star-season-3.json';
+  const jsonDataPath = '../swallowed-star-season-2/swallowed-star-season-2.json';
   let currentEpisodeIndex = 0; // Track the current episode index
   let episodes = [];
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return response.json();
     })
     .then(data => {
-      const seriesName = data['swallowed-star-season-3'][0];
+      const seriesName = data['swallowed-star-season-2'][0];
       const episodeListContainer = document.getElementById('episode-list');
       const videoContainer = document.getElementById('video-container');
       const seasonElement = document.getElementById('season');
