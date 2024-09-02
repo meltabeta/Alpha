@@ -85,6 +85,8 @@
       <section class="home-page">
         <h1 style="text-transform: uppercase">KH-DONGHUA is online website&#x1F60D</h1>
         <h4 style="color: gray">Thank you for visiting our website!</h4>
+        <!-- play music mode -->
+        <button class="music-button" id="music-control">Puase Music	&#127926; &#127932;</button>
         <!-- Card controller -->
         <div id="card-list" class="card-controller">
           <!-- Cards will be dynamically inserted here -->
@@ -98,6 +100,7 @@
       </section>
     </div>
     <br />
+    
     <audio id="background-music" loop>
       <source src="../song/background-song-homepage.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
@@ -113,6 +116,23 @@
 
         // Call the function when the page is loaded
         window.addEventListener('load', playBackgroundMusic);
+        function toggleMusic() {
+            const audio = document.getElementById('background-music');
+            const button = document.getElementById('music-control');
+
+            if (audio.paused) {
+                audio.volume = 0.2; // Set volume to 20%
+                audio.play();
+                button.textContent = 'Pause Music'; // Change button text to 'Pause'
+            } else {
+                audio.pause();
+                button.textContent = 'Play Music'; // Change button text to 'Play'
+            }
+        }
+
+        // Attach event listener to the button
+        document.getElementById('music-control').addEventListener('click', toggleMusic);
+
     </script>
     <script src="../js/asset/nav-bar.js"></script>
     <script src=""></script>
