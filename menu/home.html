@@ -98,9 +98,24 @@
       </section>
     </div>
     <br />
+    <audio id="background-music" loop>
+      <source src="../song/background-song-homepage.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Function to play background music with 20% volume
+        function playBackgroundMusic() {
+            const audio = document.getElementById('background-music');
+            audio.volume = 0.2; // Set volume to 20%
+            audio.play();
+        }
+
+        // Call the function when the page is loaded
+        window.addEventListener('load', playBackgroundMusic);
+    </script>
     <script src="../js/asset/nav-bar.js"></script>
     <script src=""></script>
-
     <script type="module" src="../js/home.js"></script>
 
   </body>
