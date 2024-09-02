@@ -1,0 +1,24 @@
+{
+  "swallowed-star-season-3": [
+    {
+      "id": "12",
+      "image": "https://i.pinimg.com/736x/50/d2/37/50d2375815f46257c1e9920cd8399560.jpg",
+      "title": "Swallowed Star",
+      "season": "02",
+      "episode": "50 [135]",
+      "lastUpdated": "2024-09-02T16:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/swallowed-star-season-3/swallowed-star-season-3.html",
+      "videoList": "./data/video-list/swallowed-star-season-3/swallowed-star-season-3.html",
+      "recommendList": "../swallowed-star-season-3/swallowed-star-season-3.html",
+      "video": [
+        {
+          "videoId": "50 [135]",
+          "src": "https://geo.dailymotion.com/player.html?video=x950lzw",
+          "episode": "50 [135]",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
