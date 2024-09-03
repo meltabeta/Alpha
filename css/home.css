@@ -56,8 +56,6 @@
   margin-right: 10px;
 }
 
-
-/* Responsive styles for smaller screens */
 @media (max-width: 600px) {
   .scheduler-section table, 
   .scheduler-section thead, 
@@ -96,6 +94,12 @@
   .scheduler-section td a {
       display: block;
       margin-bottom: 5px;
+  }
+
+  /* Remove hover effect on small screens */
+  .scheduler-section tr:hover {
+      background-color: transparent;
+      color: inherit;
   }
 }
 
