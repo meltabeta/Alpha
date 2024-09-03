@@ -18,7 +18,7 @@
         <img src="../img/background-cover.jpg" alt="cover" />
       </div>
       <!-- profile section -->
-      <section class="profile-section">
+      <section id="top" class="profile-section">
         <!-- profile info -->
         <div class="profile-info">
           <!-- profile image -->
@@ -39,7 +39,7 @@
             >
             &#128157;KH-DONGHUA
             </h1>
-            <p id="top" class="username">@KH-DONGHUA</p>
+            <p class="username">@KH-DONGHUA</p>
           </div>
         </div>
         <!-- profile description -->
@@ -93,10 +93,19 @@
         </div>
         <!-- Pagination controls -->
         <div id="pagination-controls" class="pagination-controls">
-          <button id="prev-page" disabled>Previous</button>
+          <button id="prev-page" disabled onclick="document.getElementById('top').scrollIntoView(true)">Previous</button>
           <span id="page-info">Page 1</span>
-          <button id="next-page">Next</button>
+          <button id="next-page" onclick="document.getElementById('top').scrollIntoView(true)">Next</button>
         </div>
+        <script>
+          function scrollToProfile() {
+            setTimeout(function () {
+              document.getElementById('card-list').scrollIntoView({
+                behavior: 'smooth'
+              });
+            }, 100);
+          }
+        </script>
       </section>
       <br>
       <br>
