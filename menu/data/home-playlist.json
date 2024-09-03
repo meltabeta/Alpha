@@ -98,6 +98,18 @@
       "recommendList": "../dragon-prince-yuan-yuan-zun/dragon-prince-yuan-yuan-zun.html"
     },
     {
+      "id": "10",
+      "image": "https://i.pinimg.com/736x/86/b4/ef/86b4ef2ab5cca9f447937efe307b00d9.jpg",
+      "title": "The Alchemy Supreme",
+      "season": "01",
+      "episode": "73",
+      "lastUpdated": "2024-09-02T00:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
+      "videoList": "./data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
+      "recommendList": "../the-alchemy-supreme/the-alchemy-supreme.html"
+    },
+    {
       "id": "11",
       "image": "https://i.pinimg.com/564x/8a/96/3c/8a963c23d9d3189c84600f49db520b8b.jpg",
       "title": "Renegade Immortal [Xian Ni]",
@@ -154,6 +166,18 @@
     "donghuaToVideoList": "../data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
     "videoList": "../data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
     "recommendList": "../anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html"
+  },
+  {
+    "id": "002",
+    "image": "https://i.pinimg.com/736x/a0/92/f9/a092f96c2a57e34628515e4bd937e4d9.jpg",
+    "title": "The New Gate",
+    "season": "01",
+    "episode": "09",
+    "lastUpdated": "2024-08-08T17:41:00Z",
+    "type": "Anime",
+    "donghuaToVideoList": "../data/video-list/anime-the-new-gate/anime-the-new-gate.html",
+    "videoList": "../data/video-list/anime-the-new-gate/anime-the-new-gate.html",
+    "recommendList": "../anime-the-new-gate/anime-the-new-gate.html"
   }
   
   

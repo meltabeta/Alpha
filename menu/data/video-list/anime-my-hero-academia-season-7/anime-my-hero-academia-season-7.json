@@ -1,16 +1,16 @@
 {
   "anime-my-hero-academia-season-7": [
     {
-      "id": "12",
-    "image": "https://i.pinimg.com/564x/8a/96/3c/8a963c23d9d3189c84600f49db520b8b.jpg",
-    "title": "My Hero Academia",
-    "season": "07",
-    "episode": "02",
-    "lastUpdated": "2024-09-01T16:41:00Z",
-    "type": "Anime",
-    "donghuaToVideoList": "../data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
-    "videoList": "./data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
-    "recommendList": "../anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
+      "id": "001",
+      "image": "https://i.pinimg.com/564x/8a/96/3c/8a963c23d9d3189c84600f49db520b8b.jpg",
+      "title": "My Hero Academia",
+      "season": "07",
+      "episode": "02",
+      "lastUpdated": "2024-09-01T16:41:00Z",
+      "type": "Anime",
+      "donghuaToVideoList": "../data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
+      "videoList": "./data/video-list/anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
+      "recommendList": "../anime-my-hero-academia-season-7/anime-my-hero-academia-season-7.html",
       "video": [
         {
           "videoId": "002",
