@@ -1,7 +1,103 @@
+.scheduler-section {
+  padding: 20px;
+  background-color: #f9f9f900;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.scheduler-section h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
 
 
+.scheduler-section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.scheduler-section th, .scheduler-section td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.scheduler-section th {
+  background-color: rgba(46, 255, 255, 0.685);
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scheduler-section tr:hover {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.scheduler-section a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.scheduler-section a:hover {
+  text-decoration: underline;
+}
+
+.scheduler-section td a {
+  margin-right: 10px;
+}
 
 
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
+  .scheduler-section table, 
+  .scheduler-section thead, 
+  .scheduler-section tbody, 
+  .scheduler-section th, 
+  .scheduler-section td, 
+  .scheduler-section tr {
+      display: block;
+  }
+
+  .scheduler-section thead tr {
+      display: none;
+  }
+
+  .scheduler-section tr {
+      margin-bottom: 15px;
+  }
+
+  .scheduler-section td {
+      padding: 10px 10px;
+      text-align: left;
+      position: relative;
+      border: none;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .scheduler-section td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      width: calc(100% - 20px);
+      text-align: left;
+      font-weight: bold;
+  }
+
+  .scheduler-section td a {
+      display: block;
+      margin-bottom: 5px;
+  }
+}
 
 
 
