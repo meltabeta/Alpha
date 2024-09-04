@@ -145,7 +145,42 @@
       "videoList": "./data/video-list/donghua-martial-master/donghua-martial-master.html",
       "recommendList": "../donghua-martial-master/donghua-martial-master.html"
     },
-
+    {
+      "id": "14",
+      "image": "https://i.pinimg.com/736x/60/ff/13/60ff13ee8d9750aa8b79597a42278e0f.jpg",
+      "title": "Immortality",
+      "season": "03",
+      "episode": "12",
+      "lastUpdated": "2024-09-04T17:00:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua-immortality-season-3/donghua-immortality-season-3.html",
+      "videoList": "./data/video-list/donghua-immortality-season-3/donghua-immortality-season-3.html",
+      "recommendList": "../donghua-immortality-season-3/donghua-immortality-season-3.html"
+    },
+    {
+      "id": "15",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop1200x630gE7/herald/43813/nm5mm2d4ykpoz05jc2f5a2lfcmjytmf2axfgns9dnwp0wi9dugi2tlzyawiwrlpmzhp4clvbpt0.jpg",
+      "title": "The King's Avatar",
+      "season": "01",
+      "episode": "12",
+      "lastUpdated": "2024-09-04T17:02:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua-the-king-s-avatar-season-1/donghua-the-king-s-avatar-season-1.html",
+      "videoList": "./data/video-list/donghua-the-king-s-avatar-season-1/donghua-the-king-s-avatar-season-1.html",
+      "recommendList": "../donghua-the-king-s-avatar-season-1/donghua-the-king-s-avatar-season-1.html"
+    },
+    {
+      "id": "16",
+      "image": "https://puui.wetvinfo.com/vcover_hz_pic/0/xuw2l8nyxhnglwo1600947038144/0",
+      "title": "The King's Avatar",
+      "season": "02",
+      "episode": "12",
+      "lastUpdated": "2024-09-04T17:01:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua-the-king-s-avatar-season-2/donghua-the-king-s-avatar-season-2.html",
+      "videoList": "./data/video-list/donghua-the-king-s-avatar-season-2/donghua-the-king-s-avatar-season-2.html",
+      "recommendList": "../donghua-the-king-s-avatar-season-2/donghua-the-king-s-avatar-season-2.html"
+    },
     
     
     
