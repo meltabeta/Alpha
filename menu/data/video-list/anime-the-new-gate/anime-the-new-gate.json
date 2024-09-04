@@ -13,6 +13,24 @@
       "recommendList": "../anime-the-new-gate/anime-the-new-gate.html",
       "video": [
         {
+          "videoId": "012",
+          "src": "https://rumble.com/embed/v5bbh45/?pub=3qiuc7",
+          "episode": "12",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "011",
+          "src": "https://rumble.com/embed/v5bbh45/?pub=3qiuc7",
+          "episode": "11",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId":"010",
+          "src": "https://rumble.com/embed/v5bbggl/?pub=3qiuc7",
+          "episode": "10",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "009",
           "src": "https://geo.dailymotion.com/player.html?video=x9519j0",
           "episode": "09",
