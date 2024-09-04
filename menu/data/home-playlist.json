@@ -102,7 +102,7 @@
       "image": "https://i.pinimg.com/736x/86/b4/ef/86b4ef2ab5cca9f447937efe307b00d9.jpg",
       "title": "The Alchemy Supreme",
       "season": "01",
-      "episode": "50",
+      "episode": "66",
       "lastUpdated": "2024-09-02T00:41:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
@@ -132,6 +132,18 @@
       "donghuaToVideoList": "../data/video-list/swallowed-star-season-2/swallowed-star-season-2.html",
       "videoList": "./data/video-list/swallowed-star-season-2/swallowed-star-season-2.html",
       "recommendList": "../swallowed-star-season-2/swallowed-star-season-2.html"
+    },
+    {
+      "id": "13",
+      "image": "https://i.pinimg.com/originals/cd/f7/2e/cdf72e0d8f63d80ad6cfdff34d5f9a2e.jpg",
+      "title": "Martial Master",
+      "season": "01",
+      "episode": "470",
+      "lastUpdated": "2024-09-03T23:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua-martial-master/donghua-martial-master.html",
+      "videoList": "./data/video-list/donghua-martial-master/donghua-martial-master.html",
+      "recommendList": "../donghua-martial-master/donghua-martial-master.html"
     },
 
     

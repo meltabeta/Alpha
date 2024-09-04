@@ -84,3 +84,104 @@ this one for renegade immortale
           "postingVideoDate": "2024-09-01T16:41:00Z"
         },
         
+
+
+
+
+{
+  "": [
+    {
+      "id": "5",
+      "image": "https://i.pinimg.com/736x/05/ee/5b/05ee5bcf5e365eb7544dac717ca3b745.jpg",
+      "title": "Battle Through the Heaven - Xiao Yan",
+      "season": "05",
+      "episode": "110",
+      "lastUpdated": "2024-08-27T15:30:00Z",
+      "type": "Donghua",
+      "video": [
+        {
+          "videoId": "",
+          "src": "",
+          "episode": "",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        for song auto play bakcground
+<audio id="background-music" loop>
+      <source src="../song/background-song-homepage.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+         <script>
+        // Function to play background music with 20% volume
+        // function playBackgroundMusic() {
+        //     const audio = document.getElementById('background-music');
+        //     audio.volume = 0.2; // Set volume to 20%
+        //     audio.play();
+        // }
+
+        // Call the function when the page is loaded
+        window.addEventListener('load', playBackgroundMusic);
+        function toggleMusic() {
+            const audio = document.getElementById('background-music');
+            const button = document.getElementById('music-control');
+
+            if (audio.paused) {
+                audio.volume = 0.2; // Set volume to 20%
+                audio.play();
+                button.textContent = 'Pause Music'; // Change button text to 'Pause'
+            } else {
+                audio.pause();
+                button.textContent = 'Play Music'; // Change button text to 'Play'
+            }
+        }
+
+        // Attach event listener to the button
+        document.getElementById('music-control').addEventListener('click', toggleMusic);
+
+    </script>
