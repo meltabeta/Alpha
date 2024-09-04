@@ -19,7 +19,7 @@
         <img src="../../img/background-cover.jpg" alt="cover" />
       </div>
       <!-- profile section -->
-      <section class="profile-section">
+      <section id="top" class="profile-section">
         <!-- profile info -->
         <div class="profile-info">
           <!-- profile image -->
@@ -89,11 +89,10 @@
         <div id="card-list" class="card-controller">
           <!-- Cards will be dynamically inserted here -->
         </div>
-        <!-- Pagination controls -->
         <div id="pagination-controls" class="pagination-controls">
-          <button id="prev-page" disabled>Previous</button>
+          <button id="prev-page" disabled onclick="document.getElementById('top').scrollIntoView(true)">Previous</button>
           <span id="page-info">Page 1</span>
-          <button id="next-page">Next</button>
+          <button id="next-page" onclick="document.getElementById('top').scrollIntoView(true)">Next</button>
         </div>
       </section>
     </div>
