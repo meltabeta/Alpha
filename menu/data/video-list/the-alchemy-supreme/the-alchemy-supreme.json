@@ -13,6 +13,36 @@
       "recommendList": "../the-alchemy-supreme/the-alchemy-supreme.html",
       "video": [
         {
+          "videoId": "074",
+          "src": "https://geo.dailymotion.com/player.html?video=x95708c",
+          "episode": "74",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "073",
+          "src": "https://geo.dailymotion.com/player.html?video=x95700y",
+          "episode": "73",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "072",
+          "src": "https://geo.dailymotion.com/player.html?video=x956zsg",
+          "episode": "72",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "071",
+          "src": "https://geo.dailymotion.com/player.html?video=x956zla",
+          "episode": "71",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "070",
+          "src": "https://geo.dailymotion.com/player.html?video=x956yys",
+          "episode": "70",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "069",
           "src": "https://geo.dailymotion.com/player.html?video=x955wi2",
           "episode": "69",
