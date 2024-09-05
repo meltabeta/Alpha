@@ -12,12 +12,7 @@
       "videoList": "./data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
       "recommendList": "../the-alchemy-supreme/the-alchemy-supreme.html",
       "video": [
-        {
-          "videoId": "074",
-          "src": "https://www.bilibili.tv/en/video/4792562071507456",
-          "episode": "74",
-          "postingVideoDate": "2024-08-29T18:00:00Z"
-        },
+       
         {
           "videoId": "073",
           "src": "https://geo.dailymotion.com/player.html?video=x95700y",
