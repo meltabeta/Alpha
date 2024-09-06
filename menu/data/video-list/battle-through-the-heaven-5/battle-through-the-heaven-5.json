@@ -20,6 +20,24 @@
           "src": "https://geo.dailymotion.com/player.html?video=x94w6k8",
           "episode": "109",
           "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "108",
+          "src": "https://geo.dailymotion.com/player.html?video=x958n0q",
+          "episode": "108",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "107",
+          "src": "https://geo.dailymotion.com/player.html?video=x958n66",
+          "episode": "107",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "106",
+          "src": "https://geo.dailymotion.com/player.html?video=x958n9c",
+          "episode": "106",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
         }
       ]
     }
