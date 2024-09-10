@@ -26,6 +26,18 @@
           "src": "https://geo.dailymotion.com/player.html?video=x94w7hq",
           "episode": "40",
           "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "11 - 20",
+          "src": "https://rumble.com/embed/v5bza6d/?pub=3qiuc7",
+          "episode": "11 - 20",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "01 - 10",
+          "src": "https://rumble.com/embed/v5bz26d/?pub=3qiuc7",
+          "episode": "01 - 10",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
         }
       ]
     }
