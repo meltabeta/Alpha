@@ -1,0 +1,69 @@
+{
+  "apotheosis-become-a-god-1": [
+    {
+      "id": "06",
+      "image": "https://i.pinimg.com/564x/c1/a9/da/c1a9da68ed34a9476205f8a589910e94.jpg",
+      "title": "Apotheosis [Become a God] 1",
+      "season": "01",
+      "episode": "52",
+      "lastUpdated": "2024-08-30T02:30:00Z",
+      "type": "Donghua",
+      "video": [
+        {
+          "videoId": "52",
+          "src": "https://geo.dailymotion.com/player.html?video=x95edn2",
+          "episode": "52",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "51",
+          "src": "https://geo.dailymotion.com/player.html?video=x95edkm",
+          "episode": "51",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "50",
+          "src": "https://geo.dailymotion.com/player.html?video=x95edgk",
+          "episode": "50",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "49",
+          "src": "https://geo.dailymotion.com/player.html?video=x95ede8",
+          "episode": "49",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "48",
+          "src": "https://geo.dailymotion.com/player.html?video=x95duyi",
+          "episode": "48",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "47",
+          "src": "https://geo.dailymotion.com/player.html?video=x95duo6",
+          "episode": "47",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "46",
+          "src": "https://geo.dailymotion.com/player.html?video=x95dpm0",
+          "episode": "46",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "31 - 45",
+          "src": "https://rumble.com/embed/v5c0d02/?pub=3qiuc7",
+          "episode": "31 - 45",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "01 - 30",
+          "src": "https://rumble.com/embed/v5byv77/?pub=3qiuc7",
+          "episode": "01 - 30",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
