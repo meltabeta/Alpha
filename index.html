@@ -232,7 +232,7 @@
                 const newRef = ref(database, 'submissions/' + Date.now()); // Using timestamp as unique key
                 set(newRef, data)
                     .then(() => {
-                        alert('Form submitted successfully!');
+                        alert('Thank you! We will review for request and get back to you as soon as possible.');
                         form.reset(); // Reset the form after successful submission
                         submitButton.disabled = true; // Disable submit button after submission
                     })
