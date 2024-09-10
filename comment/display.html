@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Submissions</title>
+    <style>
+        /* Container styling */
+        body {
+            background-color: #333;
+        }
+
+        .container {
+            margin-left: 5%;
+            margin-right: 5%;
+            font-family: monospace, sans-serif;
+            color: #ffffff;
+            background-color: #555;
+        }
+
+        /* Table styling */
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(216, 194, 194, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        table, th, td {
+            border: 1px solid #ffffff5f;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #899aab;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        /* Action buttons styling */
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        .btn-view {
+            background-color: #28a745;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #080808;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Search box styling */
+        .search-box {
+            margin-right: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .search-box input {
+            padding: 12px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Heading styling */
+        h1 {
+            padding: 50px;
+            font-size: 28px;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Modal content styling */
+        .modal-content h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-content p {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        /* Button focus states for accessibility */
+        .btn:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        /* Pagination controls styling */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            margin: 0 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination button[disabled] {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .pagination span {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Submissions</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by name or email...">
+        </div>
+        <table id="submissions-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                    <th>Timestamp</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="8" class="no-data">Loading data...</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Pagination Controls -->
+        <div id="pagination" class="pagination"></div>
+        <br>
+    </div>
+
+    <!-- Modal for viewing details -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Details</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase, ref, onValue, remove, update } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBdVgeMqQKtuJEQxrPFz8xB7XmUN6cFlMQ",
+          authDomain: "kh-donghua.firebaseapp.com",
+          databaseURL: "https://kh-donghua-default-rtdb.firebaseio.com",
+          projectId: "kh-donghua",
+          storageBucket: "kh-donghua.appspot.com",
+          messagingSenderId: "119897892431",
+          appId: "1:119897892431:web:ad31196e8a9692b63e6c3a"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Reference to the submissions node
+        const submissionsRef = ref(database, 'submissions');
+
+        // Pagination variables
+        let currentPage = 1;
+        const rowsPerPage = 5;
+
+        function displayData(data, searchTerm = "") {
+            const tableBody = document.querySelector("#submissions-table tbody");
+            tableBody.innerHTML = ""; // Clear existing data
+
+            if (data) {
+                // Filter and sort data
+                const entries = Object.entries(data);
+                const filteredEntries = entries.filter(([key, value]) => {
+                    const searchRegex = new RegExp(searchTerm, 'i');
+                    return searchRegex.test(value.name || '') || searchRegex.test(value.email || '');
+                });
+                const sortedEntries = filteredEntries.sort((a, b) => {
+                    return b[0] - a[0]; // Sort by timestamp (newest first)
+                });
+
+                // Calculate total pages
+                const totalPages = Math.ceil(sortedEntries.length / rowsPerPage);
+
+                // Display only the rows for the current page
+                const start = (currentPage - 1) * rowsPerPage;
+                const end = start + rowsPerPage;
+                const paginatedEntries = sortedEntries.slice(start, end);
+
+                paginatedEntries.forEach(([key, value]) => {
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td>${value.option || ''}</td>
+                        <td>${value.name || ''}</td>
+                        <td>${value.surname || ''}</td>
+                        <td>${value.email || ''}</td>
+                        <td>${value.phone || ''}</td>
+                        <td>${value.message || ''}</td>
+                        <td>${new Date(parseInt(key)).toLocaleString()}</td>
+                        <td class="actions">
+                            <button class="btn btn-view" onclick="viewDetail('${key}')">View</button>
+                            <button class="btn btn-edit" onclick="editRecord('${key}')">Edit</button>
+                            <button class="btn btn-delete" onclick="deleteRecord('${key}')">Delete</button>
+                        </td>
+                    `;
+
+                    tableBody.appendChild(row);
+                });
+
+                // Display "No data available" if no entries are found
+                if (paginatedEntries.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="8" class="no-data">No data available.</td></tr>`;
+                }
+
+                // Update the pagination controls
+                updatePaginationControls(totalPages);
+            } else {
+                tableBody.innerHTML = `<tr><td colspan="8" class="no-data">No data available.</td></tr>`;
+            }
+        }
+
+        function updatePaginationControls(totalPages) {
+            const paginationDiv = document.getElementById("pagination");
+            paginationDiv.innerHTML = ""; // Clear existing pagination buttons
+
+            // Previous button
+            const prevButton = document.createElement("button");
+            prevButton.textContent = "Previous";
+            prevButton.disabled = currentPage === 1;
+            prevButton.onclick = () => {
+                currentPage--;
+                refreshTable();
+            };
+            paginationDiv.appendChild(prevButton);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement("button");
+                pageButton.textContent = i;
+                pageButton.className = currentPage === i ? "active" : "";
+                pageButton.onclick = () => {
+                    currentPage = i;
+                    refreshTable();
+                };
+                paginationDiv.appendChild(pageButton);
+            }
+
+            // Next button
+            const nextButton = document.createElement("button");
+            nextButton.textContent = "Next";
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.onclick = () => {
+                currentPage++;
+                refreshTable();
+            };
+            paginationDiv.appendChild(nextButton);
+        }
+
+        function refreshTable() {
+            onValue(submissionsRef, (snapshot) => {
+                const data = snapshot.val();
+                displayData(data, document.getElementById("searchInput").value);
+            });
+        }
+
+        // Function to view detail
+        window.viewDetail = function(key) {
+            const modal = document.getElementById("detailModal");
+            const modalBody = document.getElementById("modal-body");
+
+            // Fetch the selected submission details from Firebase
+            const submissionRef = ref(database, 'submissions/' + key);
+            onValue(submissionRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    modalBody.innerHTML = `
+                        <p><strong>Option:</strong> ${data.option || ''}</p>
+                        <p><strong>Name:</strong> ${data.name || ''}</p>
+                        <p><strong>Surname:</strong> ${data.surname || ''}</p>
+                        <p><strong>Email:</strong> ${data.email || ''}</p>
+                        <p><strong>Phone:</strong> ${data.phone || ''}</p>
+                        <p><strong>Message:</strong> ${data.message || ''}</p>
+                        <p><strong>Timestamp:</strong> ${new Date(parseInt(key)).toLocaleString()}</p>
+                    `;
+                    modal.style.display = "block"; // Show the modal
+                } else {
+                    console.error("No data found for the specified key.");
+                }
+            }, (error) => {
+                console.error("Error fetching data:", error);
+            });
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("detailModal").style.display = "none";
+        }
+
+        // Event listener for modal close button
+        document.querySelector(".close").addEventListener("click", closeModal);
+
+        // Function to edit a record
+        window.editRecord = function(key) {
+            const submissionRef = ref(database, 'submissions/' + key);
+            onValue(submissionRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    const newOption = prompt("Enter new option:", data.option || '');
+                    if (newOption !== null) { // Only update if the user didn't cancel
+                        update(submissionRef, {
+                            ...data, // Preserve other data
+                            option: newOption
+                        })
+                        .then(() => {
+                            alert("Record updated successfully!");
+                            refreshTable(); // Refresh the table to reflect changes
+                        })
+                        .catch((error) => {
+                            console.error("Error updating record:", error);
+                        });
+                    }
+                } else {
+                    console.error("No data found for the specified key.");
+                }
+            });
+        }
+
+        // Function to delete a record
+        window.deleteRecord = function(key) {
+            if (confirm("Are you sure you want to delete this record?")) {
+                const submissionRef = ref(database, 'submissions/' + key);
+                remove(submissionRef)
+                .then(() => {
+                    alert("Record deleted successfully!");
+                    refreshTable(); // Refresh the table to reflect changes
+                })
+                .catch((error) => {
+                    console.error("Error deleting record:", error);
+                });
+            }
+        }
+
+        // Initial data load
+        onValue(submissionsRef, (snapshot) => {
+            const data = snapshot.val();
+            displayData(data);
+        });
+
+        // Event listener for search input
+        document.getElementById("searchInput").addEventListener("input", () => {
+            currentPage = 1; // Reset to first page on search
+            refreshTable();
+        });
+    </script>
+</body>
+</html>
