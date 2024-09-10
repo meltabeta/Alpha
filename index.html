@@ -116,77 +116,138 @@
             </div>  
         </div>  
     </div>
-    <!-- comment form -->
-      <form class="my-form">
-        <div class="container">
+     <!-- Comment Form -->
+     <form class="my-form">
+      <div class="container">
           <h1>Get in touch!</h1>
           <ul>
-            <li>
-              <select>
-                <option selected disabled>-- Please choose an option --</option>
-                <option>Request New Donghua</option>
-                <option>Report Issue</option>
-                <option>Other</option>
-              </select>
-            </li>
-            <li>
-              <div class="grid grid-2">
-                <input type="text" placeholder="Name" required />
-                <input type="text" placeholder="Surname" required />
-              </div>
-            </li>
-            <li>
-              <div class="grid grid-2">
-                <input type="email" placeholder="Email" required />
-                <input type="tel" placeholder="Phone" />
-              </div>
-            </li>
-            <li>
-              <textarea placeholder="Message" maxlength="100"></textarea>
-            </li>
-            <li>
-              <input type="checkbox" id="terms" />
-              <label for="terms"
-                >I have read and agreed with
-                <a href="">the terms and conditions.</a></label
-              >
-            </li>
-            <li>
-              <div class="grid grid-3">
-                <div class="required-msg">REQUIRED FIELDS</div>
-                <button class="btn-grid" type="submit" disabled>
-                  <span class="back">
-                    <img
-                      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg"
-                      alt=""
-                    />
-                  </span>
-                  <span class="front">. . SUBMIT</span>
-                </button>
-                <button class="btn-grid" type="reset" disabled>
-                  <span class="back">
-                    <img
-                      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg"
-                      alt=""
-                    />
-                  </span>
-                  <span class="front">. . RESET</span>
-                </button>
-              </div>
-            </li>
+              <li>
+                  <select required>
+                      <option selected disabled>-- Please choose an option --</option>
+                      <option>Request New Donghua</option>
+                      <option>Report Issue</option>
+                      <option>Other</option>
+                  </select>
+              </li>
+              <li>
+                  <div class="grid grid-2">
+                      <input type="text" placeholder="Name" required />
+                      <input type="text" placeholder="Surname" required />
+                  </div>
+              </li>
+              <li>
+                  <div class="grid grid-2">
+                      <input type="email" placeholder="Email" required />
+                      <input type="tel" placeholder="Phone" />
+                  </div>
+              </li>
+              <li>
+                  <textarea placeholder="Message" maxlength="100" required></textarea>
+              </li>
+              <li>
+                  <input type="checkbox" id="terms" required />
+                  <label for="terms">
+                      I have read and agreed with
+                      <a href="">the terms and conditions.</a>
+                  </label>
+              </li>
+              <li>
+                  <div class="grid grid-3">
+                      <div class="required-msg">REQUIRED FIELDS</div>
+                      <button class="btn-grid" type="submit" disabled>
+                          <span class="back">
+                              <img
+                                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg"
+                                  alt=""
+                              />
+                          </span>
+                          <span class="front">. . SUBMIT</span>
+                      </button>
+                      <button class="btn-grid" type="reset">
+                          <span class="back">
+                              <img
+                                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg"
+                                  alt=""
+                              />
+                          </span>
+                          <span class="front">. . RESET</span>
+                      </button>
+                  </div>
+              </li>
           </ul>
-        </div>
-      </form>
+      </div>
+  </form>
     </div>
     <br />
     <br />
     <br />
     <script src="./js/asset/home-contact.js"></script>
   </body>
-  <script>
-          // Lock Screen Mode dev
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
-      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCg0g7XW_hV5Qk-RvBss1zq1c0J8pGzELo",
+            authDomain: "fir-01-8bb93.firebaseapp.com",
+            databaseURL: "https://fir-01-8bb93-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "fir-01-8bb93",
+            storageBucket: "fir-01-8bb93.appspot.com",
+            messagingSenderId: "727036534714",
+            appId: "1:727036534714:web:6c06e0082c0ea6290c0783"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector(".my-form");
+            const submitButton = form.querySelector("button[type='submit']");
+
+            // Enable the submit button when all required fields are filled and terms are agreed
+            form.addEventListener("input", function() {
+                const inputs = form.querySelectorAll("input[required], textarea");
+                const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+                const termsChecked = form.querySelector("#terms").checked;
+                submitButton.disabled = !(allFilled && termsChecked);
+            });
+
+            // Handle form submission
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                const data = {
+                    option: form.querySelector("select").value,
+                    name: form.querySelector("input[placeholder='Name']").value,
+                    surname: form.querySelector("input[placeholder='Surname']").value,
+                    email: form.querySelector("input[placeholder='Email']").value,
+                    phone: form.querySelector("input[placeholder='Phone']").value,
+                    message: form.querySelector("textarea").value
+                };
+
+                // Save data to Firebase Realtime Database
+                const newRef = ref(database, 'submissions/' + Date.now()); // Using timestamp as unique key
+                set(newRef, data)
+                    .then(() => {
+                        alert('Form submitted successfully!');
+                        form.reset(); // Reset the form after successful submission
+                        submitButton.disabled = true; // Disable submit button after submission
+                    })
+                    .catch((error) => {
+                        console.error('Error submitting form:', error);
+                        alert('Error submitting form. Please try again.');
+                    });
+            });
+        });
+
+
+
+
+
+          // Lock Screen Mode dev
       (function() {
         const element = new Image();
         Object.defineProperty(element, 'id', {
