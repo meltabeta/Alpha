@@ -13,6 +13,24 @@
       "recommendList": "../donghua-martial-master/donghua-martial-master.html",
       "video": [
         {
+          "videoId": "475",
+          "src": "https://geo.dailymotion.com/player.html?video=x95ftxw",
+          "episode": "475",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "474",
+          "src": "https://geo.dailymotion.com/player.html?video=x95g02k",
+          "episode": "474",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "471",
+          "src": "https://geo.dailymotion.com/player.html?video=x95g02i",
+          "episode": "471",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "470",
           "src": "https://geo.dailymotion.com/player.html?video=x953b1y",
           "episode": "470",
@@ -22,6 +40,12 @@
           "videoId": "451 - 465",
           "src": "https://geo.dailymotion.com/player.html?video=x953cao",
           "episode": "451 - 465",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "441 - 450",
+          "src": "https://geo.dailymotion.com/player.html?video=x95g52u",
+          "episode": "441 - 450",
           "postingVideoDate": "2024-08-29T18:00:00Z"
         },
         {
