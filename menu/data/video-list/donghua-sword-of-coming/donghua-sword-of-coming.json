@@ -13,6 +13,18 @@
       "recommendList": "../donghua-sword-of-coming/donghua-sword-of-coming.html",
       "video": [
         {
+          "videoId": "04",
+          "src": "https://rumble.com/embed/v5chfga/?pub=3qiuc7",
+          "episode": "04",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "03",
+          "src": "https://geo.dailymotion.com/player.html?video=x95jxuy",
+          "episode": "03",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "02",
           "src": "https://geo.dailymotion.com/player.html?video=x95jvsa",
           "episode": "02",
