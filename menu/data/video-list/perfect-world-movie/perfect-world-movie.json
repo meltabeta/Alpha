@@ -1,0 +1,36 @@
+{
+  "perfect-world-movie": [
+    {
+      "id": "1-1",
+      "image": "https://i.pinimg.com/736x/e9/69/04/e96904f4069f79c5bcb5ae81e3836acb.jpg",
+      "title": "Perfect World [Wanmei Shijie] Movie",
+      "season": "01",
+      "episode": "03-Completed",
+      "lastUpdated": "2024-09-14T19:00:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/perfect-world-movie/perfect-world-movie.html",
+      "videoList": "./data/video-list/perfect-world-movie/perfect-world-movie.html",
+      "recommendList": "../perfect-world-movie/perfect-world-movie.html",
+      "video": [
+        {
+          "videoId": "03",
+          "src": "",
+          "episode": "03",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "02",
+          "src": "",
+          "episode": "02",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "01",
+          "src": "",
+          "episode": "01",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
