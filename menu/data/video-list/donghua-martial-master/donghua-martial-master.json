@@ -5,13 +5,19 @@
       "image": "https://i.pinimg.com/originals/cd/f7/2e/cdf72e0d8f63d80ad6cfdff34d5f9a2e.jpg",
       "title": "Martial Master",
       "season": "01",
-      "episode": "470",
+      "episode": "476",
       "lastUpdated": "2024-09-03T23:41:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-martial-master/donghua-martial-master.html",
       "videoList": "./data/video-list/donghua-martial-master/donghua-martial-master.html",
       "recommendList": "../donghua-martial-master/donghua-martial-master.html",
       "video": [
+        {
+          "videoId": "476",
+          "src": "https://geo.dailymotion.com/player.html?video=x95qol4",
+          "episode": "476",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "475",
           "src": "https://geo.dailymotion.com/player.html?video=x95ftxw",
@@ -22,6 +28,18 @@
           "videoId": "474",
           "src": "https://geo.dailymotion.com/player.html?video=x95g02k",
           "episode": "474",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "473",
+          "src": "https://geo.dailymotion.com/player.html?video=x95qoac",
+          "episode": "473",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "472",
+          "src": "https://geo.dailymotion.com/player.html?video=x95qh7g",
+          "episode": "472",
           "postingVideoDate": "2024-08-29T18:00:00Z"
         },
         {
