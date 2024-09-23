@@ -33,9 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index < 0 || index >= episodes.length) return;
         currentEpisodeIndex = index;
         const episode = episodes[currentEpisodeIndex];
+    
+        // Check if the episode source is a shortened Dailymotion link and convert it to the full embed link
+        let videoSrc = episode.src;
+        if (videoSrc.includes('dai.ly')) {
+            const videoId = videoSrc.split('/').pop(); // Extract the video ID from the short link
+            videoSrc = `https://geo.dailymotion.com/player.html?video=${videoId}`; // Construct the full embed URL
+        }
+    
+        // Update the video container with the iframe and the processed video source
         videoContainer.innerHTML = `
           <iframe
-            src="${episode.src}"
+            src="${videoSrc}"
             style="
               top: 0;
               left: 0;
@@ -49,11 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
             allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
         `;
+    
         episodeNumberElement.textContent = episode.episode;
         episodeTitleElement.textContent = `Episode ${episode.episode}`;
         updateEpisodeList();
         scrollToEpisode(index);
-      }
+    }
+    
 
       function updateEpisodeList() {
         episodeListContainer.innerHTML = '';

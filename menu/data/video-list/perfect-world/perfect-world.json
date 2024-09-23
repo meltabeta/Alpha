@@ -10,6 +10,18 @@
       "type": "Donghua",
       "video": [
         {
+          "videoId": "182",
+          "src": "https://geo.dailymotion.com/player.html?video=x95zvnu",
+          "episode": "182",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "181",
+          "src": "https://rumble.com/embed/v5dp3ct/?pub=3qiuc7",
+          "episode": "181",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "180",
           "src": "https://rumble.com/embed/v5cga6t/?pub=3qiuc7",
           "episode": "180",
