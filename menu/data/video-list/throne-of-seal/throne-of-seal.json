@@ -5,10 +5,16 @@
       "image": "https://4kwallpapers.com/images/walls/thumbs_3t/17948.jpeg",
       "title": "Throne of Seal",
       "season": "01",
-      "episode": "123",
-      "lastUpdated": "2024-08-27T15:30:00Z",
+      "episode": "124",
+      "lastUpdated": "2024-09-27T15:30:00Z",
       "type": "Donghua",
       "video": [
+        {
+          "videoId": "125",
+          "src": "https://geo.dailymotion.com/player.html?video=x967p1q",
+          "episode": "125",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "124",
           "src": "https://geo.dailymotion.com/player.html?video=x95hl34",
