@@ -13,6 +13,12 @@
       "recommendList": "../donghua-sword-of-coming/donghua-sword-of-coming.html",
       "video": [
         {
+          "videoId": "09",
+          "src": "https://dai.ly/x96cw38",
+          "episode": "09",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "05",
           "src": "https://geo.dailymotion.com/player.html?video=x95mstu",
           "episode": "05",
