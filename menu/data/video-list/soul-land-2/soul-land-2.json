@@ -10,6 +10,12 @@
       "type": "Donghua",
       "video": [
         {
+          "videoId": "068",
+          "src": "https://dai.ly/x96czic",
+          "episode": "68",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
           "videoId": "067",
           "src": "https://geo.dailymotion.com/player.html?video=x95zkj0",
           "episode": "67",
