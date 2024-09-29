@@ -13,6 +13,12 @@
       "recommendList": "../renegade-immortal/renegade-immortal.html",
       "video": [
         {
+          "videoId": "056",
+          "src": "https://geo.dailymotion.com/player.html?video=x96gcms",
+          "episode": "56",
+          "postingVideoDate": "2024-09-01T16:41:00Z"
+        },
+        {
           "videoId": "055",
           "src": "https://geo.dailymotion.com/player.html?video=x961zke",
           "episode": "55",
