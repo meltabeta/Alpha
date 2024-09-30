@@ -113,7 +113,7 @@ div.player {
 .all-video-episode .video-listing {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   margin: 10px 0;
   text-align: left;
 }
