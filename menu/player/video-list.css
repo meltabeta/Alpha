@@ -10,6 +10,7 @@ body {
   background-color: #121212;
   color: #ccc;
   line-height: 1.6;
+  font-size: 16px; /* Base font size */
 }
 
 div.profile-info {
@@ -25,7 +26,7 @@ div#myTopnav.topnav {
   color: #ccc;
   cursor: pointer;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 18px; /* Medium */
   margin: 20px 0;
   text-transform: capitalize;
   transition: color 0.3s;
@@ -58,7 +59,7 @@ div.player {
   gap: 15px;
   margin: 10px 0;
   color: #999;
-  font-size: 18px;
+  font-size: 16px; /* Small */
   text-align: left;
 }
 
@@ -68,7 +69,7 @@ div.player {
   justify-content: center;
   align-items: center;
   color: #ccc;
-  font-size: 14px;
+  font-size: 15px; /* Medium */
   margin-top: 15px;
 }
 
@@ -99,7 +100,7 @@ div.player {
   padding: 10px;
   color: #ccc;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px; /* Small */
   transition: color 0.3s;
   max-height: 300px; /* Set a maximum height for the container */
   overflow-y: auto; /* Enable vertical scrolling */
@@ -124,7 +125,7 @@ span.episode-listing {
   color: #ccc;
   cursor: pointer;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px; /* Small-Medium */
   text-transform: capitalize;
   transition: color 0.3s;
 }
@@ -163,15 +164,7 @@ span.episode-listing:hover {
   text-transform: capitalize;
 }
 
-
-/* Add this to your video-list.css file */
-.episode {
-  cursor: pointer;
-  padding: 10px;
-  margin: 5px 0;
-  transition: background-color 0.3s, color 0.3s;
-}
-
+/* Active Episode */
 .episode.active {
   background-color: black;
   color: white; /* Change text color to white for better contrast */
@@ -179,26 +172,18 @@ span.episode-listing:hover {
   font-weight: bold;
 }
 
-/* .episode:hover {
-  background-color: #e0e0e0;
-} */
-
 .all-video-episode {
-  max-height: 400px; /* Adjust based on your design */
+  max-height: 400px;
   overflow-y: auto;
   position: relative;
 }
 
-.website-name {
-  cursor: pointer;
-}
-
 /* Responsive Design */
 @media (max-width: 484px) {
   .video-player .episode-info span {
-    font-size: 13px;
+    font-size: 13px; /* Adjust smaller for mobile */
   }
-  
+
   .controller-action .controller-button img {
     width: 12px;
   }
@@ -219,62 +204,16 @@ span.episode-listing:hover {
   .go-back-container a, span.go-back {
     font-size: 14px;
   }
-}
-
-@media (max-width: 316px) {
-  .go-back-container .go-back {
-    font-size: 12px;
-  }
-  
-  .video-player .episode-info span {
-    font-size: 11px;
-  }
-}
-
-
-/* Responsive Design */
-@media (max-width: 484px) {
-  /* Remove Transitions */
-  * {
-    transition: none !important;
-  }
-
-  .video-player .episode-info span {
-    font-size: 13px;
-  }
-  
-  .controller-action .controller-button img {
-    width: 12px;
-  }
-
-  .controller-player .controller-action button {
-    margin-left: 5px;
-  }
-
-  #full-screen-video.controller-button img {
-    width: 15px;
-    margin-right: 5px;
-  }
-
-  .video-controller .video-player .controller-player {
-    margin-bottom: 10px;
-  }
-
-  .go-back-container a, span.go-back {
+  #go-back-to-home, #series-name, #episode-title {
     font-size: 14px;
   }
 }
 
 @media (max-width: 316px) {
-  /* Remove Transitions */
-  * {
-    transition: none !important;
+  .go-back-container .go-back {
+    font-size: 12px; /* Small for tiny screens */
   }
 
-  .go-back-container .go-back {
-    font-size: 12px;
-  }
-  
   .video-player .episode-info span {
     font-size: 11px;
   }
