@@ -3,11 +3,13 @@
   width: 40%;
   text-decoration: none; /* Keep underline removed on hover as well */
 }
+
 .card a .title,
 .card a .season-episode,
 .card a .type {
   text-decoration: none;
 }
+
 .card img {
   width: 100%;
   height: 150px;
@@ -33,15 +35,16 @@ div.card-controller {
 }
 
 h2.title {
-  font-size: 17px;
+  font-size: 10px; /* Smaller font size */
   color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
 p.season-episode {
-  font-size: 12px;
+  font-size: 8px; /* Smaller font size */
   color: gray;
 }
+
 .card a {
   text-decoration: none;
 }
@@ -65,7 +68,7 @@ p.season-episode {
   padding: 8px 15px;
   margin: 0 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px; /* Smaller button text */
   transition: background-color 0.3s ease;
 }
 
@@ -79,7 +82,7 @@ p.season-episode {
 }
 
 .pagination-controls #page-info {
-  font-size: 16px;
+  font-size: 12px; /* Smaller font size for pagination info */
   margin: 0 15px;
 }
 
@@ -95,14 +98,15 @@ p.season-episode {
     margin-right: 0;
     gap: 20px;
   }
+
   h2.title {
-    font-size: 13px;
+    font-size: 9px; /* Even smaller on mobile */
     color: rgb(255, 255, 255);
     text-decoration: none;
   }
-  
+
   p.season-episode {
-    font-size: 9.5px;
+    font-size: 7px; /* Even smaller on mobile */
     color: gray;
   }
 }
@@ -115,5 +119,13 @@ p.season-episode {
 
   .card {
     width: 100%;
+  }
+
+  h2.title {
+    font-size: 8px; /* Further reduced for very small screens */
+  }
+
+  p.season-episode {
+    font-size: 6.5px; /* Further reduced for very small screens */
   }
 }
