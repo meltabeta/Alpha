@@ -96,13 +96,13 @@ p.season-episode {
     gap: 20px;
   }
   h2.title {
-    font-size: 12px;
+    font-size: 13px;
     color: rgb(255, 255, 255);
     text-decoration: none;
   }
   
   p.season-episode {
-    font-size: 8px;
+    font-size: 9.5px;
     color: gray;
   }
 }
