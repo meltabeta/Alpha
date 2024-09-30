@@ -95,6 +95,16 @@ p.season-episode {
     margin-right: 0;
     gap: 20px;
   }
+  h2.title {
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  
+  p.season-episode {
+    font-size: 8px;
+    color: gray;
+  }
 }
 
 @media (max-width: 450px) {
