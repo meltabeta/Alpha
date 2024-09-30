@@ -100,13 +100,13 @@ p.season-episode {
   }
 
   h2.title {
-    font-size: 9px; /* Even smaller on mobile */
+    font-size: 13px; /* Even smaller on mobile */
     color: rgb(255, 255, 255);
     text-decoration: none;
   }
 
   p.season-episode {
-    font-size: 7px; /* Even smaller on mobile */
+    font-size: 10px; /* Even smaller on mobile */
     color: gray;
   }
 }
@@ -122,10 +122,10 @@ p.season-episode {
   }
 
   h2.title {
-    font-size: 8px; /* Further reduced for very small screens */
+    font-size: 12px; /* Further reduced for very small screens */
   }
 
   p.season-episode {
-    font-size: 6.5px; /* Further reduced for very small screens */
+    font-size: 9.5px; /* Further reduced for very small screens */
   }
 }
