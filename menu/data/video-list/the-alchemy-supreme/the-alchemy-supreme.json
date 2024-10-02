@@ -5,13 +5,19 @@
       "image": "https://i.pinimg.com/736x/69/22/8a/69228a922fa5d2f42ea3e1ead4bf20d9.jpg",
       "title": "The Alchemy Supreme",
       "season": "01",
-      "episode": "81",
+      "episode": "82",
       "lastUpdated": "2024-09-24T01:41:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
       "videoList": "./data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
       "recommendList": "../the-alchemy-supreme/the-alchemy-supreme.html",
       "video": [
+        {
+          "videoId": "082",
+          "src": "https://dai.ly/k4UDiVqN1o6vCYBA5w8",
+          "episode": "82",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "081",
           "src": "https://rumble.com/embed/v5e9bmt/?pub=3qiuc7",
