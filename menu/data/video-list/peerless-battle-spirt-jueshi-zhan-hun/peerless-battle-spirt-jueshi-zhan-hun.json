@@ -9,6 +9,19 @@
       "lastUpdated": "2024-08-27T15:30:00Z",
       "type": "Donghua",
       "video": [
+        
+        {
+          "videoId": "50",
+          "src": "https://dai.ly/x96saky",
+          "episode": "50",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "49",
+          "src": "https://dai.ly/x96saky",
+          "episode": "49",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "48",
           "src": "https://geo.dailymotion.com/player.html?video=x96gdge",
