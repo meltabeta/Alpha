@@ -12,7 +12,7 @@
       "videoList": "./data/video-list/the-alchemy-supreme/the-alchemy-supreme.html",
       "recommendList": "../the-alchemy-supreme/the-alchemy-supreme.html",
       "video": [
-{
+        {
           "videoId": "085",
           "src": "https://geo.dailymotion.com/player.html?video=x978q1s",
           "episode": "85",
