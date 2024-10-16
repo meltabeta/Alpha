@@ -99,20 +99,40 @@
       <!-- Top 10 Donghua List -->
        <style>
         #top-donghua-list-container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          margin-left: 0;
-          margin-right: 0;
-          width: 100%;
-        }
-        @media (max-width: 600px) {
-          #top-donghua-list-container {
-            margin-left: 0;
-            margin-right: 0;
-            gap: 10px;
-        }
-            
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .donghua-card {
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+
+  .donghua-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+
+  .donghua-card p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  @media (max-width: 600px) {
+    #top-donghua-list-container {
+      margin-left: 0;
+      margin-right: 0;
+      gap: 10px;
+    }
         }
        </style>
       <div id="top-donghua-list-container"></div>
