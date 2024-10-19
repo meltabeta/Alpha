@@ -5,10 +5,22 @@
       "image": "https://i.pinimg.com/736x/05/ee/5b/05ee5bcf5e365eb7544dac717ca3b745.jpg",
       "title": "Battle Through the Heaven - Xiao Yan",
       "season": "05",
-      "episode": "116",
+      "episode": "118-PV",
       "lastUpdated": "2024-09-22T15:30:00Z",
       "type": "Donghua",
       "video": [
+        {
+          "videoId": "118",
+          "src": "https://geo.dailymotion.com/player.html?video=x97ncd2",
+          "episode": "118-PV",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "117",
+          "src": "https://geo.dailymotion.com/player.html?video=x97nd1y",
+          "episode": "117",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "116",
           "src": "https://geo.dailymotion.com/player.html?video=x977nb6",
