@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KH-DONGHUA - Watch Donghua online for free</title>
     <meta name="google-site-verification" content="tagvy2dJzpr3luCujS83i4L491BVwjtHXL4Vf_ij8YM" />
-    <meta name="description" content="Watch high-quality donghua and Chinese anime online for free. Discover the latest releases and popular titles. Join our Telegram channel for updates and engage with our community.">
-    <meta name="keywords" content="donghua, Chinese anime, watch donghua online, free donghua, latest donghua, streaming, anime, anime streaming, anime website, anime community, Telegram channel">
+    <meta name="description" content="Watch high-quality donghua and Chinese anime online for free. Latest releases and popular titles.">
+    <meta name="keywords" content="donghua, Chinese anime, watch donghua online, free donghua, latest donghua, streaming">
     <link rel="canonical" href="https://kh-donghua.icu/">
     <link rel="canonical" href="https://kh-donghua.icu/menu/home.html">
     <link rel="canonical" href="https://kh-donghua.icu/menu/donghua/donghua.html">
@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="./css/asset/profile-cover.css" />
     <link rel="stylesheet" href="./css/asset/home-contact.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div class="container">
@@ -96,47 +95,6 @@
         </p>
       </section>
       
-      <!-- Top 10 Donghua List -->
-       <style>
-        #top-donghua-list-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-
-  .donghua-card {
-    width: 300px;
-    margin: 10px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-  }
-
-  .donghua-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-  }
-
-  .donghua-card p {
-    font-size: 0.9rem;
-    color: #666;
-  }
-
-  @media (max-width: 600px) {
-    #top-donghua-list-container {
-      margin-left: 0;
-      margin-right: 0;
-      gap: 10px;
-    }
-        }
-       </style>
-      <div id="top-donghua-list-container"></div>
-
       <!-- Contact form -->
       <div class="contact-info">  
         <div class="card" data-contact="email">  
@@ -231,50 +189,6 @@
     <br />
     <br />
     <script src="./js/asset/home-contact.js"></script>
-    <!-- React and Babel scripts -->
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <!-- Top 10 Donghua List React Component -->
-    <script type="text/babel">
-      const topDonghua = [
-        { title: "Perfect World", rating: 9.8 },
-        { title: "The Alchemy Supreme", rating: 9.7 },
-        { title: "Throne of Seal", rating: 9.6 },
-        { title: "Martial Master", rating: 9.5 },
-        { title: "Swallowed Star Season 2", rating: 9.4 },
-        { title: "Renegade Immortal", rating: 9.3 },
-        { title: "Peerless Battle Spirit", rating: 9.2 },
-        { title: "Dragon Prince Yuan", rating: 9.1 },
-        { title: "Soul Land 2", rating: 9.0 },
-        { title: "One Hundred Thousand Years of Qi Refining", rating: 8.9 }
-      ];
-
-      const TopDonghuaList = () => {
-        return (
-          <div className="max-w-2xl mx-auto my-8 shadow-lg rounded-lg overflow-hidden w-full">
-            <div className="bg-blue-600 text-white text-2xl font-bold py-4 px-6">
-              Top 10 Donghua Currently
-            </div>
-            <div className="p-6">
-              <ul className="space-y-2">
-                {topDonghua.map((donghua, index) => (
-                  <li key={index} className="flex justify-between items-center border-b border-gray-200 py-2">
-                    <span className="text-lg">
-                      <span className="font-bold mr-2">{index + 1}.</span>
-                      {donghua.title}
-                    </span>
-                    <span className="text-sm text-gray-600">Rating: {donghua.rating}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        );
-      };
-
-      ReactDOM.render(<TopDonghuaList />, document.getElementById('top-donghua-list-container'));
-    </script>
   </body>
   <script type="module">
         // Import the functions you need from the SDKs you need
