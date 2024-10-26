@@ -65,8 +65,8 @@
       "image": "https://i.pinimg.com/736x/43/0c/af/430caf6ecc60f7870daed01f00c0024c.jpg",
       "title": "Battle Through the Heaven - Xiao Yan",
       "season": "05",
-      "episode": "118-PV",
-      "lastUpdated": "2024-10-19T23:38:00Z",
+      "episode": "118",
+      "lastUpdated": "2024-10-27T23:38:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/battle-through-the-heaven-5/battle-through-the-heaven-5.html",
       "videoList": "./data/video-list/battle-through-the-heaven-5/battle-through-the-heaven-5.html",
@@ -251,6 +251,18 @@
       "donghuaToVideoList": "../data/video-list/donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
       "videoList": "./data/video-list/donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
       "recommendList": "../donghua-the-immortal-doctor/donghua-the-immortal-doctor.html"
+    },
+    {
+      "id": "21",
+      "image": "https://i.ytimg.com/vi/bhGZIb4FT8M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCHfKsGHZ6r_zxKeVdlvK1kv816ag",
+      "title": "Wo Neng Wuxian Dunwu (I can have infinite enlightenment)",
+      "season": "01",
+      "episode": "04",
+      "lastUpdated": "2024-10-26T23:01:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua_infinite_enlightenment_wuxian_dunwu/donghua_infinite_enlightenment_wuxian_dunwu.html",
+      "videoList": "./data/video-list/donghua_infinite_enlightenment_wuxian_dunwu/donghua_infinite_enlightenment_wuxian_dunwu.html",
+      "recommendList": "../donghua_infinite_enlightenment_wuxian_dunwu/donghua_infinite_enlightenment_wuxian_dunwu.html"
     },
     
     
