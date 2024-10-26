@@ -240,6 +240,18 @@
       "videoList": "./data/video-list/donghua-tales_herding_gods/donghua-tales_herding_gods.html",
       "recommendList": "../donghua-tales_herding_gods/donghua-tales_herding_gods.html"
     },
+    {
+      "id": "20",
+      "image": "https://pic-bstarstatic.akamaized.net/ugc/23c560301af8f4700885a2bd635f3de3.jpg",
+      "title": "The Immortal Doctor (Urban Miracle Doctor)",
+      "season": "01",
+      "episode": "12",
+      "lastUpdated": "2024-10-22T23:01:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
+      "videoList": "./data/video-list/donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
+      "recommendList": "../donghua-the-immortal-doctor/donghua-the-immortal-doctor.html"
+    },
     
     
     
