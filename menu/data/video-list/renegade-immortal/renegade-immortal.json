@@ -5,13 +5,19 @@
       "image": "https://i.pinimg.com/564x/8a/96/3c/8a963c23d9d3189c84600f49db520b8b.jpg",
       "title": "Renegade Immortal [Xian Ni]",
       "season": "01",
-      "episode": "59",
+      "episode": "60",
       "lastUpdated": "2024-09-22T16:41:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/renegade-immortal/renegade-immortal.html",
       "videoList": "./data/video-list/renegade-immortal/renegade-immortal.html",
       "recommendList": "../renegade-immortal/renegade-immortal.html",
       "video": [
+        {
+          "videoId": "060",
+          "src": "https://dai.ly/x983rl4",
+          "episode": "60-PV",
+          "postingVideoDate": "2024-09-01T16:41:00Z"
+        },
         {
           "videoId": "059",
           "src": "https://geo.dailymotion.com/player.html?video=x97pjr4",

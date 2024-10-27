@@ -5,13 +5,19 @@
       "image": "https://i.pinimg.com/originals/cd/f7/2e/cdf72e0d8f63d80ad6cfdff34d5f9a2e.jpg",
       "title": "Martial Master",
       "season": "01",
-      "episode": "482",
+      "episode": "483",
       "lastUpdated": "2024-09-03T23:41:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-martial-master/donghua-martial-master.html",
       "videoList": "./data/video-list/donghua-martial-master/donghua-martial-master.html",
       "recommendList": "../donghua-martial-master/donghua-martial-master.html",
       "video": [
+        {
+          "videoId": "483",
+          "src": "https://rumble.com/embed/v5hyqp0/?pub=3qiuc7",
+          "episode": "483",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "482",
           "src": "https://rumble.com/embed/v5hxmxp/?pub=3qiuc7",
