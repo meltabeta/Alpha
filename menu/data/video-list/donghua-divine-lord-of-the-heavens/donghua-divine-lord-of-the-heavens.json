@@ -5,13 +5,19 @@
       "image": "../../../../img/donghua/Divine-Lord-of-the-Heavens-Shendao-Dizun.png",
       "title": "Divine Lord of the Heavens (2024)",
       "season": "01",
-      "episode": "01-06",
+      "episode": "07",
       "lastUpdated": "2024-10-22T17:01:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-divine-lord-of-the-heavens/donghua-divine-lord-of-the-heavens.html",
       "videoList": "./data/video-list/donghua-divine-lord-of-the-heavens/donghua-divine-lord-of-the-heavens.html",
       "recommendList": "../donghua-divine-lord-of-the-heavens/donghua-divine-lord-of-the-heavens.html",
       "video": [
+        {
+          "videoId": "07",
+          "src": "https://geo.dailymotion.com/player.html?video=x984hhc",
+          "episode": "07",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "01-06",
           "src": "https://geo.dailymotion.com/player.html?video=x97uq8i",
