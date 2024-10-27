@@ -5,13 +5,19 @@
       "image": "https://i.ytimg.com/vi/oHizIdxlW_I/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD1G0_nnpJYnYN3rWoblF2SnAi6WA",
       "title": "Tales of Herding Gods (Mu Shen Ji)",
       "season": "01",
-      "episode": "01",
+      "episode": "02",
       "lastUpdated": "2024-08-29T17:00:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-tales_herding_gods/donghua-tales_herding_gods.html",
       "videoList": "./data/video-list/donghua-tales_herding_gods/donghua-tales_herding_gods.html",
       "recommendList": "../donghua-tales_herding_gods/donghua-tales_herding_gods.html",
       "video": [
+        {
+          "videoId": "02",
+          "src": "https://dai.ly/x983t0g",
+          "episode": "02",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "01",
           "src": "https://dai.ly/x983rl6",
