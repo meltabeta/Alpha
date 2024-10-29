@@ -1,0 +1,30 @@
+{
+  "donghua_world_of_immortals": [
+    {
+      "id": "22",
+      "image": "https://donghua-news.com/wp-content/uploads/2024/10/Chinese-Anime-WORLD-OF-IMMORTALS-2.jpg",
+      "title": "World of Immortals (Chang Sheng Jie)",
+      "season": "01",
+      "episode": "02",
+      "lastUpdated": "2024-08-08T17:41:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua_world_of_immortals/donghua_world_of_immortals.html",
+      "videoList": "../data/video-list/donghua_world_of_immortals/donghua_world_of_immortals.html",
+      "recommendList": "../donghua_world_of_immortals/donghua_world_of_immortals.html",
+      "video": [
+        {
+          "videoId": "02",
+          "src": "https://dai.ly/x987sg8",
+          "episode": "02",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "01",
+          "src": "https://geo.dailymotion.com/player.html?video=x987r7s",
+          "episode": "01",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
