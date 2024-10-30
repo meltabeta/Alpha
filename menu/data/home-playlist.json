@@ -276,6 +276,19 @@
       "videoList": "./data/video-list/donghua_world_of_immortals/donghua_world_of_immortals.html",
       "recommendList": "../donghua_world_of_immortals/donghua_world_of_immortals.html"
     },
+    {
+      "id": "23",
+      "image": "https://i.pinimg.com/564x/8e/a7/e7/8ea7e7ca19d1860704005b4e0a25ab21.jpg",
+      "title": "I Am a Great Immortal",
+      "season": "03",
+      "episode": "03",
+      "lastUpdated": "2024-10-31T23:01:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua_i_am_a_great_immortal/donghua_i_am_a_great_immortal.html",
+      "videoList": "./data/video-list/donghua_i_am_a_great_immortal/donghua_i_am_a_great_immortal.html",
+      "recommendList": "../donghua_i_am_a_great_immortal/donghua_i_am_a_great_immortal.html"
+    },
+
     
     
     

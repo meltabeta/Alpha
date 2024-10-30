@@ -1,0 +1,24 @@
+{
+  "donghua_i_am_a_great_immortal": [
+    {
+      "id": "15",
+      "image": "https://www.animenewsnetwork.com/thumbnails/crop1200x630gE7/herald/43813/nm5mm2d4ykpoz05jc2f5a2lfcmjytmf2axfgns9dnwp0wi9dugi2tlzyawiwrlpmzhp4clvbpt0.jpg",
+      "title": "I Am a Great Immortal",
+      "season": "03",
+      "episode": "03",
+      "lastUpdated": "2024-08-29T17:00:00Z",
+      "type": "Donghua",
+      "donghuaToVideoList": "../data/video-list/donghua_i_am_a_great_immortal/donghua_i_am_a_great_immortal.html",
+      "videoList": "./data/video-list/donghua_i_am_a_great_immortal/donghua_i_am_a_great_immortal.html",
+      "recommendList": "../donghua_i_am_a_great_immortal/donghua_i_am_a_great_immortal.html",
+      "video": [
+        {
+          "videoId": "03",
+          "src": "https://geo.dailymotion.com/player.html?video=x98b306",
+          "episode": "01 to 03",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        }
+      ]
+    }
+  ]
+}
