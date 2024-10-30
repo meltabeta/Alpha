@@ -93,6 +93,22 @@ p.season-episode {
     margin: 0 15px;
 }
 
+.home-button {
+    background-color: rgb(132, 221, 221);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 12px; /* Smaller button text */
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #00ffc3;
+}
+
 @media (min-width: 1100px) {
     .card {
         width: 45%;
