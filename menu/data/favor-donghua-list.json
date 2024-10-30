@@ -6,7 +6,7 @@
         "title": "Perfect World [Wanmei Shijie]",
         "season": "01",
         "lastUpdated": "2024-10-24T22:00:00Z",
-        "type": "Donghua",
+        "type": "Donghua || Ongoings",
         "videoList": "./menu/data/video-list/perfect-world/perfect-world.html"
       },
       {
@@ -15,7 +15,7 @@
         "title": "Throne of Seal",
         "season": "01",
         "lastUpdated": "2024-10-30T18:00:00Z",
-        "type": "Donghua",
+        "type": "Donghua || Ongoings",
         "videoList": "./menu/data/video-list/throne-of-seal/throne-of-seal.html"
       },
       {
@@ -24,7 +24,7 @@
         "title": "Battle Through the Heaven - Xiao Yan",
         "season": "05",
         "lastUpdated": "2024-10-27T23:38:00Z",
-        "type": "Donghua",
+        "type": "Donghua || Ongoings",
         "videoList": "./menu/data/video-list/battle-through-the-heaven-5/battle-through-the-heaven-5.html"
       },
       {
@@ -33,7 +33,7 @@
         "title": "Soul Land 2 : The Unrivaled Tang Sect",
         "season": "02",
         "lastUpdated": "2024-10-25T21:00:00Z",
-        "type": "Donghua",
+        "type": "Donghua || Ongoings",
         "videoList": "./menu/data/video-list/soul-land-2/soul-land-2.html"
       }
     ]

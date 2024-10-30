@@ -134,7 +134,7 @@ function renderPopularDonghua(donghuas) {
 
     const seasonEpisode = document.createElement('p');
     seasonEpisode.classList.add('season-episode');
-    seasonEpisode.textContent = `S:${donghua.season} || Ep: ${donghua.episode} || ${donghua.type}`;
+    seasonEpisode.textContent = `S:${donghua.season}|| ${donghua.type}`;
 
     cardInfoDiv.appendChild(title);
     cardInfoDiv.appendChild(seasonEpisode);
