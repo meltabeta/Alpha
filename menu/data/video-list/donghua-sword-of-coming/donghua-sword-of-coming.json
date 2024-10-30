@@ -5,13 +5,19 @@
       "image": "https://i.ytimg.com/vi/5sVUWiQAAZA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLALPjaqNp9hYZ58qxSAVvwvUjCz4Q",
       "title": "Sword of Coming 剑来(Jian Lai)",
       "season": "01",
-      "episode": "13",
+      "episode": "14",
       "lastUpdated": "2024-09-04T17:01:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-sword-of-coming/donghua-sword-of-coming.html",
       "videoList": "./data/video-list/donghua-sword-of-coming/donghua-sword-of-coming.html",
       "recommendList": "../donghua-sword-of-coming/donghua-sword-of-coming.html",
       "video": [
+        {
+          "videoId": "14",
+          "src": "https://player.vimeo.com/video/1024640750?h=014529c85d",
+          "episode": "14",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "13",
           "src": "https://dai.ly/x985qrs",
