@@ -5,10 +5,16 @@
       "image": "https://4kwallpapers.com/images/walls/thumbs_3t/17948.jpeg",
       "title": "Throne of Seal",
       "season": "01",
-      "episode": "130",
+      "episode": "131",
       "lastUpdated": "2024-09-27T15:30:00Z",
       "type": "Donghua",
       "video": [
+        {
+          "videoId": "131",
+          "src": "https://player.vimeo.com/video/1024640686?h=4d991ee5a5",
+          "episode": "131",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "130",
           "src": "https://dai.ly/x97wcrc",
