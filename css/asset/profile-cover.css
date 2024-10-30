@@ -8,6 +8,20 @@ body {
   /* background-color: rgb(44, 44, 44); */
   background-color: black;
 }
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #333;
+  color: #afafaf;
+  text-align: center;
+}
+
+footer p {
+  margin: 5px 10px;
+}
 @font-face {
   font-family: "Fira Sans";
   src: url("../font/FiraSans-Regular.ttf") format("truetype");
