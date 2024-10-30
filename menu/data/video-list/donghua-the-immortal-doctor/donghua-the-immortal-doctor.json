@@ -5,13 +5,19 @@
       "image": "https://pic-bstarstatic.akamaized.net/ugc/23c560301af8f4700885a2bd635f3de3.jpg",
       "title": "The Immortal Doctor (Urban Miracle Doctor)",
       "season": "01",
-      "episode": "13",
+      "episode": "14",
       "lastUpdated": "2024-08-29T17:00:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
       "videoList": "./data/video-list/donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
       "recommendList": "../donghua-the-immortal-doctor/donghua-the-immortal-doctor.html",
       "video": [
+        {
+          "videoId": "14",
+          "src": "https://dai.ly/x989sck",
+          "episode": "14",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "13",
           "src": "https://dai.ly/x984hha",
