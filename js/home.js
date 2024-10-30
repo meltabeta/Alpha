@@ -63,7 +63,6 @@ function renderCards(cards, page) {
   updatePaginationControls(cards.length);
 }
 
-
 // Function to update pagination controls
 function updatePaginationControls(totalCards) {
   const prevButton = document.getElementById('prev-page');
@@ -109,6 +108,51 @@ function filterCards(query) {
   currentPage = 1; // Reset to first page
   renderCards(filteredCards, currentPage);
 }
+
+// Function to render popular donghua cards
+function renderPopularDonghua(donghuas) {
+  const popularDonghuaList = document.getElementById('popular-donghua-list');
+  popularDonghuaList.innerHTML = ''; // Clear existing cards
+
+  donghuas.forEach(donghua => {
+    const cardLink = document.createElement('a');
+    cardLink.href = donghua.videoList;
+    cardLink.classList.add('card');
+    cardLink.setAttribute('data-id', donghua.id);
+
+    const img = document.createElement('img');
+    img.classList.add('img');
+    img.src = donghua.image;
+    img.style.width = '100%';
+
+    const cardInfoDiv = document.createElement('div');
+    cardInfoDiv.classList.add('card-info');
+
+    const title = document.createElement('h2');
+    title.classList.add('title');
+    title.textContent = donghua.title;
+
+    const seasonEpisode = document.createElement('p');
+    seasonEpisode.classList.add('season-episode');
+    seasonEpisode.textContent = `S:${donghua.season} || Ep: ${donghua.episode} || ${donghua.type}`;
+
+    cardInfoDiv.appendChild(title);
+    cardInfoDiv.appendChild(seasonEpisode);
+
+    cardLink.appendChild(img);
+    cardLink.appendChild(cardInfoDiv);
+
+    popularDonghuaList.appendChild(cardLink);
+  });
+}
+
+// Fetch popular donghua data and render
+fetch('../menu/data/favor-donghua-list.json')
+  .then(response => response.json())
+  .then(data => {
+    renderPopularDonghua(data['favor-donghuas']);
+  })
+  .catch(error => console.error('Error fetching popular donghua data:', error));
 
 // Fetch JSON data and initialize the page
 fetch('./data/home-playlist.json')
