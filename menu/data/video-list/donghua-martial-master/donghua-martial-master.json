@@ -5,13 +5,56 @@
       "image": "https://i.pinimg.com/originals/cd/f7/2e/cdf72e0d8f63d80ad6cfdff34d5f9a2e.jpg",
       "title": "Martial Master",
       "season": "01",
-      "episode": "483",
+      "episode": "490",
       "lastUpdated": "2024-09-03T23:41:00Z",
       "type": "Donghua",
       "donghuaToVideoList": "../data/video-list/donghua-martial-master/donghua-martial-master.html",
       "videoList": "./data/video-list/donghua-martial-master/donghua-martial-master.html",
       "recommendList": "../donghua-martial-master/donghua-martial-master.html",
       "video": [
+        
+        {
+          "videoId": "490",
+          "src": "https://dai.ly/k5gmj5XuXw0UPABLFDi",
+          "episode": "490",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "489",
+          "src": "https://dai.ly/k4cneBexh6WewABLFDo",
+          "episode": "489",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "488",
+          "src": "https://dai.ly/k3xM4zxIOWipUHBLFDe",
+          "episode": "488",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "487",
+          "src": "https://dai.ly/k7GOq2JBNbBBGFBLFDq",
+          "episode": "487",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "486",
+          "src": "https://dai.ly/k1HVgc8jQQmHeaBLFDs",
+          "episode": "486",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "485",
+          "src": "https://dai.ly/k9osgGn1TLRnbhBLFDg",
+          "episode": "485",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
+        {
+          "videoId": "484",
+          "src": "https://dai.ly/x989ptu",
+          "episode": "484",
+          "postingVideoDate": "2024-08-29T18:00:00Z"
+        },
         {
           "videoId": "483",
           "src": "https://rumble.com/embed/v5hyqp0/?pub=3qiuc7",
