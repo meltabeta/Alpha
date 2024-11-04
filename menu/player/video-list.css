@@ -218,3 +218,37 @@ span.episode-listing:hover {
     font-size: 11px;
   }
 }
+
+
+/* Add to video-list.css */
+
+/* Enable smooth scrolling behavior */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;  /* Thin scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);  /* Subtle track */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);  /* Darker on hover */
+}
+
+/* Firefox scrollbar (optional) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.603) rgba(0, 0, 0, 0.1);
+}
