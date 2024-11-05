@@ -13,6 +13,30 @@
     <link rel="stylesheet" href="../css/asset/card.css" />
     <link rel="stylesheet" href="../css/asset/social-icons.css" />
     <meta name="google-site-verification" content="tagvy2dJzpr3luCujS83i4L491BVwjtHXL4Vf_ij8YM" />
+    <!-- Enhanced Meta Tags -->
+    <meta name="description" content="Browse and watch the latest donghua episodes. Updated daily with Perfect World, Battle Through Heaven, Soul Land, and more popular Chinese anime series.">
+    <meta name="keywords" content="donghua episodes, Chinese anime series, Perfect World episodes, Battle Through Heaven latest, Soul Land streaming">
+    <meta property="og:title" content="KH-DONGHUA - Latest Donghua Episodes">
+    <meta property="og:description" content="Watch the latest donghua episodes with English subtitles. Daily updates of your favorite Chinese anime series.">
+    
+    <!-- Add structured data for VideoObject -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "VideoObject",
+          "position": 1,
+          "name": "Perfect World",
+          "description": "Latest episodes of Perfect World donghua series",
+          "thumbnailUrl": "https://i.pinimg.com/736x/22/fb/f4/22fbf49166052bb4c029f5a36df71625.jpg",
+          "uploadDate": "2024-02-06"
+        }
+        // Add more video entries
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="container">
@@ -96,7 +120,7 @@
         <!-- play music mode -->
         <!-- <button class="music-button" id="music-control">Pause Music	&#127926; &#127932;</button> -->
         <!-- Card controller -->
-        <div id="card-list" class="card-controller">
+        <div id="card-list" class="card-controller" role="region" aria-label="Latest Episodes">
           <!-- Cards will be dynamically inserted here -->
         </div>
         <!-- Pagination controls -->

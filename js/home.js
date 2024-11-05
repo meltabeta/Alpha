@@ -174,3 +174,61 @@ fetch('./data/home-playlist.json')
     });
   })
   .catch(error => console.error('Error fetching the JSON data:', error));
+
+// Form handling
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.contact-form');
+  const textarea = form.querySelector('textarea');
+  const characterCount = form.querySelector('.character-count');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  // Character count
+  textarea.addEventListener('input', () => {
+    const remaining = textarea.value.length;
+    characterCount.textContent = `${remaining}/500`;
+  });
+
+  // Form validation
+  form.addEventListener('input', () => {
+    const isValid = form.checkValidity() && form.querySelector('input[type="checkbox"]').checked;
+    submitButton.disabled = !isValid;
+  });
+
+  // Form submission with loading state
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span class="loading">Sending...</span>';
+
+    try {
+      // Your existing form submission code here
+      await submitForm(form);
+      
+      // Success message
+      showNotification('Message sent successfully!', 'success');
+      form.reset();
+    } catch (error) {
+      showNotification('Failed to send message. Please try again.', 'error');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Send Message';
+    }
+  });
+});
+
+// Notification system
+function showNotification(message, type) {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.classList.add('show');
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }, 100);
+}
