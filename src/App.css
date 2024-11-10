@@ -3165,3 +3165,44 @@ body {
     grid-template-columns: minmax(0, 1fr) 320px;
   }
 }
+
+/* Optimize fast scrolling performance */
+* {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  /* Prevent scroll jank */
+  body {
+    touch-action: pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+
+  /* Optimize scrollable containers */
+  .episodes-list,
+  .video-detail-content,
+  .donghua-grid,
+  .playlist-sidebar {
+    contain: content;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Disable animations during fast scroll */
+  .is-scrolling-fast * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* Optimize image loading during fast scroll */
+  .is-scrolling-fast img {
+    content-visibility: auto;
+    will-change: transform;
+  }
+}
