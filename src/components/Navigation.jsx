@@ -55,6 +55,7 @@ function Navigation({ onFilterChange, activeFilter, onSearch, searchQuery, cards
                 key={type}
                 className={`nav-item ${activeFilter === (type === 'Home' ? 'All' : type) ? 'active' : ''}`}
                 onClick={() => handleNavClick(type)}
+                data-nav={type}
               >
                 {type}
               </button>

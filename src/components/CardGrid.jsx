@@ -50,8 +50,9 @@ function CardGrid({ cards, sectionTitle, isLastSection, itemsPerPage, currentPag
                 alt={`Cover image for ${card.title}`}
                 loading="lazy"
                 onError={(e) => {
-                  e.target.onerror = null
-                  e.target.src = '/placeholder.jpg'
+                  e.target.onerror = null;
+                  e.target.src = '/placeholder.jpg';
+                  e.target.parentElement.classList.add('error');
                 }}
               />
               <div className="episode-badge">EP {card.episode}</div>

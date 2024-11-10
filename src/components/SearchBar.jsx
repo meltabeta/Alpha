@@ -27,7 +27,6 @@ function SearchBar({ value, onChange, cards, onSelectResult }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <span className="search-icon">🔍</span>
     </div>
   )
 }

@@ -1,60 +1,43 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-function OptimizedImage({ src, alt, className, loading = "lazy", ...props }) {
+function OptimizedImage({ src, alt, className, loading = "lazy", onError, ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const imageRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: '50px 0px',
-        threshold: 0.1
-      }
-    );
-
-    if (imageRef.current && loading !== "eager") {
-      observer.observe(imageRef.current);
-    } else {
-      setIsVisible(true);
-    }
-
-    return () => observer.disconnect();
-  }, [loading]);
-
-  const handleError = () => {
-    console.error(`Failed to load image: ${src}`);
+  const handleError = (e) => {
     setHasError(true);
-    setIsLoaded(true);
+    setIsLoaded(false);
+    if (onError) onError(e);
   };
 
-  const imageUrl = isVisible || loading === "eager" ? src : '';
+  const handleLoad = () => {
+    setIsLoaded(true);
+    setHasError(false);
+  };
+
+  useEffect(() => {
+    const img = imageRef.current;
+    if (img && img.complete) {
+      handleLoad();
+    }
+  }, []);
 
   return (
-    <div 
-      ref={imageRef}
-      className={`image-container ${!isLoaded ? 'loading-skeleton' : ''} ${className || ''}`}
-    >
+    <div className={`image-container ${!isLoaded ? 'loading-skeleton' : ''}`}>
       {hasError ? (
         <div className="image-error">
           <span>Failed to load image</span>
         </div>
       ) : (
         <img
-          src={imageUrl}
+          ref={imageRef}
+          src={src}
           alt={alt}
-          className={`optimized-image ${isLoaded ? 'loaded' : ''}`}
+          className={`${className || ''} ${isLoaded ? 'loaded' : ''}`}
           loading={loading}
-          onLoad={() => setIsLoaded(true)}
+          onLoad={handleLoad}
           onError={handleError}
-          decoding="async"
           {...props}
         />
       )}
