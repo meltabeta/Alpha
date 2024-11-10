@@ -3,6 +3,7 @@ import { useParams, useLocation, Link, useNavigate } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
 import { db } from '../firebase';
 import './VideoDetail.css';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function VideoDetail() {
   const { id, title, episode } = useParams();
@@ -17,6 +18,10 @@ export default function VideoDetail() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const videoWrapperRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [refreshProgress, setRefreshProgress] = useState(0);
+  let startY = 0;
 
   const isValidVideoUrl = (url) => {
     if (!url) return false;
@@ -236,239 +241,292 @@ export default function VideoDetail() {
     }
   };
 
+  useEffect(() => {
+    // Simulate loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle pull to refresh
+  const handleTouchStart = (e) => {
+    startY = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    const currentY = e.touches[0].clientY;
+    const diff = currentY - startY;
+    
+    if (window.scrollY === 0 && diff > 0) {
+      const progress = Math.min(diff / 100, 1);
+      setRefreshProgress(progress);
+      
+      if (progress >= 1 && !isRefreshing) {
+        handleRefresh();
+      }
+    }
+  };
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    // Simulate refresh
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsRefreshing(false);
+    setRefreshProgress(0);
+  };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">{error}</div>;
   if (!video) return <div className="not-found">Video not found</div>;
 
   return (
-    <div className="video-detail-wrapper">
-      <div className="video-detail">
-        <div className="breadcrumb-navigation">
-          <Link to="/" className="breadcrumb-item">
-            Home
-          </Link>
-          <span className="breadcrumb-separator">›</span>
-          <span className="breadcrumb-item">{video.title}</span>
-          <span className="breadcrumb-separator">›</span>
-          <span className="breadcrumb-item">Episode {currentEpisode?.episode}</span>
-        </div>
+    <div 
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={() => !isRefreshing && setRefreshProgress(0)}
+    >
+      {(isRefreshing || refreshProgress > 0) && (
+        <div 
+          className="pull-to-refresh"
+          style={{ transform: `scaleX(${refreshProgress})` }}
+        />
+      )}
+      
+      <div className="video-detail-wrapper">
+        <div className="video-detail">
+          <div className="breadcrumb-navigation">
+            <Link to="/" className="breadcrumb-item">
+              Home
+            </Link>
+            <span className="breadcrumb-separator">›</span>
+            <span className="breadcrumb-item">{video.title}</span>
+            <span className="breadcrumb-separator">›</span>
+            <span className="breadcrumb-item">Episode {currentEpisode?.episode}</span>
+          </div>
 
-        <div className="video-player-layout">
-          <div className="video-player-section">
-            {currentEpisode ? (
-              <div className="current-episode">
-                <div className="video-wrapper" ref={videoWrapperRef}>
-                  {currentEpisode?.src ? (
-                    <iframe
-                      src={currentEpisode.src}
-                      title={`${video.title} - Episode ${currentEpisode.episode}`}
-                      frameBorder="0"
-                      allowFullScreen
-                      allow="encrypted-media; picture-in-picture"
-                      onError={() => setVideoError(true)}
-                    />
-                  ) : (
-                    <div className="video-error">
-                      <p>Video not available</p>
+          <div className="video-player-layout">
+            <div className="video-player-section">
+              {currentEpisode ? (
+                <div className="current-episode">
+                  <div className="video-wrapper" ref={videoWrapperRef}>
+                    {currentEpisode?.src ? (
+                      <iframe
+                        src={currentEpisode.src}
+                        title={`${video.title} - Episode ${currentEpisode.episode}`}
+                        frameBorder="0"
+                        allowFullScreen
+                        allow="encrypted-media; picture-in-picture"
+                        onError={() => setVideoError(true)}
+                      />
+                    ) : (
+                      <div className="video-error">
+                        <p>Video not available</p>
+                      </div>
+                    )}
+                    <div className="video-controls">
+                      <button 
+                        className="fullscreen-button"
+                        onClick={handleFullScreen}
+                        aria-label={isFullScreen ? "Exit fullscreen" : "Enter fullscreen"}
+                      >
+                        {isFullScreen ? "Exit Fullscreen" : "Fullscreen"}
+                      </button>
                     </div>
-                  )}
-                  <div className="video-controls">
-                    <button 
-                      className="fullscreen-button"
-                      onClick={handleFullScreen}
-                      aria-label={isFullScreen ? "Exit fullscreen" : "Enter fullscreen"}
+                  </div>
+
+                  <div className="episode-navigation">
+                    <button
+                      className="nav-button prev-episode"
+                      onClick={() => {
+                        const currentIndex = filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode);
+                        if (currentIndex > 0) {
+                          const [, prevEpisode] = filteredEpisodes[currentIndex - 1];
+                          handleEpisodeClick(prevEpisode);
+                        }
+                      }}
+                      disabled={filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode) === 0}
                     >
-                      {isFullScreen ? "Exit Fullscreen" : "Fullscreen"}
+                      <span>← Previous Episode</span>
+                    </button>
+                    <button
+                      className="nav-button next-episode"
+                      onClick={() => {
+                        const currentIndex = filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode);
+                        if (currentIndex < filteredEpisodes.length - 1) {
+                          const [, nextEpisode] = filteredEpisodes[currentIndex + 1];
+                          handleEpisodeClick(nextEpisode);
+                        }
+                      }}
+                      disabled={filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode) === filteredEpisodes.length - 1}
+                    >
+                      <span>Next Episode →</span>
                     </button>
                   </div>
-                </div>
 
-                <div className="episode-navigation">
-                  <button
-                    className="nav-button prev-episode"
-                    onClick={() => {
-                      const currentIndex = filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode);
-                      if (currentIndex > 0) {
-                        const [, prevEpisode] = filteredEpisodes[currentIndex - 1];
-                        handleEpisodeClick(prevEpisode);
-                      }
-                    }}
-                    disabled={filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode) === 0}
-                  >
-                    <span>← Previous Episode</span>
-                  </button>
-                  <button
-                    className="nav-button next-episode"
-                    onClick={() => {
-                      const currentIndex = filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode);
-                      if (currentIndex < filteredEpisodes.length - 1) {
-                        const [, nextEpisode] = filteredEpisodes[currentIndex + 1];
-                        handleEpisodeClick(nextEpisode);
-                      }
-                    }}
-                    disabled={filteredEpisodes.findIndex(([, ep]) => ep.episode === currentEpisode.episode) === filteredEpisodes.length - 1}
-                  >
-                    <span>Next Episode →</span>
-                  </button>
-                </div>
+                  <div className="current-episode-info">
+                    <h1>{video.title}</h1>
+                    <h3>Episode {currentEpisode.episode}</h3>
+                  </div>
 
-                <div className="current-episode-info">
-                  <h1>{video.title}</h1>
-                  <h3>Episode {currentEpisode.episode}</h3>
-                </div>
-
-                <div className="video-info">
-                  <div className="info-header">
-                    <div className="info-poster">
-                      <img 
-                        src={video.image} 
-                        alt={video.title}
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = '/placeholder.jpg';
-                        }}
-                      />
-                      {video.status && (
-                        <div className="status-badge">{video.status}</div>
-                      )}
-                    </div>
-                    <div className="info-details">
-                      <div className="info-grid">
-                        <div className="info-item">
-                          <span className="info-label">Season</span>
-                          <span className="info-value">{video.season || 'N/A'}</span>
-                        </div>
-                        <div className="info-item">
-                          <span className="info-label">Status</span>
-                          <span className="info-value">
-                            <span className={`status-dot ${video.status?.toLowerCase()}`}></span>
-                            {video.status || 'N/A'}
-                          </span>
-                        </div>
-                        <div className="info-item">
-                          <span className="info-label">Rating</span>
-                          <span className="info-value">
-                            <div className="rating">
-                              <span className="rating-number">{video.rating || 'N/A'}</span>
-                            </div>
-                          </span>
-                        </div>
-                        <div className="info-item">
-                          <span className="info-label">Type</span>
-                          <span className="info-value">{video.type || 'N/A'}</span>
-                        </div>
-                        <div className="info-item">
-                          <span className="info-label">Total Episodes</span>
-                          <span className="info-value">{Object.keys(video.episodes || {}).length}</span>
-                        </div>
-                        <div className="info-item">
-                          <span className="info-label">Last Updated</span>
-                          <span className="info-value">
-                            {new Date(video.lastUpdated).toLocaleDateString()}
-                          </span>
+                  <div className="video-info">
+                    <div className="info-header">
+                      <div className="info-poster">
+                        <img 
+                          src={video.image} 
+                          alt={video.title}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/placeholder.jpg';
+                          }}
+                        />
+                        {video.status && (
+                          <div className="status-badge">{video.status}</div>
+                        )}
+                      </div>
+                      <div className="info-details">
+                        <div className="info-grid">
+                          <div className="info-item">
+                            <span className="info-label">Season</span>
+                            <span className="info-value">{video.season || 'N/A'}</span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Status</span>
+                            <span className="info-value">
+                              <span className={`status-dot ${video.status?.toLowerCase()}`}></span>
+                              {video.status || 'N/A'}
+                            </span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Rating</span>
+                            <span className="info-value">
+                              <div className="rating">
+                                <span className="rating-number">{video.rating || 'N/A'}</span>
+                              </div>
+                            </span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Type</span>
+                            <span className="info-value">{video.type || 'N/A'}</span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Total Episodes</span>
+                            <span className="info-value">{Object.keys(video.episodes || {}).length}</span>
+                          </div>
+                          <div className="info-item">
+                            <span className="info-label">Last Updated</span>
+                            <span className="info-value">
+                              {new Date(video.lastUpdated).toLocaleDateString()}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  {video.description && (
-                    <div className="video-description">
-                      <h3>Description</h3>
-                      <p>{video.description}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <div className="no-video-message">
-                <div className="message-content">
-                  <h3>Welcome to {video.title}</h3>
-                  <p>Please select an episode from the list to start watching.</p>
-                  <div className="episode-hint">
-                    <span className="arrow">→</span>
-                    <span>Choose from episodes list</span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="playlist-sidebar">
-            <div className="playlist-header">
-              <h2>Episodes List</h2>
-              <span>{Object.keys(video.episodes || {}).length} episodes</span>
-            </div>
-            
-            <div className="episode-search">
-              <input
-                type="number"
-                placeholder="Search episode..."
-                value={searchEpisode}
-                onChange={(e) => setSearchEpisode(e.target.value)}
-                min="1"
-              />
-            </div>
-
-            <div className="episodes-list custom-scrollbar">
-              {filteredEpisodes.map(([episodeId, episodeData]) => (
-                <div
-                  key={episodeId}
-                  className={`episode-item ${currentEpisode?.episode === episodeData.episode ? 'active' : ''}`}
-                  onClick={() => handleEpisodeClick(episodeData)}
-                >
-                  <div className="episode-thumbnail">
-                    <img src={video.image} alt={`Episode ${episodeData.episode}`} />
-                    {currentEpisode?.episode === episodeData.episode && (
-                      <div className="now-playing">Now Playing</div>
+                    {video.description && (
+                      <div className="video-description">
+                        <h3>Description</h3>
+                        <p>{video.description}</p>
+                      </div>
                     )}
                   </div>
-                  <div className="episode-info">
-                    <h3>Episode {episodeData.episode}</h3>
-                    <p>{new Date(episodeData.postingVideoDate).toLocaleDateString()}</p>
+                </div>
+              ) : (
+                <div className="no-video-message">
+                  <div className="message-content">
+                    <h3>Welcome to {video.title}</h3>
+                    <p>Please select an episode from the list to start watching.</p>
+                    <div className="episode-hint">
+                      <span className="arrow">→</span>
+                      <span>Choose from episodes list</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="playlist-sidebar">
+              <div className="playlist-header">
+                <h2>Episodes List</h2>
+                <span>{Object.keys(video.episodes || {}).length} episodes</span>
+              </div>
+              
+              <div className="episode-search">
+                <input
+                  type="number"
+                  placeholder="Search episode..."
+                  value={searchEpisode}
+                  onChange={(e) => setSearchEpisode(e.target.value)}
+                  min="1"
+                />
+              </div>
+
+              <div className="episodes-list custom-scrollbar">
+                {filteredEpisodes.map(([episodeId, episodeData]) => (
+                  <div
+                    key={episodeId}
+                    className={`episode-item ${currentEpisode?.episode === episodeData.episode ? 'active' : ''}`}
+                    onClick={() => handleEpisodeClick(episodeData)}
+                  >
+                    <div className="episode-thumbnail">
+                      <img src={video.image} alt={`Episode ${episodeData.episode}`} />
+                      {currentEpisode?.episode === episodeData.episode && (
+                        <div className="now-playing">Now Playing</div>
+                      )}
+                    </div>
+                    <div className="episode-info">
+                      <h3>Episode {episodeData.episode}</h3>
+                      <p>{new Date(episodeData.postingVideoDate).toLocaleDateString()}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="recommendations-section">
+            <h2 className="section-title">Recommended For You</h2>
+            <div className="recommendations-grid">
+              {recommendations.map((item) => (
+                <div 
+                  key={item.id} 
+                  className="recommendation-card"
+                  onClick={() => {
+                    const urlTitle = item.title
+                      .toLowerCase()
+                      .replace(/[^a-z0-9\s-]/g, '')
+                      .replace(/\s+/g, '-')
+                      .replace(/-+/g, '-');
+                    navigate(`/watch/${urlTitle}/episode-${item.episode}/${item.id}`);
+                  }}
+                >
+                  <div className="recommendation-thumbnail">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/placeholder.jpg';
+                      }}
+                    />
+                    <div className="episode-badge">EP {item.episode}</div>
+                    <div className="status-badge">{item.status}</div>
+                  </div>
+                  <div className="recommendation-info">
+                    <h3>{item.title}</h3>
+                    <div className="meta-info">
+                      <span>Season {item.season}</span>
+                      <span>•</span>
+                      <span>{item.type}</span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        <div className="recommendations-section">
-          <h2 className="section-title">Recommended For You</h2>
-          <div className="recommendations-grid">
-            {recommendations.map((item) => (
-              <div 
-                key={item.id} 
-                className="recommendation-card"
-                onClick={() => {
-                  const urlTitle = item.title
-                    .toLowerCase()
-                    .replace(/[^a-z0-9\s-]/g, '')
-                    .replace(/\s+/g, '-')
-                    .replace(/-+/g, '-');
-                  navigate(`/watch/${urlTitle}/episode-${item.episode}/${item.id}`);
-                }}
-              >
-                <div className="recommendation-thumbnail">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/placeholder.jpg';
-                    }}
-                  />
-                  <div className="episode-badge">EP {item.episode}</div>
-                  <div className="status-badge">{item.status}</div>
-                </div>
-                <div className="recommendation-info">
-                  <h3>{item.title}</h3>
-                  <div className="meta-info">
-                    <span>Season {item.season}</span>
-                    <span>•</span>
-                    <span>{item.type}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

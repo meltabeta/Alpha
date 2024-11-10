@@ -3206,3 +3206,261 @@ body {
     will-change: transform;
   }
 }
+
+/* Optimize image loading and display */
+img {
+  /* Enable hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  
+  /* Prevent layout shifts */
+  aspect-ratio: attr(width) / attr(height);
+  
+  /* Optimize quality vs performance */
+  image-rendering: auto;
+  
+  /* Prevent blurry images during scaling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lazy loading optimization */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+/* Blur-up loading effect */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+  transform: scale(1.1);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-placeholder.hidden {
+  opacity: 0;
+}
+
+/* Mobile image optimizations */
+@media (max-width: 768px) {
+  /* Optimize memory usage during scroll */
+  .is-scrolling-fast img {
+    content-visibility: auto;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* Prevent image pop-in */
+  .image-wrapper {
+    background: #111;
+    contain: strict;
+    content-visibility: auto;
+  }
+  
+  /* Reduce quality during fast scroll */
+  .is-scrolling-fast .donghua-card img {
+    image-rendering: optimizeSpeed;
+  }
+
+  /* Optimize thumbnails */
+  .episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateZ(0);
+  }
+  
+  /* Prevent layout shifts */
+  .card-image {
+    aspect-ratio: 2/3;
+    background: #111;
+  }
+  
+  .episode-thumbnail {
+    aspect-ratio: 16/9;
+    background: #111;
+  }
+}
+
+/* Progressive loading for different screen sizes */
+@media (max-width: 480px) {
+  .card-image img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-image img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+  }
+}
+
+/* Prevent CLS */
+.donghua-card {
+  contain: layout style paint;
+}
+
+.card-image {
+  position: relative;
+  padding-top: 150%;
+  background: #111;
+  overflow: hidden;
+}
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Loading Overlay Styles */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 0.8s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Pull-to-refresh indicator */
+.pull-to-refresh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-color);
+  transform-origin: 0 50%;
+  z-index: 10000;
+}
+
+/* Loading skeleton animation */
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 37%,
+    rgba(255, 255, 255, 0.05) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile optimizations for loading states */
+@media (max-width: 768px) {
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+  }
+
+  /* Optimize loading performance */
+  .loading-overlay {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Skeleton loading placeholders */
+  .card-skeleton {
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .text-skeleton {
+    height: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+  }
+}
+
+/* Loading states for images */
+.image-loading {
+  position: relative;
+  background: #111;
+  overflow: hidden;
+}
+
+.image-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: loading-shine 1.5s infinite;
+  transform: translateX(-100%);
+}
+
+@keyframes loading-shine {
+  to {
+    transform: translateX(100%);
+  }
+}
