@@ -1390,3 +1390,62 @@
     gap: 0.35rem;
   }
 }
+
+/* Fix Safari compatibility issues */
+.episode-navigation {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Enhanced PC Layout */
+@media (min-width: 1024px) {
+  .video-detail-wrapper {
+    padding: 2rem 0;
+  }
+
+  .video-detail {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .video-player-layout {
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .playlist-sidebar {
+    width: 320px;
+  }
+
+  .episodes-list {
+    max-height: calc(100vh - 200px);
+    min-height: 600px;
+  }
+
+  .episode-item {
+    margin-bottom: 1rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .episode-item:hover {
+    transform: translateX(8px);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Large Desktop Enhancements */
+@media (min-width: 1440px) {
+  .video-detail {
+    padding: 0 6rem;
+  }
+
+  .video-player-layout {
+    gap: 3rem;
+  }
+
+  .playlist-sidebar {
+    width: 360px;
+  }
+}

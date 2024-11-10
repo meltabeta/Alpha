@@ -2875,3 +2875,190 @@ body {
     }
   }
 }
+
+/* Performance optimizations */
+* {
+  /* Optimize paint and composite operations */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+/* Enhanced mobile performance */
+@media (max-width: 768px) {
+  /* Reduce repaints and optimize memory */
+  .donghua-grid,
+  .video-player-layout,
+  .episodes-list,
+  .video-detail-content {
+    contain: content;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+
+  /* Optimize animations */
+  .donghua-card,
+  .episode-item,
+  .nav-item {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    contain: layout style paint;
+    will-change: transform;
+  }
+
+  /* Disable hover effects on touch devices */
+  .donghua-card:hover,
+  .episode-item:hover,
+  .nav-item:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Optimize touch interactions */
+  .donghua-card:active,
+  .episode-item:active,
+  .nav-item:active {
+    transform: scale(0.98) translate3d(0, 0, 0);
+  }
+
+  /* Optimize scrolling containers */
+  .episodes-list,
+  .video-detail-content,
+  .sidebar {
+    position: relative;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scroll-behavior: auto;
+    contain: strict;
+    z-index: 1;
+  }
+
+  /* Remove all scrollbars on mobile */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Reduce paint operations */
+  .video-wrapper,
+  .playlist-sidebar,
+  .episode-navigation {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    contain: layout style paint;
+  }
+
+  /* Optimize images */
+  img {
+    content-visibility: auto;
+    contain: strict;
+    will-change: transform;
+  }
+
+  /* Disable transitions when scrolling */
+  body.is-scrolling * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* PC Responsive Margins */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .video-player-layout {
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+
+  .playlist-sidebar {
+    margin-top: 2rem;
+  }
+
+  .donghua-grid {
+    margin: 2rem 0;
+    gap: 2rem;
+  }
+
+  .section-title {
+    margin: 3rem 0 2rem 0;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 6rem;
+  }
+
+  .video-player-layout {
+    margin: 3rem auto;
+    gap: 3rem;
+  }
+
+  .donghua-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* Fix Safari compatibility issues */
+.video-detail-content,
+.nav-content,
+.modal-content {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .donghua-card,
+  .episode-item,
+  .nav-item,
+  .scroll-to-top {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .episode-navigation {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Enhanced PC Hover Effects */
+@media (min-width: 1024px) {
+  .donghua-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .donghua-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .episode-item:hover {
+    transform: translateX(8px);
+  }
+
+  .nav-item {
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+  }
+}

@@ -1,52 +1,77 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react';
 
 function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
-  // Optimize scroll behavior with IntersectionObserver
+  // Optimize scroll detection
+  const handleScroll = useCallback(() => {
+    if (!isScrolling) {
+      setIsScrolling(true);
+      document.body.classList.add('is-scrolling');
+    }
+
+    // Debounce scroll end
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(() => {
+      setIsScrolling(false);
+      document.body.classList.remove('is-scrolling');
+    }, 150);
+  }, [isScrolling]);
+
+  // Use Intersection Observer for better performance
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsVisible(!entry.isIntersecting);
-        });
-      },
-      { threshold: 0, rootMargin: '100px' }
-    );
+    const options = {
+      root: null,
+      rootMargin: '-100px 0px',
+      threshold: 0
+    };
 
-    const sentinel = document.createElement('div');
-    sentinel.style.height = '1px';
-    sentinel.style.position = 'absolute';
-    sentinel.style.top = '300px';
-    document.body.appendChild(sentinel);
+    const observer = new IntersectionObserver(([entry]) => {
+      requestAnimationFrame(() => {
+        setIsVisible(!entry.isIntersecting);
+      });
+    }, options);
 
-    observer.observe(sentinel);
+    const target = document.createElement('div');
+    target.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;';
+    document.body.appendChild(target);
+
+    observer.observe(target);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       observer.disconnect();
-      sentinel.remove();
+      target.remove();
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(window.scrollTimeout);
     };
-  }, []);
+  }, [handleScroll]);
 
-  // Optimize scroll to top function
-  const scrollToTop = () => {
-    if ('scrollBehavior' in document.documentElement.style) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    } else {
-      // Fallback for browsers that don't support smooth scrolling
-      const scrollStep = () => {
-        const currentPosition = window.pageYOffset;
-        if (currentPosition > 0) {
-          window.requestAnimationFrame(scrollStep);
-          window.scrollTo(0, currentPosition - Math.max(currentPosition / 8, 10));
+  // Optimized scroll to top
+  const scrollToTop = useCallback(() => {
+    requestAnimationFrame(() => {
+      const duration = 500;
+      const start = window.pageYOffset;
+      const startTime = performance.now();
+
+      const scroll = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const position = start - start * easeInOutQuad(progress);
+
+        window.scrollTo(0, position);
+
+        if (progress < 1) {
+          requestAnimationFrame(scroll);
         }
       };
-      window.requestAnimationFrame(scrollStep);
-    }
-  };
+
+      requestAnimationFrame(scroll);
+    });
+  }, []);
 
   return (
     <>
@@ -55,12 +80,13 @@ function ScrollToTop() {
           className="scroll-to-top"
           onClick={scrollToTop}
           aria-label="Scroll to top"
+          style={{ contain: 'strict' }}
         >
           ↑
         </button>
       )}
     </>
-  )
+  );
 }
 
-export default ScrollToTop 
+export default ScrollToTop; 
