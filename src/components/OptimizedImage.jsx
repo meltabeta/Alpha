@@ -1,18 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import { deviceDetector } from '../utils/deviceDetector';
 
 function OptimizedImage({ src, alt, className, loading = "lazy", ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const imageRef = useRef(null);
-  const isIOS = deviceDetector.isIOS();
-  const isAndroid = deviceDetector.isAndroid();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
       },
       {
         rootMargin: '50px 0px',
@@ -20,31 +20,27 @@ function OptimizedImage({ src, alt, className, loading = "lazy", ...props }) {
       }
     );
 
-    if (imageRef.current) {
+    if (imageRef.current && loading !== "eager") {
       observer.observe(imageRef.current);
+    } else {
+      setIsVisible(true);
     }
 
     return () => observer.disconnect();
-  }, []);
-
-  const imageClassName = `
-    optimized-image 
-    ${className || ''} 
-    ${isLoaded ? 'loaded' : ''} 
-    ${isIOS ? 'ios-image' : ''} 
-    ${isAndroid ? 'android-image' : ''}
-    ${!isVisible ? 'not-visible' : ''}
-  `.trim();
+  }, [loading]);
 
   const handleError = () => {
+    console.error(`Failed to load image: ${src}`);
     setHasError(true);
     setIsLoaded(true);
   };
 
+  const imageUrl = isVisible || loading === "eager" ? src : '';
+
   return (
     <div 
       ref={imageRef}
-      className={`image-container ${!isLoaded ? 'loading-skeleton' : ''}`}
+      className={`image-container ${!isLoaded ? 'loading-skeleton' : ''} ${className || ''}`}
     >
       {hasError ? (
         <div className="image-error">
@@ -52,14 +48,13 @@ function OptimizedImage({ src, alt, className, loading = "lazy", ...props }) {
         </div>
       ) : (
         <img
-          src={isVisible ? src : ''}
+          src={imageUrl}
           alt={alt}
-          className={imageClassName}
+          className={`optimized-image ${isLoaded ? 'loaded' : ''}`}
           loading={loading}
           onLoad={() => setIsLoaded(true)}
           onError={handleError}
           decoding="async"
-          fetchpriority={loading === "eager" ? "high" : "auto"}
           {...props}
         />
       )}

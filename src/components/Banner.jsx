@@ -5,7 +5,7 @@ function Banner() {
     <div className="channel-banner">
       <div className="banner-image">
         <OptimizedImage 
-          src="/assets/images/banner.jpg" 
+          src="./assets/images/banner.jpg"
           alt="KH-DONGHUA Banner"
           className="banner-bg"
           loading="eager"
@@ -16,9 +16,10 @@ function Banner() {
             <div className="channel-info">
               <div className="channel-avatar">
                 <OptimizedImage 
-                  src="/assets/images/logo.png" 
-                  alt="KH-DONGHUA Logo" 
+                  src="./assets/images/logo.png"
+                  alt="KH-DONGHUA Logo"
                   loading="eager"
+                  fetchpriority="high"
                 />
               </div>
               <div className="channel-details">
@@ -26,12 +27,16 @@ function Banner() {
                 <p>@KH-DONGHUA</p>
                 <div className="social-links">
                   <a 
-                    href="https://t.me/kh_donghua" 
+                    href="https://t.me/kh_donghua"
                     className="telegram-link"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="/assets/images/telegram.svg" alt="Telegram" />
+                    <img 
+                      src="./assets/images/telegram.svg"
+                      alt="Telegram"
+                      loading="eager"
+                    />
                     Join Telegram Channel
                   </a>
                 </div>

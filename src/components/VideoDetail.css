@@ -1552,3 +1552,138 @@
     display: block;
   }
 }
+
+/* Banner Styles */
+.channel-banner {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  background: var(--card-background);
+}
+
+.banner-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Mobile Responsive Banner */
+@media (max-width: 768px) {
+  .channel-banner {
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+
+  .banner-overlay {
+    padding: 1rem;
+  }
+
+  .channel-avatar {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .channel-banner {
+    height: 150px;
+  }
+
+  .channel-avatar {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Image Card Styles */
+.card-image {
+  position: relative;
+  width: 100%;
+  padding-top: 140%;
+  overflow: hidden;
+  background: var(--card-background);
+  border-radius: 8px;
+}
+
+.optimized-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.optimized-image:not(.loaded) {
+  opacity: 0;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--card-background) 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    var(--card-background) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.image-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-background);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Image Cards */
+@media (max-width: 768px) {
+  .card-image {
+    padding-top: 130%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-image {
+    padding-top: 120%;
+  }
+}
