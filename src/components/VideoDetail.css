@@ -1449,3 +1449,106 @@
     width: 360px;
   }
 }
+
+/* Reset mobile margins and optimize spacing */
+@media (max-width: 768px) {
+  .video-detail-wrapper {
+    padding: 0;
+  }
+
+  .video-detail {
+    padding: 0;
+    margin: 0;
+  }
+
+  .video-player-layout {
+    gap: 0;
+  }
+
+  .current-episode-info {
+    padding: 0.75rem;
+    margin: 0;
+  }
+
+  .video-info {
+    padding: 0.75rem;
+    margin: 0;
+  }
+
+  .episodes-list {
+    padding: 0.25rem;
+    gap: 0.25rem;
+    margin: 0;
+  }
+
+  .episode-item {
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .episode-navigation {
+    padding: 0.5rem;
+    margin: 0;
+    gap: 0.25rem;
+  }
+
+  .info-header {
+    padding: 0.75rem;
+    margin: 0;
+  }
+}
+
+/* Keep desktop margins and spacing */
+@media (min-width: 1024px) {
+  .video-detail-wrapper {
+    padding: 2rem 0;
+  }
+
+  .video-detail {
+    padding: 0 4rem;
+    margin: 0 auto;
+  }
+
+  .video-player-layout {
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .video-detail-wrapper .video-player-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .video-detail-wrapper .playlist-sidebar {
+    display: none;
+  }
+
+  /* Optimize video player for full width */
+  .video-detail-wrapper .video-player-section {
+    width: 100%;
+    margin: 0;
+  }
+
+  .video-detail-wrapper .video-wrapper {
+    padding-top: 56.25%;
+  }
+
+  /* Adjust content spacing */
+  .video-detail-wrapper .current-episode-info,
+  .video-detail-wrapper .video-info {
+    padding: 0.75rem;
+  }
+}
+
+/* Keep desktop layout */
+@media (min-width: 769px) {
+  .video-detail-wrapper .video-player-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+
+  .video-detail-wrapper .playlist-sidebar {
+    display: block;
+  }
+}

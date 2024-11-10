@@ -3062,3 +3062,106 @@ body {
     margin: 0 0.5rem;
   }
 }
+
+/* Reset mobile margins and optimize spacing */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .donghua-grid {
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  .video-player-layout {
+    margin: 0;
+    gap: 0.5rem;
+  }
+
+  .playlist-sidebar {
+    margin: 0;
+  }
+
+  .section-title {
+    margin: 0.5rem;
+  }
+
+  .site-header {
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  .breadcrumb-navigation {
+    margin: 0;
+    padding: 0.5rem;
+  }
+}
+
+/* Keep desktop margins */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+    margin: 0 auto;
+  }
+
+  .video-player-layout {
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+
+  .playlist-sidebar {
+    margin-top: 2rem;
+  }
+
+  .donghua-grid {
+    margin: 2rem 0;
+    gap: 2rem;
+  }
+
+  .section-title {
+    margin: 3rem 0 2rem 0;
+  }
+}
+
+/* Mobile sidebar handling */
+@media (max-width: 768px) {
+  .desktop-sidebar,
+  .playlist-sidebar {
+    display: none;
+  }
+
+  /* Adjust grid for full width when sidebar is hidden */
+  .video-player-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .donghua-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  /* Ensure main content takes full width */
+  .main-content {
+    width: 100%;
+  }
+
+  /* Reset any sidebar-related margins/padding */
+  .content-with-sidebar {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* Keep desktop layout */
+@media (min-width: 769px) {
+  .mobile-sidebar {
+    display: none;
+  }
+
+  .video-player-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+}
