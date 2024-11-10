@@ -151,6 +151,8 @@ body {
   padding-top: 140%;
   width: 100%;
   overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .card-image img {
@@ -160,6 +162,10 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0);
+  transform: translateZ(0) scale(1.0);
 }
 
 .card-image::after {
@@ -678,12 +684,18 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .nav-logo img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0);
+  transform: translateZ(0) scale(1.0);
 }
 
 .nav-content {
@@ -1717,12 +1729,18 @@ textarea.modern-input {
   position: relative;
   width: 100%;
   height: 200px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .banner-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0);
+  transform: translateZ(0) scale(1.0);
 }
 
 .banner-overlay {
@@ -1842,6 +1860,14 @@ textarea.modern-input {
     width: 16px;
     height: 16px;
   }
+
+  .nav-logo img {
+    width: 40px;
+    height: 40px;
+    /* iOS specific fixes */
+    -webkit-transform: translateZ(0) scale(1.0);
+    transform: translateZ(0) scale(1.0);
+  }
 }
 
 /* Small Mobile Devices */
@@ -1871,6 +1897,14 @@ textarea.modern-input {
   .telegram-link img {
     width: 14px;
     height: 14px;
+  }
+
+  .nav-logo img {
+    width: 44px;
+    height: 44px;
+    /* iOS specific fixes */
+    -webkit-transform: translateZ(0) scale(1.0);
+    transform: translateZ(0) scale(1.0);
   }
 }
 
@@ -1910,12 +1944,18 @@ textarea.modern-input {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .nav-logo img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0);
+  transform: translateZ(0) scale(1.0);
 }
 
 .nav-content {
@@ -1950,8 +1990,8 @@ textarea.modern-input {
   }
 
   .nav-logo img {
-    width: 24px;
-    height: 24px;
+    width: 40px;  /* Increased from 24px */
+    height: 40px; /* Increased from 24px */
   }
 
   .nav-logo span {
@@ -1986,6 +2026,11 @@ textarea.modern-input {
   .nav-item {
     padding: 0.3rem 0.6rem;
     font-size: 0.7rem;
+  }
+
+  .nav-logo img {
+    width: 44px;  /* Increased from 40px */
+    height: 44px; /* Increased from 40px */
   }
 }
 
