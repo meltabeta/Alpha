@@ -87,14 +87,20 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
           firebase: ['firebase/app', 'firebase/database', 'firebase/auth']
         }
       }
     }
   },
   optimizeDeps: {
-    include: ['firebase/app', 'firebase/database', 'firebase/auth']
+    include: [
+      'firebase/app',
+      'firebase/database',
+      'firebase/auth',
+      'react-router-dom'
+    ]
   },
   server: {
     compression: true
