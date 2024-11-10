@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import InstallPrompt from './components/InstallPrompt'
+import { scrollVelocityDetector } from './utils/scrollVelocity'
 
 function App() {
   const [cards, setCards] = useState([])
@@ -122,6 +123,10 @@ function App() {
       setLoading(false)
     }
   }, [activeFilter, searchQuery, sidebarFilters])
+
+  useEffect(() => {
+    scrollVelocityDetector.init();
+  }, []);
 
   const LoadingSkeleton = () => (
     Array(12).fill(0).map((_, index) => (

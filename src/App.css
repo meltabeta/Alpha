@@ -3417,3 +3417,69 @@ body {
     -webkit-transform: translateZ(0);
   }
 }
+
+/* Image loading optimizations */
+.optimized-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+}
+
+.optimized-image.not-visible {
+  visibility: hidden;
+}
+
+/* Scroll performance optimizations */
+@media (max-width: 768px) {
+  .donghua-grid {
+    contain: content;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
+  }
+
+  /* Optimize fast scroll */
+  .is-scrolling-fast {
+    .image-container {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 200px;
+    }
+
+    .optimized-image {
+      image-rendering: optimizeSpeed;
+    }
+
+    /* iOS specific */
+    .ios-image {
+      transform: none !important;
+      -webkit-transform: none !important;
+      will-change: auto;
+    }
+
+    /* Android specific */
+    .android-image {
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+  }
+
+  /* Reduce quality during fast scroll */
+  .is-scrolling-fast .optimized-image:not([loading="eager"]) {
+    filter: blur(1px);
+    transform: scale(0.98);
+  }
+}
+
+/* Device-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .image-container {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+}
