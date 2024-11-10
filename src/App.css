@@ -2750,5 +2750,128 @@ textarea.modern-input {
   .episodes-list::-webkit-scrollbar,
   .custom-scrollbar::-webkit-scrollbar {
     display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Optimize grid layout */
+  .donghua-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* Enhanced touch device optimizations */
+@media (hover: none) {
+  .donghua-card:hover,
+  .episode-item:hover,
+  .nav-item:hover {
+    transform: none;
+  }
+
+  .donghua-card:active,
+  .episode-item:active,
+  .nav-item:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Optimize mobile performance */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+/* Enhanced mobile scrolling optimization */
+body {
+  overscroll-behavior: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize container for mobile */
+.container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: env(safe-area-inset-right) env(safe-area-inset-left);
+}
+
+/* Enhanced mobile optimizations */
+@media (max-width: 768px) {
+  .video-detail-content,
+  .episodes-list,
+  .sidebar,
+  .donghua-grid {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+
+  .donghua-card,
+  .episode-item,
+  .nav-item,
+  .scroll-to-top {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Reduce animation complexity */
+  .donghua-card,
+  .episode-item {
+    transition: transform 0.2s ease;
+    will-change: transform;
+  }
+
+  /* Optimize scrolling containers */
+  .episodes-list,
+  .video-detail-content,
+  .sidebar {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  /* Hide scrollbars on mobile */
+  .episodes-list::-webkit-scrollbar,
+  .video-detail-content::-webkit-scrollbar,
+  .sidebar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Optimize grid layout */
+  .donghua-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }

@@ -3,48 +3,50 @@ import { useState, useEffect } from 'react'
 function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
-  // Show button when page is scrolled up to given distance
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true)
-    } else {
-      setIsVisible(false)
-    }
-  }
-
-  // Optimize scroll behavior
-  const scrollToTop = () => {
-    // Use requestAnimationFrame for smoother scrolling
-    const scrollStep = () => {
-      const currentPosition = window.pageYOffset;
-      if (currentPosition > 0) {
-        window.requestAnimationFrame(scrollStep);
-        window.scrollTo(0, currentPosition - Math.max(currentPosition / 10, 10));
-      }
-    };
-    window.requestAnimationFrame(scrollStep);
-  };
-
-  // Optimize scroll event listener
+  // Optimize scroll behavior with IntersectionObserver
   useEffect(() => {
-    let scrollTimeout;
-    const handleScroll = () => {
-      if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-      }
-      scrollTimeout = window.requestAnimationFrame(() => {
-        toggleVisibility();
-      });
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(!entry.isIntersecting);
+        });
+      },
+      { threshold: 0, rootMargin: '100px' }
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const sentinel = document.createElement('div');
+    sentinel.style.height = '1px';
+    sentinel.style.position = 'absolute';
+    sentinel.style.top = '300px';
+    document.body.appendChild(sentinel);
+
+    observer.observe(sentinel);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-      }
+      observer.disconnect();
+      sentinel.remove();
     };
   }, []);
+
+  // Optimize scroll to top function
+  const scrollToTop = () => {
+    if ('scrollBehavior' in document.documentElement.style) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      // Fallback for browsers that don't support smooth scrolling
+      const scrollStep = () => {
+        const currentPosition = window.pageYOffset;
+        if (currentPosition > 0) {
+          window.requestAnimationFrame(scrollStep);
+          window.scrollTo(0, currentPosition - Math.max(currentPosition / 8, 10));
+        }
+      };
+      window.requestAnimationFrame(scrollStep);
+    }
+  };
 
   return (
     <>
