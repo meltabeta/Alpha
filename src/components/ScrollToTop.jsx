@@ -12,20 +12,39 @@ function ScrollToTop() {
     }
   }
 
-  // Set the scroll to top
+  // Optimize scroll behavior
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
+    // Use requestAnimationFrame for smoother scrolling
+    const scrollStep = () => {
+      const currentPosition = window.pageYOffset;
+      if (currentPosition > 0) {
+        window.requestAnimationFrame(scrollStep);
+        window.scrollTo(0, currentPosition - Math.max(currentPosition / 10, 10));
+      }
+    };
+    window.requestAnimationFrame(scrollStep);
+  };
 
+  // Optimize scroll event listener
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility)
+    let scrollTimeout;
+    const handleScroll = () => {
+      if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+      }
+      scrollTimeout = window.requestAnimationFrame(() => {
+        toggleVisibility();
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', toggleVisibility)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+      }
+    };
+  }, []);
 
   return (
     <>

@@ -2701,3 +2701,54 @@ textarea.modern-input {
     bottom: 10px;
   }
 }
+
+/* Optimize scrolling performance */
+* {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevent scroll chaining */
+.episodes-list, 
+.custom-scrollbar,
+.video-detail-content,
+.sidebar {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize mobile scrolling */
+@media (max-width: 768px) {
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  .video-detail-content,
+  .episodes-list {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .donghua-card,
+  .episode-item,
+  .nav-item {
+    transition: transform 0.2s ease;
+    will-change: transform;
+  }
+}
+
+/* Optimize touch scrolling */
+@media (hover: none) {
+  .episodes-list,
+  .custom-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .episodes-list::-webkit-scrollbar,
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
