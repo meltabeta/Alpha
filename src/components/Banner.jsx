@@ -1,24 +1,24 @@
+import OptimizedImage from './OptimizedImage';
+
 function Banner() {
   return (
     <div className="channel-banner">
       <div className="banner-image">
-        <img 
+        <OptimizedImage 
           src="/assets/images/banner.jpg" 
           alt="KH-DONGHUA Banner"
           className="banner-bg"
           loading="eager"
           fetchpriority="high"
-          decoding="async"
         />
         <div className="banner-overlay">
           <div className="banner-content">
             <div className="channel-info">
               <div className="channel-avatar">
-                <img 
+                <OptimizedImage 
                   src="/assets/images/logo.png" 
                   alt="KH-DONGHUA Logo" 
                   loading="eager"
-                  decoding="async"
                 />
               </div>
               <div className="channel-details">
