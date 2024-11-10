@@ -88,10 +88,13 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          firebase: ['firebase/app', 'firebase/database']
+          firebase: ['firebase/app', 'firebase/database', 'firebase/auth']
         }
       }
     }
+  },
+  optimizeDeps: {
+    include: ['firebase/app', 'firebase/database', 'firebase/auth']
   },
   server: {
     compression: true
