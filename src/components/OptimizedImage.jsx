@@ -3,6 +3,7 @@ import { deviceDetector } from '../utils/deviceDetector';
 
 function OptimizedImage({ src, alt, className, loading = "lazy", ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const isIOS = deviceDetector.isIOS();
   const isAndroid = deviceDetector.isAndroid();
 
@@ -14,27 +15,25 @@ function OptimizedImage({ src, alt, className, loading = "lazy", ...props }) {
     ${isAndroid ? 'android-image' : ''}
   `.trim();
 
+  const handleError = () => {
+    setHasError(true);
+    setIsLoaded(true);
+  };
+
   return (
     <div className={`image-container ${!isLoaded ? 'loading-skeleton' : ''}`}>
-      {isIOS ? (
-        // iOS - minimal optimizations for best quality
-        <img
-          src={src}
-          alt={alt}
-          className={imageClassName}
-          loading={loading}
-          onLoad={() => setIsLoaded(true)}
-          decoding="async"
-          {...props}
-        />
+      {hasError ? (
+        <div className="image-error">
+          <span>Failed to load image</span>
+        </div>
       ) : (
-        // Android and other devices - apply performance optimizations
         <img
           src={src}
           alt={alt}
           className={imageClassName}
           loading={loading}
           onLoad={() => setIsLoaded(true)}
+          onError={handleError}
           decoding="async"
           fetchpriority={loading === "eager" ? "high" : "auto"}
           {...props}
