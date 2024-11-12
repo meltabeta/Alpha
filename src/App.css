@@ -2437,3 +2437,88 @@ main {
   }
 }
 
+/* Add loading skeleton styles */
+.skeleton-card {
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.skeleton-image {
+  width: 100%;
+  padding-top: 150%;
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--bg-secondary) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-content {
+  padding: 1rem;
+}
+
+.skeleton-title {
+  height: 1rem;
+  width: 80%;
+  background: var(--bg-tertiary);
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.skeleton-text {
+  height: 0.8rem;
+  width: 60%;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimize paint and layout operations */
+.card,
+.card-image-container,
+.video-player {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Add loading indicator for slow connections */
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 1001;
+}
+
+.loading-indicator.active {
+  transform: scaleX(1);
+}
+

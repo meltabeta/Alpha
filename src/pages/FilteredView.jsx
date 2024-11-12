@@ -5,6 +5,8 @@ import { db } from '../firebase'
 import Pagination from '../components/Pagination'
 import Loading from '../components/Loading'
 import { createUrlSlug, formatEpisodeNumber } from '../utils/urlFormatter'
+import { smoothScroll, throttledScroll } from '../utils/scrollHelpers'
+import { debounce } from 'lodash'
 
 function FilteredView({ type, status }) {
   const [cards, setCards] = useState([])
@@ -59,27 +61,35 @@ function FilteredView({ type, status }) {
     return status.toLowerCase() === 'ongoing' ? 'badge-ongoing' : 'badge-completed'
   }
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber)
-    const header = document.querySelector('.filtered-header')
-    if (header) {
-      const offset = 100
-      const elementPosition = header.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
-  }
+  const handlePageChange = debounce((pageNumber) => {
+    setCurrentPage(pageNumber);
+    const header = document.querySelector('.filtered-header');
+    smoothScroll(header, 100);
+  }, 150);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
+    smoothScroll(document.body);
+  };
+
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  useEffect(() => {
+    const loadCards = async () => {
+      setIsLoadingMore(true);
+      try {
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const start = (currentPage - 1) * cardsPerPage;
+        const end = start + cardsPerPage;
+        setCurrentCards(cards.slice(start, end));
+      } catch (error) {
+        console.error('Error loading cards:', error);
+      } finally {
+        setIsLoadingMore(false);
+      }
+    };
+
+    loadCards();
+  }, [currentPage, cards, cardsPerPage]);
 
   const indexOfLastCard = currentPage * cardsPerPage
   const indexOfFirstCard = indexOfLastCard - cardsPerPage
@@ -169,34 +179,46 @@ function FilteredView({ type, status }) {
             <h2>All {type || status}</h2>
           </div>
           <div className="cards-grid">
-            {currentCards.map(card => (
-              <Link 
-                to={`/${card.type.toLowerCase()}/${createUrlSlug(card.title)}/episode-${formatEpisodeNumber(card.episode)}/${card.id}`} 
-                key={card.id} 
-                className="card"
-              >
-                <div className="card-image-container">
-                  <img src={card.image} alt={card.title} loading="lazy" />
-                  <div className="badges">
-                    <div className="badges-top">
-                      <span className={`badge badge-type`}>{card.type}</span>
-                      <span className={`badge ${getStatusClass(card.status)}`}>
-                        {card.status}
-                      </span>
-                    </div>
-                    <div className="badges-bottom">
-                      {card.season > 1 && (
-                        <span className="badge badge-season">S{card.season}</span>
-                      )}
-                      <span className="badge badge-episode">EP{card.episode}</span>
-                    </div>
+            {isLoadingMore ? (
+              Array(cardsPerPage).fill().map((_, i) => (
+                <div key={i} className="card skeleton-card">
+                  <div className="skeleton-image"></div>
+                  <div className="skeleton-content">
+                    <div className="skeleton-title"></div>
+                    <div className="skeleton-text"></div>
                   </div>
                 </div>
-                <div className="card-info">
-                  <h3 title={card.title}>{card.title}</h3>
-                </div>
-              </Link>
-            ))}
+              ))
+            ) : (
+              currentCards.map(card => (
+                <Link 
+                  to={`/${card.type.toLowerCase()}/${createUrlSlug(card.title)}/episode-${formatEpisodeNumber(card.episode)}/${card.id}`} 
+                  key={card.id} 
+                  className="card"
+                >
+                  <div className="card-image-container">
+                    <img src={card.image} alt={card.title} loading="lazy" />
+                    <div className="badges">
+                      <div className="badges-top">
+                        <span className={`badge badge-type`}>{card.type}</span>
+                        <span className={`badge ${getStatusClass(card.status)}`}>
+                          {card.status}
+                        </span>
+                      </div>
+                      <div className="badges-bottom">
+                        {card.season > 1 && (
+                          <span className="badge badge-season">S{card.season}</span>
+                        )}
+                        <span className="badge badge-episode">EP{card.episode}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-info">
+                    <h3 title={card.title}>{card.title}</h3>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
 
           {totalPages > 1 && (

@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
 import { createUrlSlug, formatEpisodeNumber } from '../utils/urlFormatter'
+import { smoothScroll, throttledScroll } from '../utils/scrollHelpers'
 
 function CardSection({ title, cards }) {
   const [currentPage, setCurrentPage] = useState(1)
@@ -15,19 +16,39 @@ function CardSection({ title, cards }) {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber)
-    // Scroll to section header with offset for navbar
     const section = document.querySelector('.section-header')
-    if (section) {
-      const offset = 100
-      const elementPosition = section.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+    
+    // Use optimized scroll helper
+    smoothScroll(section, 100)
   }
+
+  // Add intersection observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              observer.unobserve(img);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '50px',
+        threshold: 0.1
+      }
+    );
+
+    // Observe all card images
+    document.querySelectorAll('.card-image').forEach(img => {
+      observer.observe(img);
+    });
+
+    return () => observer.disconnect();
+  }, [currentCards]);
 
   const getStatusClass = (status) => {
     return status.toLowerCase() === 'ongoing' ? 'badge-ongoing' : 'badge-completed'
