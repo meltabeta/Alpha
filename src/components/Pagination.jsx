@@ -1,78 +1,86 @@
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const getPageNumbers = () => {
-    const delta = window.innerWidth < 480 ? 0 : 1;
-    const range = [];
-    const rangeWithDots = [];
-    let l;
-
-    for (let i = 1; i <= totalPages; i++) {
-      if (i === 1 || i === totalPages || 
-          (i >= currentPage - delta && i <= currentPage + delta)) {
-        range.push(i);
-      }
+    if (window.innerWidth <= 768) {
+      // Mobile view: show current page and immediate neighbors
+      const pages = [];
+      if (currentPage > 1) pages.push(currentPage - 1);
+      pages.push(currentPage);
+      if (currentPage < totalPages) pages.push(currentPage + 1);
+      return pages;
     }
 
-    range.forEach(i => {
-      if (l) {
-        if (i - l === 2) {
-          rangeWithDots.push(l + 1);
-        } else if (i - l !== 1) {
-          rangeWithDots.push('...');
-        }
-      }
-      rangeWithDots.push(i);
-      l = i;
-    });
+    const delta = 1;
+    const range = [];
+    const rangeWithDots = [];
+
+    // Always show first page
+    rangeWithDots.push(1);
+
+    // Calculate range around current page
+    for (
+      let i = Math.max(2, currentPage - delta);
+      i <= Math.min(totalPages - 1, currentPage + delta);
+      i++
+    ) {
+      range.push(i);
+    }
+
+    // Add dots and range
+    if (currentPage - delta > 2) {
+      rangeWithDots.push('...');
+    }
+    rangeWithDots.push(...range);
+
+    // Add dots and last page
+    if (currentPage + delta < totalPages - 1) {
+      rangeWithDots.push('...');
+    }
+    if (totalPages > 1) {
+      rangeWithDots.push(totalPages);
+    }
 
     return rangeWithDots;
   };
 
   return (
-    <nav className="pagination" role="navigation" aria-label="Pagination">
+    <div className="pagination">
       <button 
-        className="pagination-button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         aria-label="Previous page"
       >
-        Previous
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
       </button>
-      
-      <div className="pagination-numbers">
-        {getPageNumbers().map((page, index) => (
-          page === '...' ? (
-            <span 
-              key={`dots-${index}`} 
-              className="pagination-dots"
-              aria-hidden="true"
-            >
-              ...
-            </span>
-          ) : (
-            <button
-              key={page}
-              className={`pagination-number ${currentPage === page ? 'active' : ''}`}
-              onClick={() => onPageChange(page)}
-              aria-label={`Page ${page}`}
-              aria-current={currentPage === page ? 'page' : undefined}
-            >
-              {page}
-            </button>
-          )
-        ))}
-      </div>
 
-      <button 
-        className="pagination-button"
+      {getPageNumbers().map((page, index) => (
+        page === '...' ? (
+          <span key={`dots-${index}`} className="pagination-dots">•••</span>
+        ) : (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`page-number ${currentPage === page ? 'active' : ''}`}
+            aria-label={`Page ${page}`}
+            aria-current={currentPage === page ? 'page' : undefined}
+          >
+            {page}
+          </button>
+        )
+      ))}
+
+      <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         aria-label="Next page"
       >
-        Next
-        <span className="page-info">Page {currentPage + 1}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
       </button>
-    </nav>
-  )
+    </div>
+  );
 }
 
-export default Pagination
+export default Pagination; 
