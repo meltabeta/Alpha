@@ -19,6 +19,9 @@ body {
     font-family: var(--font-primary);
     font-weight: 400;
     -webkit-overflow-scrolling: touch;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    width: 100%;
+    position: relative;
 }
 
 /* Navbar styling */
@@ -2036,4 +2039,103 @@ footer p, footer a {
 /* Add containment for better performance */
 .video-content-wrapper {
     contain: layout style paint;
+}
+
+/* Mobile adjustments for container and content */
+@media (max-width: 768px) {
+    /* Fix container padding */
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Reset content wrapper margins */
+    .content-wrapper {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Reset video content wrapper */
+    .video-content-wrapper {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Reset all section margins and make full width */
+    .video-player-section,
+    .playlist-info,
+    .comments-section,
+    .playlist-breadcrumb,
+    .header-section,
+    .recommendations-section,
+    .episodes-sidebar {
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    /* Consistent inner padding for all sections */
+    .video-player-section > *:not(.ratio-16x9),
+    .playlist-info > *,
+    .comments-section > *,
+    .playlist-breadcrumb > *,
+    .recommendations-section > *,
+    .episodes-sidebar > * {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Reset row margins and make consistent padding */
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Ensure grid columns have balanced padding */
+    .row > * {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    /* Adjust inner padding for smaller screens */
+    .video-player-section > *:not(.ratio-16x9),
+    .playlist-info > *,
+    .comments-section > *,
+    .playlist-breadcrumb > *,
+    .recommendations-section > *,
+    .episodes-sidebar > * {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    /* Adjust grid column padding for smaller screens */
+    .row > * {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 375px) {
+    /* Further reduce padding for very small screens */
+    .video-player-section > *:not(.ratio-16x9),
+    .playlist-info > *,
+    .comments-section > *,
+    .playlist-breadcrumb > *,
+    .recommendations-section > *,
+    .episodes-sidebar > * {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* Minimal padding for grid columns */
+    .row > * {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
 }
