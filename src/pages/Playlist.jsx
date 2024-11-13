@@ -7,7 +7,7 @@ import { createUrlSlug, formatEpisodeNumber } from '../utils/urlFormatter'
 import '../components/Playlist.css'
 
 function Playlist() {
-  const { type, id } = useParams()
+  const { type, title, episode, id } = useParams()
   const [card, setCard] = useState(null)
   const [videos, setVideos] = useState([])
   const [loading, setLoading] = useState(true)
@@ -16,6 +16,18 @@ function Playlist() {
   const [recommendedVideos, setRecommendedVideos] = useState([])
   const [currentVideo, setCurrentVideo] = useState(null)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!type || !title || !id) {
+      navigate('/404', { replace: true })
+      return
+    }
+
+    if (!['donghua', 'anime'].includes(type.toLowerCase())) {
+      navigate('/404', { replace: true })
+      return
+    }
+  }, [type, title, id, navigate])
 
   useEffect(() => {
     const fetchCardAndVideos = async () => {
@@ -169,13 +181,16 @@ function Playlist() {
     }
   }, [id, videos]) // Add id as dependency to reset when changing episodes
 
-  // Update the playlist item click handler
+  // Update the URL formatter
+  const formatPlaylistUrl = (videoData) => {
+    return `/${type.toLowerCase()}/${createUrlSlug(videoData.title)}/episode-${formatEpisodeNumber(videoData.episode)}/${videoData.id}`
+  }
+
+  // Update the video select handler
   const handleVideoSelect = (video, index) => {
     setSelectedVideo(index)
     setCurrentVideo(video)
-    
-    // Update URL to include episode number
-    const newUrl = `/${type}/${createUrlSlug(card.title)}/episode-${formatEpisodeNumber(video.episode)}/${id}`
+    const newUrl = formatPlaylistUrl(video)
     navigate(newUrl, { replace: true })
   }
 

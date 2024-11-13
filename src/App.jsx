@@ -22,15 +22,21 @@ function App() {
             <Route path="/ongoing" element={<FilteredView status="Ongoing" />} />
             <Route path="/completed" element={<FilteredView status="Completed" />} />
             
-            {/* Dynamic routes - Add more specific routes first */}
-            <Route path="/:type/:title/episode-:episode/:id" element={<Playlist />} />
-            <Route path="/:type/:title/:episode/:id" element={<Playlist />} />
-            <Route path="/:type/:title/:id" element={<Playlist />} />
+            {/* Dynamic routes with strict patterns */}
+            <Route 
+              path="/:type(donghua|anime)/:title/episode-:episode/:id" 
+              element={<Playlist />} 
+            />
+            <Route 
+              path="/:type(donghua|anime)/:title/:id" 
+              element={<Playlist />} 
+            />
             
             {/* Catch-all route for 404 */}
             <Route path="*" element={
               <div className="error-container">
                 <h2>404 - Page Not Found</h2>
+                <p>The page you're looking for might have been moved or deleted.</p>
                 <Link to="/" className="error-home-link">Return to Home</Link>
               </div>
             } />
