@@ -529,26 +529,32 @@ function initializeMobileEpisodes() {
     const episodesSidebar = document.getElementById('episodesSidebar');
 
     if (episodesToggle && episodesClose && episodesSidebar) {
-        episodesToggle.addEventListener('click', () => {
+        const throttledToggle = throttle(() => {
             episodesSidebar.classList.add('active');
             document.body.style.overflow = 'hidden';
-        });
+        }, 100);
 
+        episodesToggle.addEventListener('click', throttledToggle);
         episodesClose.addEventListener('click', closeMobileEpisodes);
 
-        // Close on backdrop click
-        episodesSidebar.addEventListener('click', (e) => {
-            if (e.target === episodesSidebar) {
-                closeMobileEpisodes();
-            }
-        });
+        // Optimize touch handling
+        let startY = 0;
+        let currentY = 0;
 
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && episodesSidebar.classList.contains('active')) {
+        episodesSidebar.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+        }, { passive: true });
+
+        const throttledTouchMove = throttle((e) => {
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+            
+            if (diff > 100) { // Threshold for closing
                 closeMobileEpisodes();
             }
-        });
+        }, 16);
+
+        episodesSidebar.addEventListener('touchmove', throttledTouchMove, { passive: true });
     }
 }
 
@@ -657,5 +663,17 @@ async function loadRecommendations(currentPlaylist) {
                     Failed to load recommendations. Please try again later.
                 </div>
             </div>`;
+    }
+}
+
+// Add throttle function at the top level
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
     }
 }

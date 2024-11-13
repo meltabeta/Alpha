@@ -18,6 +18,7 @@ body {
     color: var(--text-primary);
     font-family: var(--font-primary);
     font-weight: 400;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Navbar styling */
@@ -27,6 +28,10 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
     padding: 0.5rem 0;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .navbar-brand {
@@ -126,6 +131,9 @@ body {
     border: none;
     transition: transform 0.2s;
     margin-bottom: 1rem;
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .card:hover {
@@ -148,6 +156,8 @@ body {
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
+    content-visibility: auto;
+    contain: size layout paint;
 }
 
 /* Badge styling updates */
@@ -367,6 +377,9 @@ footer p, footer a {
     cursor: pointer;
     text-decoration: none;
     color: inherit;
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .search-result-card:hover {
@@ -640,6 +653,9 @@ footer p, footer a {
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .comment-header {
@@ -700,6 +716,9 @@ footer p, footer a {
     border-radius: 6px;
     margin-bottom: 0.75rem;
     font-size: clamp(0.75rem, 2vw, 0.875rem);
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .sidebar-comment-card:last-child {
@@ -1414,6 +1433,9 @@ footer p, footer a {
     height: 100%;
     position: sticky;
     top: 1rem;
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 /* Hide scrollbar but keep functionality */
@@ -1423,6 +1445,9 @@ footer p, footer a {
     -ms-overflow-style: none; /* IE and Edge */
     height: calc(100vh - 250px);
     padding-right: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .episodes-list {
@@ -1975,4 +2000,40 @@ footer p, footer a {
     .recommendations-section .card-title {
         font-size: 0.8rem;
     }
+}
+
+/* Update navbar brand styling */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color) !important;
+    padding: 0.25rem 0;
+}
+
+/* Add responsive adjustments for navbar */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem; /* Smaller font size for mobile */
+    }
+    
+    .navbar-logo {
+        width: 40px; /* Smaller logo size */
+        height: 40px;
+    }
+}
+
+@media (max-width: 375px) {
+    .navbar-brand {
+        font-size: 1rem; /* Even smaller font size for very small devices */
+    }
+    
+    .navbar-logo {
+        width: 35px; /* Even smaller logo size */
+        height: 35px;
+    }
+}
+
+/* Add containment for better performance */
+.video-content-wrapper {
+    contain: layout style paint;
 }

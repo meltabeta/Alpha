@@ -65,7 +65,13 @@ function createDonghuaCard(donghua) {
             <a href="playlist.html?id=${donghua.id}" class="card-link">
                 <div class="card h-100">
                     <div class="position-relative card-image-wrapper">
-                        <img src="${donghua.image}" class="card-img-top" alt="${donghua.title}" loading="lazy" onerror="this.onerror=null; this.src='path/to/fallback-image.jpg';">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
+                             data-src="${donghua.image}" 
+                             class="card-img-top lazy" 
+                             alt="${donghua.title}" 
+                             loading="lazy" 
+                             decoding="async"
+                             onerror="this.onerror=null; this.src='path/to/fallback-image.jpg';">
                         <span class="badge ${statusClass} status-badge">${donghua.status}</span>
                         <span class="badge bg-primary episode-badge">EP ${donghua.episode}</span>
                         ${ratingBadge}
@@ -339,6 +345,60 @@ document.addEventListener("DOMContentLoaded", () => {
         commentsSection.scrollIntoView({ behavior: "smooth" });
       }
     }
+  });
+
+  // Add throttled scroll handler
+  const throttledScroll = throttle(() => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const navbar = document.querySelector('.navbar');
+    
+    if (navbar) {
+      if (scrollTop > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    }
+  }, 100); // Throttle to run max once per 100ms
+
+  window.addEventListener('scroll', throttledScroll, { passive: true });
+
+  // Implement lazy loading with Intersection Observer
+  const lazyLoadImages = () => {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('img.lazy').forEach(img => {
+      imageObserver.observe(img);
+    });
+  };
+
+  // Initialize lazy loading
+  lazyLoadImages();
+
+  // Re-run lazy loading when new content is added
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.addedNodes.length) {
+        lazyLoadImages();
+      }
+    });
+  });
+
+  observer.observe(document.getElementById('dynamic-sections'), {
+    childList: true,
+    subtree: true
   });
 });
 
@@ -1044,5 +1104,17 @@ function createCard(item) {
             </a>
         </div>
     `;
+}
+
+// Add throttle function at the top level
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
 }
 
