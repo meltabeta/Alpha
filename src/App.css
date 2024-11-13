@@ -2648,3 +2648,77 @@ main {
   }
 }
 
+/* Performance Optimizations for Mobile Devices */
+@media (max-width: 768px) {
+  /* Optimize paint operations */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Reduce repaints for fixed elements */
+  .header,
+  .navbar,
+  .search-overlay,
+  .loading-indicator {
+    will-change: transform;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+
+  /* Optimize scrolling performance */
+  .app,
+  main,
+  .container {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Reduce animation complexity */
+  .card,
+  .search-toggle,
+  .mobile-menu-btn {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Optimize memory usage for images */
+  img {
+    content-visibility: auto;
+    contain: content;
+  }
+
+  /* Force GPU acceleration for smooth animations */
+  .navbar-content.active,
+  .search-overlay.active,
+  .mobile-menu-btn.active {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+}
+
+/* Additional optimizations for lower-end devices */
+@media (max-width: 480px) {
+  /* Reduce animation duration */
+  * {
+    transition-duration: 0.2s !important;
+  }
+
+  /* Disable hover effects on mobile */
+  .card:hover,
+  .nav-links a:hover,
+  .search-toggle:hover {
+    transform: none !important;
+  }
+
+  /* Optimize paint operations further */
+  .video-player,
+  .search-results-grid,
+  .cards-grid {
+    contain: content;
+    content-visibility: auto;
+  }
+}
+
