@@ -1,0 +1,1978 @@
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Dark theme colors */
+:root {
+    --primary-dark: #141414;
+    --secondary-dark: #1f1f1f;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-color: #e50914;
+    --hover-color: #ff161f;
+    --font-primary: 'Montserrat', sans-serif;
+}
+
+/* Base font settings */
+body {
+    background-color: var(--primary-dark);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: rgba(31, 31, 31, 0.95) !important;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color) !important;
+    padding: 0.25rem 0;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.2rem;
+    font-size: 0.85rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary) !important;
+}
+
+.nav-link.active {
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* Header styling */
+.header-section {
+    position: relative;
+    padding: 6rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://i.pinimg.com/736x/77/fa/0a/77fa0a7f9ca32a4725e35c1f8b519b34.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.header-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+        rgba(31, 31, 31, 0.8) 0%,
+        rgba(20, 20, 20, 0.95) 100%);
+    z-index: 1;
+}
+
+.header-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Card styling updates for slim design */
+.card {
+    background-color: transparent;
+    border: none;
+    transition: transform 0.2s;
+    margin-bottom: 1rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 0.5rem 0;
+}
+
+.card-title {
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Badge styling updates */
+.badge {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+}
+
+.status-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+}
+
+.episode-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+}
+
+.rating-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 1;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--secondary-dark) !important;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* Loading spinner */
+.spinner-border {
+    color: var(--accent-color);
+}
+
+/* Logo styling */
+.navbar-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+    mask-image: radial-gradient(circle, white 100%, black 100%);
+}
+
+/* Favicon styling */
+link[rel="icon"] {
+    border-radius: 50%;
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+    mask-image: radial-gradient(circle, white 100%, black 100%);
+}
+
+/* Section styling */
+.section-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+/* Pagination styling */
+.pagination {
+    margin-bottom: 0;
+    gap: 0.25rem;
+}
+
+.page-link {
+    background-color: var(--secondary-dark);
+    border-color: var(--primary-dark);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.6rem;
+    min-width: 34px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.page-link:hover:not(.disabled) {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.page-item.active .page-link {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    cursor: default;
+}
+
+.page-item.disabled .page-link {
+    background-color: var(--secondary-dark);
+    border-color: var(--primary-dark);
+    opacity: 0.5;
+}
+
+.page-link i {
+    font-size: 0.7rem;
+}
+
+/* Footer text sizes */
+footer h5 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+footer p, footer a {
+    font-size: 0.85rem;
+}
+
+/* Search Overlay */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.98);
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.search-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.search-header h2 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.btn-close-search {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-close-search:hover {
+    color: var(--text-primary);
+}
+
+.search-input-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    background-color: var(--secondary-dark);
+    border: 2px solid var(--secondary-dark);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.search-results {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Search Result Cards */
+.search-result-card {
+    display: flex;
+    background-color: var(--secondary-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-result-card:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.result-image {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.result-info {
+    padding: 0.75rem;
+    flex: 1;
+    min-width: 0; /* Prevent text overflow */
+}
+
+.result-title {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+}
+
+.result-meta {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.result-meta .badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+}
+
+/* No Results State */
+.no-results {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 3rem 0;
+}
+
+/* Scrollbar Styling */
+.search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: var(--primary-dark);
+    border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: var(--secondary-dark);
+    border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Add styles for the search trigger button */
+.search-trigger {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    border: none;
+    background: none;
+}
+
+.search-trigger:hover {
+    color: var(--accent-color) !important;
+}
+
+.search-trigger:focus {
+    box-shadow: none;
+}
+
+/* Quick Links styling */
+.quick-link {
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 0.3rem 0;
+}
+
+.quick-link:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Developer credit styling */
+.developer-credit {
+    font-size: 0.85rem;
+}
+
+.developer-credit .text-accent {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Add sidebar styling */
+.sidebar {
+    background-color: var(--secondary-dark);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: sticky;
+    top: 100px;
+    height: max-content;
+    align-self: start;
+}
+
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.filter-section:last-child {
+    margin-bottom: 0;
+}
+
+.filter-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-item {
+    margin-bottom: 0.5rem;
+}
+
+.filter-item:last-child {
+    margin-bottom: 0;
+}
+
+.filter-checkbox {
+    display: none;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-label:hover {
+    color: var(--text-primary);
+}
+
+.filter-checkbox:checked + .filter-label {
+    color: var(--accent-color);
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 4px;
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.filter-checkbox:checked + .filter-label .custom-checkbox {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.custom-checkbox::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.filter-checkbox:checked + .filter-label .custom-checkbox::after {
+    opacity: 1;
+}
+
+/* Update main content layout */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 991px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        position: static;
+        margin-bottom: 2rem;
+        height: auto;
+    }
+}
+
+/* Comments Section Styling */
+.comments-section {
+    background-color: var(--secondary-dark);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+}
+
+@media (max-width: 991px) {
+    .comments-section {
+        padding: 1.5rem;
+    }
+}
+
+.comment-form-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.comment-form .form-control {
+    background-color: var(--primary-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.comment-form .form-control:focus {
+    background-color: var(--primary-dark);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
+    color: var(--text-primary);
+}
+
+.comment-form .form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+
+.btn-accent:hover {
+    background-color: var(--hover-color);
+    color: var(--text-primary);
+}
+
+/* Comment Card Styling */
+.comment-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.commenter-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.comment-type {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.comment-type.feedback {
+    background-color: #0d6efd;
+}
+
+.comment-type.request {
+    background-color: #198754;
+}
+
+.comment-type.issue {
+    background-color: #dc3545;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.comment-text {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    white-space: pre-wrap;
+}
+
+.loading-comments {
+    padding: 2rem;
+}
+
+/* Add sidebar comments styling */
+.sidebar-comments {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-comment-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.sidebar-comment-card:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar-comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.sidebar-commenter-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.sidebar-comment-type {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+}
+
+.sidebar-comment-date {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.sidebar-comment-text {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.view-all-comments {
+    display: block;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 0.75rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.view-all-comments:hover {
+    background-color: rgba(229, 9, 20, 0.1);
+    color: var(--accent-color);
+}
+
+/* Comments pagination styling */
+.comments-pagination .pagination {
+    margin-bottom: 0;
+}
+
+.comments-pagination .page-link {
+    padding: 0.5rem 0.75rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.comment-card {
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state for comments */
+.comments-loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.comments-loading .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Empty state for comments */
+.comments-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.comments-empty i {
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Responsive container widths */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1520px;
+    }
+}
+
+/* Grid columns for different screen sizes */
+@media (min-width: 1400px) {
+    .row-cols-xxl-5 > * {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Mobile adjustments */
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .sidebar {
+        position: static;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        height: auto;
+    }
+
+    .filter-section {
+        margin-bottom: 1rem;
+    }
+
+    .filter-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .filter-label {
+        font-size: 0.8rem;
+    }
+
+    .custom-checkbox {
+        width: 16px;
+        height: 16px;
+        margin-right: 0.5rem;
+    }
+
+    .card-img-top {
+        height: 140px;
+    }
+
+    .header-section {
+        padding: 2rem 0;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .navbar-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Improve mobile comment cards */
+    .sidebar-comment-card {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .sidebar-comment-text {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .view-all-comments {
+        font-size: 0.75rem;
+        padding: 0.4rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Improve right side content responsiveness */
+    .row-cols-2 > * {
+        width: 50%;
+        padding: 0.25rem;
+    }
+
+    #dynamic-sections .row {
+        margin: 0 -0.25rem;
+    }
+
+    .card {
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body {
+        padding: 0.25rem 0;
+    }
+
+    .card-title {
+        font-size: 0.75rem;
+        line-height: 1.2;
+        margin-top: 0.25rem;
+    }
+
+    /* Adjust badges for smaller cards */
+    .status-badge,
+    .episode-badge,
+    .rating-badge {
+        font-size: 0.6rem;
+        padding: 0.15rem 0.3rem;
+    }
+
+    .status-badge,
+    .episode-badge {
+        top: 4px;
+    }
+
+    .status-badge {
+        right: 4px;
+    }
+
+    .episode-badge {
+        left: 4px;
+    }
+
+    .rating-badge {
+        bottom: 4px;
+        right: 4px;
+    }
+
+    /* Improve section spacing */
+    .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.25rem;
+    }
+
+    section.mb-5 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Adjust pagination for mobile */
+    .pagination {
+        gap: 0.15rem;
+    }
+
+    .page-link {
+        padding: 0.25rem 0.4rem;
+        min-width: 28px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+    .row-cols-2 > * {
+        padding: 0.2rem;
+    }
+
+    #dynamic-sections .row {
+        margin: 0 -0.2rem;
+    }
+
+    .card-title {
+        font-size: 0.7rem;
+    }
+
+    .status-badge,
+    .episode-badge,
+    .rating-badge {
+        font-size: 0.55rem;
+        padding: 0.1rem 0.25rem;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991px) {
+    .row-cols-md-3 > * {
+        flex: 0 0 auto;
+        width: 33.333333%;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+/* Comments section responsive */
+@media (max-width: 576px) {
+    .comments-section {
+        padding: 1rem;
+    }
+
+    .comment-card {
+        padding: 0.75rem;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .comment-date {
+        margin-top: 0.25rem;
+    }
+}
+
+/* Search overlay responsive */
+@media (max-width: 768px) {
+    .search-container {
+        margin: 0.75rem;
+    }
+
+    .search-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .search-input {
+        font-size: 0.9rem;
+        padding: 0.75rem 2.5rem 0.75rem 1rem;
+    }
+
+    .search-result-card {
+        margin-bottom: 0.5rem;
+    }
+
+    .result-image {
+        width: 60px;
+        height: 90px;
+    }
+
+    .result-info {
+        padding: 0.5rem;
+    }
+
+    .result-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.35rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .result-meta .badge {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.35rem;
+    }
+}
+
+/* Better spacing for cards on different screens */
+@media (min-width: 992px) {
+    .g-lg-4 {
+        --bs-gutter-x: 2rem;
+        --bs-gutter-y: 2rem;
+    }
+}
+
+/* Adjust navigation for mobile */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: var(--secondary-dark);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Adjust spacing between buttons */
+    .navbar-actions .btn-link {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Add sidebar overlay styles */
+@media (max-width: 991px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 9999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        margin: 0;
+        border-radius: 0;
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .btn-close-sidebar {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .btn-close-sidebar:hover {
+        color: var(--text-primary);
+    }
+
+    /* Add toggle button for sidebar */
+    .sidebar-toggle {
+        display: block;
+        padding: 0.5rem;
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .sidebar-toggle:hover {
+        color: var(--accent-color);
+    }
+}
+
+/* Hide toggle button on larger screens */
+@media (min-width: 992px) {
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .sidebar-header {
+        display: none;
+    }
+}
+
+/* Add these styles for the navbar actions */
+.navbar-actions {
+    order: 2;
+}
+
+.navbar-actions .btn-link {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.navbar-actions .btn-link:hover {
+    color: var(--text-primary);
+}
+
+/* Playlist Page Styles */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover {
+    color: inherit;
+}
+
+.playlist-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.playlist-title {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.playlist-meta {
+    margin-bottom: 1.5rem;
+}
+
+.playlist-info {
+    color: var(--text-secondary);
+}
+
+.episode-card {
+    transition: transform 0.2s;
+}
+
+.episode-card:hover {
+    transform: translateY(-3px);
+}
+
+.episode-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.episode-title {
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.episode-meta {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .playlist-title {
+        font-size: 1.5rem;
+    }
+    
+    .playlist-info {
+        font-size: 0.9rem;
+    }
+}
+
+/* Playlist Header Specific Styles */
+.playlist-header {
+    padding: 3rem 0;
+    margin-bottom: 0;
+}
+
+.playlist-header .breadcrumb {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    z-index: 2;
+    position: relative;
+}
+
+.playlist-header .breadcrumb-item {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.playlist-header .breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-secondary);
+}
+
+.playlist-header .breadcrumb-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.playlist-header .breadcrumb-item a:hover {
+    color: var(--accent-color);
+}
+
+.playlist-header .breadcrumb-item.active {
+    color: var(--text-secondary);
+}
+
+/* Adjust header background for playlist page */
+.playlist-header .header-background {
+    opacity: 0.2;
+}
+
+/* Mobile adjustments for playlist header */
+@media (max-width: 768px) {
+    .playlist-header {
+        padding: 2rem 0;
+    }
+
+    .playlist-header .breadcrumb {
+        font-size: 0.8rem;
+    }
+}
+
+/* Update video player section styles */
+.video-player-section {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+/* Update iframe container styles */
+.ratio {
+    background-color: var(--primary-dark);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ratio::before {
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-player-section iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--primary-dark);
+}
+
+/* Fix for specific video platforms */
+.video-player-section iframe[src*="dailymotion.com"],
+.video-player-section iframe[src*="rumble.com"] {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    border-radius: 8px !important;
+}
+
+/* Remove loading state styles */
+.ratio::after {
+    display: none;
+}
+
+.ratio iframe {
+    opacity: 1;
+}
+
+/* Update playlist info styles for new position */
+.playlist-info {
+    background-color: var(--secondary-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.playlist-image img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+    .playlist-info {
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Update video content wrapper styles */
+.video-content-wrapper {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Update column widths and spacing */
+.video-player-column {
+    flex: 1;
+    max-width: 70%;
+}
+
+.episodes-sidebar {
+    width: 30%;
+    background-color: var(--secondary-dark);
+    border-radius: 8px;
+    padding: 1rem;
+    height: 100%;
+    position: sticky;
+    top: 1rem;
+}
+
+/* Hide scrollbar but keep functionality */
+.episodes-list-wrapper {
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    height: calc(100vh - 250px);
+    padding-right: 0.5rem;
+}
+
+.episodes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Update episode card styles */
+.episode-card {
+    background-color: rgba(31, 31, 31, 0.5);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+    .video-content-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .video-player-column,
+    .episodes-sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .episodes-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 400px;
+        background-color: var(--secondary-dark);
+        z-index: 1050;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding: 1rem;
+        overflow-y: auto;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .episodes-sidebar.active {
+        transform: translateX(0);
+    }
+
+    /* Add backdrop when sidebar is open */
+    .episodes-backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1049;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .episodes-backdrop.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Improve close button styling */
+    .episodes-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.25rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        z-index: 1;
+        transition: color 0.3s ease;
+    }
+
+    .episodes-close:hover {
+        color: var(--text-primary);
+    }
+
+    /* Add toggle button for episodes list */
+    .episodes-toggle {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        color: var(--text-primary);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        z-index: 1048;
+        transition: background-color 0.3s ease;
+    }
+
+    .episodes-toggle:hover {
+        background-color: var(--hover-color);
+    }
+
+    /* Adjust episodes list wrapper height */
+    .episodes-list-wrapper {
+        height: calc(100vh - 150px);
+        padding-bottom: 2rem;
+    }
+
+    /* Improve section title spacing */
+    .section-title {
+        margin-top: 0;
+        padding-right: 40px;
+    }
+}
+
+/* Hide toggle button on larger screens */
+@media (min-width: 992px) {
+    .episodes-toggle,
+    .episodes-backdrop {
+        display: none;
+    }
+}
+
+/* Episode search and controls */
+.episodes-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.episode-search {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+.episode-search:focus {
+    outline: none;
+}
+
+.episode-search::placeholder {
+    color: var(--text-secondary);
+}
+
+.sort-button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sort-button:hover {
+    color: var(--text-primary);
+}
+
+.sort-button.active {
+    color: var(--accent-color);
+}
+
+/* Loading indicator */
+.load-more {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.load-more:hover {
+    color: var(--accent-color);
+}
+
+.load-more i {
+    margin-right: 0.5rem;
+}
+
+/* Update breadcrumb styles */
+.playlist-breadcrumb {
+    background-color: var(--secondary-dark);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.playlist-breadcrumb .breadcrumb {
+    margin: 0;
+    padding: 0;
+}
+
+.playlist-breadcrumb .breadcrumb-item {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.playlist-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-secondary);
+}
+
+.playlist-breadcrumb .breadcrumb-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.playlist-breadcrumb .breadcrumb-item a:hover {
+    color: var(--accent-color);
+}
+
+.playlist-breadcrumb .breadcrumb-item.active {
+    color: var(--text-secondary);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .playlist-breadcrumb {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .playlist-breadcrumb .breadcrumb-item {
+        font-size: 0.8rem;
+    }
+}
+
+/* Update playlist info styles */
+.playlist-info {
+    background-color: var(--secondary-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.playlist-info-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.playlist-image {
+    flex: 0 0 200px; /* Fixed width for image container */
+}
+
+.playlist-image-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.playlist-badges {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+.playlist-badges .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+}
+
+.playlist-title-wrapper {
+    margin-bottom: 1rem;
+}
+
+.playlist-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.playlist-details {
+    flex: 1;
+    min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.playlist-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .playlist-info-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .playlist-image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .playlist-title {
+        font-size: 1.25rem;
+        text-align: left;
+    }
+
+    .playlist-badges {
+        flex-direction: row;
+        gap: 0.35rem;
+    }
+
+    .playlist-badges .badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .playlist-info {
+        padding: 1rem;
+    }
+
+    .playlist-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .playlist-title {
+        font-size: 1.1rem;
+    }
+
+    .playlist-badges .badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* Update video player section styles */
+.video-player-section {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+/* Update current episode title */
+#currentEpisodeTitle {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-top: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .video-content-wrapper {
+        gap: 0.75rem;
+    }
+
+    .video-player-section {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    #currentEpisodeTitle {
+        font-size: 1rem;
+        margin-top: 0.75rem;
+    }
+
+    /* Adjust playlist info for mobile */
+    .playlist-info {
+        padding: 0.75rem;
+    }
+
+    .playlist-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .playlist-meta .badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .playlist-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .video-player-section {
+        padding: 0.5rem;
+    }
+
+    #currentEpisodeTitle {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    .playlist-title {
+        font-size: 1.1rem;
+    }
+
+    .playlist-meta .badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .playlist-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* Ensure video maintains aspect ratio */
+.ratio-16x9 {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: var(--primary-dark);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ratio-16x9 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .video-content-wrapper {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+
+    .video-player-column {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .playlist-breadcrumb {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .playlist-info {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        padding: 1rem;
+    }
+
+    /* Adjust episode sidebar for mobile */
+    .episodes-sidebar {
+        padding: 1rem 0.5rem;
+    }
+
+    /* Adjust search overlay for mobile */
+    .search-container {
+        margin: 0;
+        padding: 0.75rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .video-content-wrapper {
+        margin-left: -0.25rem;
+        margin-right: -0.25rem;
+    }
+
+    .video-player-column {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .playlist-breadcrumb,
+    .playlist-info {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+    }
+
+    .episodes-sidebar {
+        padding: 0.75rem 0.25rem;
+    }
+}
+
+/* Recommendations Section */
+.recommendations-section {
+    background-color: var(--secondary-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.recommendations-section .card {
+    background-color: rgba(31, 31, 31, 0.5);
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.recommendations-section .card:hover {
+    transform: translateY(-3px);
+}
+
+.recommendations-section .card-title {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .recommendations-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .recommendations-section .card-title {
+        font-size: 0.8rem;
+    }
+}
