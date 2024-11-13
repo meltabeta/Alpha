@@ -522,46 +522,101 @@ function playVideo(episode) {
     }
 }
 
-// Add these functions to handle mobile episodes sidebar
+// Update initializeMobileEpisodes function
 function initializeMobileEpisodes() {
     const episodesToggle = document.getElementById('episodesToggle');
     const episodesClose = document.getElementById('episodesClose');
     const episodesSidebar = document.getElementById('episodesSidebar');
+    const episodesBackdrop = document.getElementById('episodesBackdrop');
 
     if (episodesToggle && episodesClose && episodesSidebar) {
-        const throttledToggle = throttle(() => {
-            episodesSidebar.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }, 100);
-
-        episodesToggle.addEventListener('click', throttledToggle);
-        episodesClose.addEventListener('click', closeMobileEpisodes);
-
-        // Optimize touch handling
-        let startY = 0;
-        let currentY = 0;
+        // Add touch gesture handling
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const SWIPE_THRESHOLD = 100;
 
         episodesSidebar.addEventListener('touchstart', (e) => {
-            startY = e.touches[0].clientY;
+            touchStartY = e.touches[0].clientY;
         }, { passive: true });
 
-        const throttledTouchMove = throttle((e) => {
-            currentY = e.touches[0].clientY;
-            const diff = currentY - startY;
+        episodesSidebar.addEventListener('touchmove', (e) => {
+            touchEndY = e.touches[0].clientY;
+            const diffY = touchEndY - touchStartY;
             
-            if (diff > 100) { // Threshold for closing
+            // Only allow downward swipe
+            if (diffY > 0) {
+                episodesSidebar.style.transform = `translateY(${diffY}px)`;
+                episodesSidebar.style.transition = 'none';
+                
+                // Adjust backdrop opacity based on swipe distance
+                if (episodesBackdrop) {
+                    const opacity = Math.max(0.5 - (diffY / (SWIPE_THRESHOLD * 2)), 0);
+                    episodesBackdrop.style.opacity = opacity;
+                }
+            }
+        }, { passive: true });
+
+        episodesSidebar.addEventListener('touchend', () => {
+            const diffY = touchEndY - touchStartY;
+            
+            episodesSidebar.style.transition = 'transform 0.3s ease';
+            
+            if (diffY > SWIPE_THRESHOLD) {
+                closeMobileEpisodes();
+            } else {
+                // Reset position
+                episodesSidebar.style.transform = '';
+                if (episodesBackdrop) {
+                    episodesBackdrop.style.opacity = '0.5';
+                }
+            }
+            
+            // Reset touch coordinates
+            touchStartY = 0;
+            touchEndY = 0;
+        });
+
+        // Toggle episodes sidebar
+        episodesToggle.addEventListener('click', () => {
+            episodesSidebar.classList.add('active');
+            if (episodesBackdrop) {
+                episodesBackdrop.classList.add('active');
+            }
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close button handler
+        episodesClose.addEventListener('click', closeMobileEpisodes);
+
+        // Backdrop click handler
+        if (episodesBackdrop) {
+            episodesBackdrop.addEventListener('click', closeMobileEpisodes);
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && episodesSidebar.classList.contains('active')) {
                 closeMobileEpisodes();
             }
-        }, 16);
-
-        episodesSidebar.addEventListener('touchmove', throttledTouchMove, { passive: true });
+        });
     }
 }
 
+// Update closeMobileEpisodes function
 function closeMobileEpisodes() {
     const episodesSidebar = document.getElementById('episodesSidebar');
+    const episodesBackdrop = document.getElementById('episodesBackdrop');
+    
     if (episodesSidebar) {
+        episodesSidebar.style.transform = '';
+        episodesSidebar.style.transition = 'transform 0.3s ease';
         episodesSidebar.classList.remove('active');
+        
+        if (episodesBackdrop) {
+            episodesBackdrop.classList.remove('active');
+            episodesBackdrop.style.opacity = '0.5';
+        }
+        
         document.body.style.overflow = '';
     }
 }
