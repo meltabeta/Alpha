@@ -1994,7 +1994,8 @@ main {
   }
 
   .brand-name {
-    font-size: 1.2rem; /* Reduced from 1.3rem */
+    font-size: 1.1rem; /* Reduced from 1.2rem */
+    letter-spacing: 0.3px;
   }
 
   /* Adjust mobile menu positioning */
@@ -2022,9 +2023,10 @@ main {
   .nav-links a {
     display: block;
     padding: 0.8rem 1rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: left;
     border-radius: 8px;
+    letter-spacing: 0.3px;
   }
 
   /* Adjust search overlay for mobile */
@@ -2042,7 +2044,7 @@ main {
   }
 
   .search-bar input {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding: 0.4rem;
   }
 }
@@ -2062,7 +2064,7 @@ main {
   }
 
   .brand-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   /* Adjust content padding */
@@ -2570,5 +2572,35 @@ main {
   .loading-spinner {
     animation-duration: 1.5s;
   }
+}
+
+/* Optimize text rendering for mobile */
+@media (max-width: 768px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* URL Formatting */
+.episode-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Add URL format helper */
+.episode-url {
+  /* Hide by default */
+  display: none;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+}
+
+/* Show URL format on hover for admin/debug */
+.episode-url.debug {
+  display: block;
 }
 
