@@ -212,7 +212,6 @@ async function loadPlaylistDetails(playlistId) {
         showError('Failed to load playlist details. Please try again later.');
     }
 }
-
 function displayPlaylistInfo(playlist) {
     const playlistImage = document.getElementById('playlistImage');
     const playlistDetails = document.getElementById('playlistDetails');
@@ -267,6 +266,8 @@ function displayEpisodesList(episodes, reset = false) {
     episodesList.insertAdjacentHTML('beforeend', nextEpisodes.map(episode => createEpisodeCard(episode)).join(''));
     
     displayedEpisodes = end;
+    
+    // Show/hide loading spinner based on whether there are more episodes
     loadMore.style.display = displayedEpisodes < currentEpisodes.length ? 'block' : 'none';
 
     // Add click handlers for new episodes
@@ -282,12 +283,21 @@ function displayEpisodesList(episodes, reset = false) {
             document.querySelectorAll('.episode-card').forEach(card => {
                 card.classList.remove('active');
             });
-            link.closest('.episode-card').classList.add('active');
+            link.querySelector('.episode-card').classList.add('active');
         });
     });
+
+    if (reset && currentEpisode) {
+        setTimeout(() => {
+            const activeCard = episodesList.querySelector('.episode-card.active');
+            if (activeCard) {
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 100);
+    }
 }
 
-// Add this function to initialize episode controls
+// Update initializeEpisodeControls function
 function initializeEpisodeControls() {
     const searchInput = document.getElementById('episodeSearch');
     const sortButton = document.getElementById('sortButton');
@@ -307,21 +317,17 @@ function initializeEpisodeControls() {
     // Sort functionality
     sortButton.addEventListener('click', () => {
         isDescending = !isDescending;
-        sortButton.querySelector('i').className = isDescending ? 
-            'fas fa-sort-amount-down' : 'fas fa-sort-amount-up';
+        
+        // Update sort button icon
+        sortButton.innerHTML = `<i class="fas fa-sort-amount-${isDescending ? 'down' : 'up'}"></i>`;
         
         currentEpisodes.reverse();
         displayEpisodesList(currentEpisodes, true);
     });
 
-    // Remove click event from load more button since we'll use scroll
-    if (loadMore) {
-        loadMore.style.display = 'none';
-    }
-
-    // Add scroll event listener for infinite loading
+    // Initialize infinite scroll
     let isLoading = false;
-    episodesListWrapper.addEventListener('scroll', () => {
+    const handleScroll = throttle(() => {
         if (isLoading) return;
 
         const {scrollTop, scrollHeight, clientHeight} = episodesListWrapper;
@@ -330,11 +336,9 @@ function initializeEpisodeControls() {
         if (scrollHeight - scrollTop - clientHeight < 100) {
             if (displayedEpisodes < currentEpisodes.length) {
                 isLoading = true;
-                
-                // Show loading spinner
                 loadMore.style.display = 'block';
                 
-                // Use setTimeout to simulate loading and prevent rapid firing
+                // Use setTimeout to prevent rapid firing
                 setTimeout(() => {
                     displayEpisodesList(currentEpisodes);
                     isLoading = false;
@@ -346,7 +350,9 @@ function initializeEpisodeControls() {
                 }, 300);
             }
         }
-    });
+    }, 200); // Throttle to once every 200ms
+
+    episodesListWrapper.addEventListener('scroll', handleScroll);
 }
 
 // Debounce helper function
@@ -362,22 +368,31 @@ function debounce(func, wait) {
     };
 }
 
+// Update the createEpisodeCard function
 function createEpisodeCard(episode) {
     const isActive = currentEpisode && currentEpisode.episode === episode.episode;
-    const episodeTitle = episode.episode.includes(' - ') ? 
-        `Episodes ${episode.episode}` : 
-        `Episode ${episode.episode}`;
-
     return `
-        <div class="episode-card ${isActive ? 'active' : ''}">
-            <a href="#" class="episode-link" data-episode='${JSON.stringify(episode)}'>
-                <div class="episode-title">${episodeTitle}</div>
-                <div class="episode-meta">
-                    <span class="episode-date">${new Date(episode.postingVideoDate).toLocaleDateString()}</span>
+        <a href="#" class="episode-link" data-episode='${JSON.stringify(episode)}'>
+            <div class="episode-card ${isActive ? 'active' : ''}">
+                <div class="episode-number">
+                    ${episode.episode.includes(' - ') ? 
+                        episode.episode.split(' - ')[0] : 
+                        episode.episode}
                 </div>
-            </a>
-        </div>
-    `;
+                <div class="episode-info">
+                    <div class="episode-title">
+                        ${episode.episode.includes(' - ') ? 
+                            episode.episode.split(' - ')[1] : 
+                            `Episode ${episode.episode}`}
+                    </div>
+                    ${episode.duration ? 
+                        `<div class="episode-duration">
+                            <i class="far fa-clock"></i> ${episode.duration}
+                        </div>` : 
+                        ''}
+                </div>
+            </div>
+        </a>`;
 }
 
 function setupPagination(totalEpisodes) {
@@ -440,7 +455,6 @@ function showError(message) {
         </div>
     `;
 }
-
 // Add these variables at the top of the file
 let currentEpisode = null;
 let currentPlaylist = null;
@@ -489,181 +503,25 @@ function playVideo(episode) {
     // Update video source and attributes
     videoPlayer.src = embedUrl;
     
-    // Add additional attributes for better compatibility
-    videoPlayer.setAttribute('frameborder', '0');
-    videoPlayer.setAttribute('allowfullscreen', 'true');
-    videoPlayer.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-    
-    // Set title and breadcrumb based on episode format
+    // Set title and breadcrumb
     let episodeTitle = episode.episode;
     let breadcrumbText = episodeTitle.includes(' - ') ? 
         `Episodes ${episodeTitle}` : 
         `Episode ${episodeTitle}`;
     
-    // Update breadcrumb
     episodeBreadcrumb.textContent = breadcrumbText;
-    
-    // Update episode title
-    if (episodeTitle.includes(' - ')) {
-        currentEpisodeTitle.textContent = `${currentPlaylist.title} - Episodes ${episodeTitle}`;
-    } else {
-        currentEpisodeTitle.textContent = `${currentPlaylist.title} - Episode ${episodeTitle}`;
-    }
+    currentEpisodeTitle.textContent = episodeTitle.includes(' - ') ?
+        `${currentPlaylist.title} - Episodes ${episodeTitle}` :
+        `${currentPlaylist.title} - Episode ${episodeTitle}`;
     
     // Update URL
     const url = new URL(window.location.href);
     url.searchParams.set('episode', episode.episode);
     window.history.pushState({}, '', url);
     
-    displayEpisodesList(currentPlaylist.episodes, currentPage);
-
-    if (window.innerWidth < 992) {
-        closeMobileEpisodes();
-    }
+    // Scroll to video player
+    videoPlayerSection.scrollIntoView({ behavior: 'smooth' });
 }
-
-// Update initializeMobileEpisodes function
-function initializeMobileEpisodes() {
-    const episodesToggle = document.getElementById('episodesToggle');
-    const episodesClose = document.getElementById('episodesClose');
-    const episodesSidebar = document.getElementById('episodesSidebar');
-    const episodesBackdrop = document.getElementById('episodesBackdrop');
-
-    if (episodesToggle && episodesClose && episodesSidebar) {
-        // Add touch gesture handling
-        let touchStartY = 0;
-        let touchEndY = 0;
-        const SWIPE_THRESHOLD = 100;
-
-        episodesSidebar.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-
-        episodesSidebar.addEventListener('touchmove', (e) => {
-            touchEndY = e.touches[0].clientY;
-            const diffY = touchEndY - touchStartY;
-            
-            // Only allow downward swipe
-            if (diffY > 0) {
-                episodesSidebar.style.transform = `translateY(${diffY}px)`;
-                episodesSidebar.style.transition = 'none';
-                
-                // Adjust backdrop opacity based on swipe distance
-                if (episodesBackdrop) {
-                    const opacity = Math.max(0.5 - (diffY / (SWIPE_THRESHOLD * 2)), 0);
-                    episodesBackdrop.style.opacity = opacity;
-                }
-            }
-        }, { passive: true });
-
-        episodesSidebar.addEventListener('touchend', () => {
-            const diffY = touchEndY - touchStartY;
-            
-            episodesSidebar.style.transition = 'transform 0.3s ease';
-            
-            if (diffY > SWIPE_THRESHOLD) {
-                closeMobileEpisodes();
-            } else {
-                // Reset position
-                episodesSidebar.style.transform = '';
-                if (episodesBackdrop) {
-                    episodesBackdrop.style.opacity = '0.5';
-                }
-            }
-            
-            // Reset touch coordinates
-            touchStartY = 0;
-            touchEndY = 0;
-        });
-
-        // Toggle episodes sidebar
-        episodesToggle.addEventListener('click', () => {
-            episodesSidebar.classList.add('active');
-            if (episodesBackdrop) {
-                episodesBackdrop.classList.add('active');
-            }
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Close button handler
-        episodesClose.addEventListener('click', closeMobileEpisodes);
-
-        // Backdrop click handler
-        if (episodesBackdrop) {
-            episodesBackdrop.addEventListener('click', closeMobileEpisodes);
-        }
-
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && episodesSidebar.classList.contains('active')) {
-                closeMobileEpisodes();
-            }
-        });
-    }
-}
-
-// Update closeMobileEpisodes function
-function closeMobileEpisodes() {
-    const episodesSidebar = document.getElementById('episodesSidebar');
-    const episodesBackdrop = document.getElementById('episodesBackdrop');
-    
-    if (episodesSidebar) {
-        episodesSidebar.style.transform = '';
-        episodesSidebar.style.transition = 'transform 0.3s ease';
-        episodesSidebar.classList.remove('active');
-        
-        if (episodesBackdrop) {
-            episodesBackdrop.classList.remove('active');
-            episodesBackdrop.style.opacity = '0.5';
-        }
-        
-        document.body.style.overflow = '';
-    }
-}
-
-// Initialize mobile episodes functionality
-document.addEventListener('DOMContentLoaded', () => {
-    initializeMobileEpisodes();
-});
-
-// Add this to your existing JavaScript code
-function initializeEpisodesSidebar() {
-    const sidebar = document.getElementById('episodesSidebar');
-    const backdrop = document.getElementById('episodesBackdrop');
-    const toggleBtn = document.getElementById('episodesToggle');
-    const closeBtn = document.getElementById('episodesClose');
-
-    function openSidebar() {
-        sidebar.classList.add('active');
-        backdrop.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-        backdrop.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Toggle button click handler
-    toggleBtn.addEventListener('click', openSidebar);
-
-    // Close button click handler
-    closeBtn.addEventListener('click', closeSidebar);
-
-    // Backdrop click handler
-    backdrop.addEventListener('click', closeSidebar);
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-            closeSidebar();
-        }
-    });
-}
-
-// Call this function after the DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeEpisodesSidebar);
 
 // Add this function to load recommendations
 async function loadRecommendations(currentPlaylist) {
@@ -732,3 +590,5 @@ function throttle(func, limit) {
         }
     }
 }
+
+
