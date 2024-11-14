@@ -251,42 +251,35 @@ const LOAD_INCREMENT = 10;
 // Update the displayEpisodesList function
 function displayEpisodesList(episodes, reset = false) {
     const episodesList = document.getElementById('episodesList');
-    const loadMore = document.getElementById('loadMore');
     
     if (reset) {
         episodesList.innerHTML = '';
-        displayedEpisodes = 0;
         currentEpisodes = [...episodes];
     }
 
-    const start = displayedEpisodes;
-    const end = Math.min(start + LOAD_INCREMENT, currentEpisodes.length);
-    const nextEpisodes = currentEpisodes.slice(start, end);
+    // Create and append episode cards
+    episodesList.innerHTML = currentEpisodes.map(episode => createEpisodeCard(episode)).join('');
 
-    episodesList.insertAdjacentHTML('beforeend', nextEpisodes.map(episode => createEpisodeCard(episode)).join(''));
-    
-    displayedEpisodes = end;
-    
-    // Show/hide loading spinner based on whether there are more episodes
-    loadMore.style.display = displayedEpisodes < currentEpisodes.length ? 'block' : 'none';
-
-    // Add click handlers for new episodes
-    const newEpisodeLinks = episodesList.querySelectorAll('.episode-link:not([data-handler])');
-    newEpisodeLinks.forEach(link => {
-        link.setAttribute('data-handler', 'true');
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const episode = JSON.parse(link.dataset.episode);
-            playVideo(episode);
-            
-            // Update active state
-            document.querySelectorAll('.episode-card').forEach(card => {
-                card.classList.remove('active');
+    // Add click handlers for episodes
+    const episodeLinks = episodesList.querySelectorAll('.episode-link');
+    episodeLinks.forEach(link => {
+        if (!link.hasAttribute('data-handler')) {
+            link.setAttribute('data-handler', 'true');
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const episode = JSON.parse(link.dataset.episode);
+                playVideo(episode);
+                
+                // Update active state
+                document.querySelectorAll('.episode-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                link.querySelector('.episode-card').classList.add('active');
             });
-            link.querySelector('.episode-card').classList.add('active');
-        });
+        }
     });
 
+    // Scroll to active episode if reset and current episode exists
     if (reset && currentEpisode) {
         setTimeout(() => {
             const activeCard = episodesList.querySelector('.episode-card.active');
@@ -301,7 +294,6 @@ function displayEpisodesList(episodes, reset = false) {
 function initializeEpisodeControls() {
     const searchInput = document.getElementById('episodeSearch');
     const sortButton = document.getElementById('sortButton');
-    const loadMore = document.getElementById('loadMore');
     const episodesListWrapper = document.querySelector('.episodes-list-wrapper');
 
     // Search functionality
@@ -324,35 +316,6 @@ function initializeEpisodeControls() {
         currentEpisodes.reverse();
         displayEpisodesList(currentEpisodes, true);
     });
-
-    // Initialize infinite scroll
-    let isLoading = false;
-    const handleScroll = throttle(() => {
-        if (isLoading) return;
-
-        const {scrollTop, scrollHeight, clientHeight} = episodesListWrapper;
-        
-        // Check if we're near the bottom (within 100px)
-        if (scrollHeight - scrollTop - clientHeight < 100) {
-            if (displayedEpisodes < currentEpisodes.length) {
-                isLoading = true;
-                loadMore.style.display = 'block';
-                
-                // Use setTimeout to prevent rapid firing
-                setTimeout(() => {
-                    displayEpisodesList(currentEpisodes);
-                    isLoading = false;
-                    
-                    // Hide loading spinner if no more episodes
-                    if (displayedEpisodes >= currentEpisodes.length) {
-                        loadMore.style.display = 'none';
-                    }
-                }, 300);
-            }
-        }
-    }, 200); // Throttle to once every 200ms
-
-    episodesListWrapper.addEventListener('scroll', handleScroll);
 }
 
 // Debounce helper function

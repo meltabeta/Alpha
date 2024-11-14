@@ -1539,30 +1539,22 @@ footer p, footer a {
 }
 
 .episodes-list-wrapper {
-    position: relative;
-    margin: 0 -0.5rem;
-}
-
-.episodes-list {
-    display: grid;
-    gap: 0.75rem;
-    padding: 0.5rem;
     max-height: 600px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--accent-color) var(--primary-dark);
+    scrollbar-color: var(--accent-color) var(--secondary-dark);
 }
 
-.episodes-list::-webkit-scrollbar {
+.episodes-list-wrapper::-webkit-scrollbar {
     width: 6px;
 }
 
-.episodes-list::-webkit-scrollbar-track {
-    background: var(--primary-dark);
+.episodes-list-wrapper::-webkit-scrollbar-track {
+    background: var(--secondary-dark);
     border-radius: 3px;
 }
 
-.episodes-list::-webkit-scrollbar-thumb {
+.episodes-list-wrapper::-webkit-scrollbar-thumb {
     background-color: var(--accent-color);
     border-radius: 3px;
 }
@@ -1650,9 +1642,8 @@ footer p, footer a {
         padding: 0.6rem;
     }
 
-    .episodes-list {
+    .episodes-list-wrapper {
         max-height: 400px;
-        gap: 0.5rem;
     }
 
     .episode-card {
