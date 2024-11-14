@@ -1972,34 +1972,34 @@ footer p, footer a {
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     .video-content-wrapper {
-        margin-left: -0.5rem;
-        margin-right: -0.5rem;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .video-player-column {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     .playlist-breadcrumb {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .playlist-info {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        margin-left: 5px;
+        margin-right: 5px;
         padding: 1rem;
     }
 
     /* Adjust episode sidebar for mobile */
     .episodes-sidebar {
-        padding: 1rem 0.5rem;
+        padding: 1rem 5px;
     }
 
     /* Adjust search overlay for mobile */
@@ -2017,8 +2017,8 @@ footer p, footer a {
     }
 
     .video-content-wrapper {
-        margin-left: -0.25rem;
-        margin-right: -0.25rem;
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
     }
 
     .video-player-column {
@@ -2112,22 +2112,24 @@ footer p, footer a {
 @media (max-width: 768px) {
     /* Fix container padding */
     .container {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 5px;
+        padding-right: 5px;
         max-width: 100%;
         width: 100%;
     }
 
     /* Reset content wrapper margins */
     .content-wrapper {
-        margin: 0;
-        width: 100%;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: calc(100% - 10px);
     }
 
     /* Reset video content wrapper */
     .video-content-wrapper {
-        margin: 0;
-        width: 100%;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: calc(100% - 10px);
     }
 
     /* Reset all section margins and make full width */
@@ -2402,14 +2404,20 @@ body.playlist-page footer {
 /* Add responsive margins for larger screens */
 @media (min-width: 1400px) {
     .video-content-wrapper {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin-left: 13%;
+        margin-right: 13%;
     }
 
     /* Adjust breadcrumb to match content width */
     .playlist-breadcrumb {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin-left: 13%;
+        margin-right: 13%;
+    }
+    
+    /* Add margin for content wrapper on large screens */
+    .content-wrapper {
+        margin-left: 13%;
+        margin-right: 13%;
     }
 }
 
