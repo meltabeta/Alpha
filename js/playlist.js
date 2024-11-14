@@ -334,19 +334,35 @@ function debounce(func, wait) {
 // Update the createEpisodeCard function
 function createEpisodeCard(episode) {
     const isActive = currentEpisode && currentEpisode.episode === episode.episode;
+    
+    // Parse episode number
+    let mainNumber, totalNumber;
+    if (episode.episode.includes('[')) {
+        // Format: "58 [143]"
+        const matches = episode.episode.match(/(\d+)\s*\[(\d+)\]/);
+        if (matches) {
+            mainNumber = matches[1];
+            totalNumber = matches[2];
+        }
+    } else if (episode.episode.includes(' - ')) {
+        // Format: "151 - 170"
+        const [start, end] = episode.episode.split(' - ');
+        mainNumber = `${start}-${end}`;
+    } else {
+        // Format: "187"
+        mainNumber = episode.episode;
+    }
+
     return `
         <a href="#" class="episode-link" data-episode='${JSON.stringify(episode)}'>
             <div class="episode-card ${isActive ? 'active' : ''}">
                 <div class="episode-number">
-                    ${episode.episode.includes(' - ') ? 
-                        episode.episode.split(' - ')[0] : 
-                        episode.episode}
+                    <span class="main-number">EP ${mainNumber}</span>
+                    ${totalNumber ? `<span class="total-number">of ${totalNumber}</span>` : ''}
                 </div>
                 <div class="episode-info">
                     <div class="episode-title">
-                        ${episode.episode.includes(' - ') ? 
-                            episode.episode.split(' - ')[1] : 
-                            `Episode ${episode.episode}`}
+                        ${episode.title || `Episode ${episode.episode}`}
                     </div>
                     ${episode.duration ? 
                         `<div class="episode-duration">

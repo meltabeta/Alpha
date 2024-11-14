@@ -1560,37 +1560,50 @@ footer p, footer a {
 }
 
 .episode-card {
-    background-color: var(--primary-dark);
-    border-radius: 8px;
-    padding: 1rem;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
     display: flex;
     align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
     gap: 1rem;
-    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.episode-card:last-child {
+    border-bottom: none;
 }
 
 .episode-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--accent-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .episode-card.active {
     background-color: var(--accent-color);
-    border-color: var(--accent-color);
 }
 
 .episode-number {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--accent-color);
-    min-width: 40px;
+    min-width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .episode-card.active .episode-number {
     color: var(--text-primary);
+}
+
+.episode-number .main-number {
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.episode-number .total-number {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    color: var(--text-secondary);
 }
 
 .episode-info {
@@ -1609,58 +1622,90 @@ footer p, footer a {
     color: var(--text-secondary);
 }
 
-.episode-card.active .episode-duration {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.load-more {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    gap: 0.5rem;
-}
-
 /* Mobile adjustments */
 @media (max-width: 768px) {
-    .episodes-section {
-        padding: 1rem;
-    }
-
-    .episodes-controls {
-        padding: 0.25rem 0;
-    }
-
-    .episode-search {
-        padding: 0.6rem 0.75rem;
-        font-size: 0.85rem;
-    }
-
-    .sort-button {
-        padding: 0.6rem;
-    }
-
-    .episodes-list-wrapper {
-        max-height: 400px;
-    }
-
     .episode-card {
         padding: 0.75rem;
+        gap: 0.75rem;
     }
 
     .episode-number {
-        font-size: 1rem;
-        min-width: 32px;
+        min-width: 40px;
+        font-size: 0.9rem;
+    }
+
+    .episode-number .main-number {
+        font-size: 0.9rem;
+    }
+
+    .episode-number .total-number {
+        font-size: 0.7rem;
     }
 
     .episode-title {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .episode-duration {
         font-size: 0.75rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .episode-card {
+        padding: 0.6rem;
+        gap: 0.5rem;
+    }
+
+    .episode-number {
+        min-width: 35px;
+        font-size: 0.8rem;
+    }
+
+    .episode-number .main-number {
+        font-size: 0.8rem;
+    }
+
+    .episode-number .total-number {
+        font-size: 0.65rem;
+    }
+
+    .episode-title {
+        font-size: 0.8rem;
+    }
+
+    .episode-duration {
+        font-size: 0.7rem;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 375px) {
+    .episode-card {
+        padding: 0.5rem;
+        gap: 0.4rem;
+    }
+
+    .episode-number {
+        min-width: 32px;
+        font-size: 0.75rem;
+    }
+
+    .episode-number .main-number {
+        font-size: 0.75rem;
+    }
+
+    .episode-number .total-number {
+        font-size: 0.6rem;
+    }
+
+    .episode-title {
+        font-size: 0.75rem;
+    }
+
+    .episode-duration {
+        font-size: 0.65rem;
     }
 }
 
